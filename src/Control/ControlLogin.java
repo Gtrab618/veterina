@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 
 public class ControlLogin extends Thread {
 
+    private SoundEffect sound = new SoundEffect("src/Iconos/song.wav");
     private VistaLogin vistaLogin;
     private ModeloPersonal modelo;
     private int banderaAni = 1;
@@ -51,6 +52,7 @@ public class ControlLogin extends Thread {
             //controla todo lo relacionado con botones y logeo
             case "interfaz":
                 iniciarControl();
+                
                 break;
             //controla todo lo relacionado con animaciones 
             case "animacion":
@@ -62,6 +64,7 @@ public class ControlLogin extends Thread {
     }
 
     public void iniciarControl() {
+        sound.PlaySound();
         vistaLogin.getBtnIngresar().addActionListener(l -> registrar());
         //evento para borrar letra ingrese su usuario
         evtTxtControl(vistaLogin.getTxtNombreUsuario(), "usu");
@@ -71,6 +74,7 @@ public class ControlLogin extends Thread {
         evtShowHide(vistaLogin.getLbl_hide(),"hide"); 
         eventoenter(vistaLogin.getTxtContraseña());
         eventofoco(vistaLogin.getTxtNombreUsuario());
+        
     }
 
     private void eventoenter(JPasswordField txt) {
