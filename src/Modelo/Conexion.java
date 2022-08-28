@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 public class Conexion {
     
-    String cadenaConexion = "jdbc:postgresql://localhost:5432/vaterinaria";
+    String cadenaConexion = "jdbc:postgresql://localhost:5432/veterinaria";
     String pgUsuario = "postgres";
     String pgPassword = "1234";
     Connection con;
@@ -64,5 +64,14 @@ public class Conexion {
         
         return correcto;
     }
+
+    public Connection getCon() {
+        return con;
+    }
+
+    public void setCon(Connection con) {
+        this.con = con;
+    }
+    
     
 }

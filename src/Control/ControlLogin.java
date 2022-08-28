@@ -34,7 +34,6 @@ public class ControlLogin extends Thread {
         this.vistaLogin = vistalogin;
         this.vistaLogin.setLocationRelativeTo(null);
         this.vistaLogin.requestFocus();
-       
         vistaLogin.setTitle("LOGIN");
         this.vistaLogin.setIconImage(new ImageIcon(getClass().getResource("../Iconos/login/pet-house.png")).getImage());
     }
@@ -52,7 +51,7 @@ public class ControlLogin extends Thread {
             //controla todo lo relacionado con botones y logeo
             case "interfaz":
                 iniciarControl();
-                
+
                 break;
             //controla todo lo relacionado con animaciones 
             case "animacion":
@@ -70,26 +69,10 @@ public class ControlLogin extends Thread {
         evtTxtControl(vistaLogin.getTxtNombreUsuario(), "usu");
         evtTxtControl(vistaLogin.getTxtContraseña(), "pass");
         //mostrar y ocultar contraseña
-        evtShowHide(vistaLogin.getLbl_show(),"show");
-        evtShowHide(vistaLogin.getLbl_hide(),"hide"); 
-        eventoenter(vistaLogin.getTxtContraseña());
+        evtShowHide(vistaLogin.getLbl_show(), "show");
+        evtShowHide(vistaLogin.getLbl_hide(), "hide");
         eventofoco(vistaLogin.getTxtNombreUsuario());
-        
-    }
 
-    private void eventoenter(JPasswordField txt) {
-        txt.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    registrar();
-                }
-                if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    vistaLogin.getTxtNombreUsuario().requestFocus();
-                }
-            }
-
-        });
     }
 
     private void eventofoco(JTextField txt) {
@@ -105,19 +88,35 @@ public class ControlLogin extends Thread {
     }
 
     public void registrar() {
+        vistaLogin.getLbl_AlertU().setLocation(140, 470);
+        vistaLogin.getLbl_AlertP().setLocation(140, 470);
         char clave[] = vistaLogin.getTxtContraseña().getPassword();
         String clavedef = new String(clave);
 
-        if (vistaLogin.getTxtNombreUsuario().getText().equals("Admin") && clavedef.equals("12345")) {
-            vistaLogin.dispose();
-            VistaMenuPrincipal menuv = new VistaMenuPrincipal();
-            Control.ControlMenuPrincipal controlador = new ControlMenuPrincipal(menuv);
-            controlador.iniciarControlMenu();
+        if (!vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario") && !clavedef.equalsIgnoreCase("********")) {
+            //quitar de la vista las alertas 
 
+            if (modelo.iniciarSecion(vistaLogin.getTxtNombreUsuario().getText(), clavedef)) {
+                vistaLogin.dispose();
+                VistaMenuPrincipal menuv = new VistaMenuPrincipal();
+                Control.ControlMenuPrincipal controlador = new ControlMenuPrincipal(menuv);
+                controlador.iniciarControlMenu();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
+                        + "Por favor ingrese un usuario y/o contraseña correctos",
+                        "Acceso denegado", JOptionPane.ERROR_MESSAGE);
+
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-                    + "Por favor ingrese un usuario y/o contraseña correctos",
-                    "Acceso denegado", JOptionPane.ERROR_MESSAGE);
+            //poner a la vista  las alertas 
+            if (vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario")) {
+                vistaLogin.getLbl_AlertU().setLocation(140, 90);
+            }
+
+            if (clavedef.equalsIgnoreCase("********")) {
+                vistaLogin.getLbl_AlertP().setLocation(140, 170);
+            }
         }
 
     }
@@ -136,7 +135,7 @@ public class ControlLogin extends Thread {
 
     //contraola el movimiento de las imagenes
     private void moverImagenes() {
-       
+
         while (banderaAni == 1) {
             vistaLogin.getLbl_ani1().setLocation(vistaLogin.getLbl_ani1().getLocation().x - 1, vistaLogin.getLbl_ani1().getLocation().y);
             hiloTrans();
@@ -215,25 +214,25 @@ public class ControlLogin extends Thread {
 
                 switch (nombreTxt) {
                     case "usu":
-                        if(vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario")){
-                           vistaLogin.getTxtNombreUsuario().setText("");
-                           vistaLogin.getTxtNombreUsuario().setForeground(Color.black);
+                        if (vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario")) {
+                            vistaLogin.getTxtNombreUsuario().setText("");
+                            vistaLogin.getTxtNombreUsuario().setForeground(Color.black);
                         }
-                        if(String.valueOf(vistaLogin.getTxtContraseña().getPassword()).isEmpty()){
+                        if (String.valueOf(vistaLogin.getTxtContraseña().getPassword()).isEmpty()) {
                             vistaLogin.getTxtContraseña().setText("********");
                             vistaLogin.getTxtContraseña().setForeground(Color.gray);
                         }
                         break;
-                     case "pass":
-                         if(String.valueOf(vistaLogin.getTxtContraseña().getPassword()).equals("********")){
+                    case "pass":
+                        if (String.valueOf(vistaLogin.getTxtContraseña().getPassword()).equals("********")) {
                             vistaLogin.getTxtContraseña().setText("");
                             vistaLogin.getTxtContraseña().setForeground(Color.black);
                         }
-                         if(vistaLogin.getTxtNombreUsuario().getText().isEmpty()){
-                           vistaLogin.getTxtNombreUsuario().setText("Ingrese su nombre de usuario");
-                           vistaLogin.getTxtNombreUsuario().setForeground(Color.gray);
+                        if (vistaLogin.getTxtNombreUsuario().getText().isEmpty()) {
+                            vistaLogin.getTxtNombreUsuario().setText("Ingrese su nombre de usuario");
+                            vistaLogin.getTxtNombreUsuario().setForeground(Color.gray);
                         }
-                        
+
                         break;
 
                 }
@@ -241,32 +240,32 @@ public class ControlLogin extends Thread {
             }
         });
     }
-    
+
     //Controlar el mostrar y ocultar imagen
-    private void evtShowHide(JLabel lab, String opc){
-        String modo= opc;
+    private void evtShowHide(JLabel lab, String opc) {
+        String modo = opc;
         lab.addMouseListener(new java.awt.event.MouseAdapter() {
-            
+
             @Override
             public void mouseClicked(MouseEvent e) {
 
                 switch (modo) {
                     case "show":
-                       vistaLogin.getTxtContraseña().setEchoChar((char) 0);
-                       //bug en ves de ocultarse solo se desplaza la vista
-                       //el bug sucede cada vez que se acutaliza el frame aunque este se use hilos
-                       vistaLogin.getLbl_show().setLocation(490, vistaLogin.getLbl_show().getLocation().y);
-                       vistaLogin.getLbl_hide().setLocation(420, vistaLogin.getLbl_show().getLocation().y);
+                        vistaLogin.getTxtContraseña().setEchoChar((char) 0);
+                        //bug en ves de ocultarse solo se desplaza la vista
+                        //el bug sucede cada vez que se acutaliza el frame aunque este se use hilos
+                        vistaLogin.getLbl_show().setLocation(490, vistaLogin.getLbl_show().getLocation().y);
+                        vistaLogin.getLbl_hide().setLocation(420, vistaLogin.getLbl_show().getLocation().y);
                         break;
-                     case "hide":
-                       vistaLogin.getTxtContraseña().setEchoChar('*');
-                       vistaLogin.getLbl_hide().setLocation(490, vistaLogin.getLbl_show().getLocation().y);
-                       vistaLogin.getLbl_show().setLocation(420, vistaLogin.getLbl_show().getLocation().y);
+                    case "hide":
+                        vistaLogin.getTxtContraseña().setEchoChar('*');
+                        vistaLogin.getLbl_hide().setLocation(490, vistaLogin.getLbl_show().getLocation().y);
+                        vistaLogin.getLbl_show().setLocation(420, vistaLogin.getLbl_show().getLocation().y);
                         break;
 
                 }
             }
         });
     }
-    
+
 }

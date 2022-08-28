@@ -12,7 +12,24 @@ public class VistaLogin extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JLabel getLbl_AlertU() {
+        return lbl_AlertU;
+    }
 
+    public void setLbl_AlertU(JLabel lbl_AlertU) {
+        this.lbl_AlertU = lbl_AlertU;
+    }
+
+    public JLabel getLbl_AlertP() {
+        return lbl_AlertP;
+    }
+
+    public void setLbl_AlertP(JLabel lbl_AlertP) {
+        this.lbl_AlertP = lbl_AlertP;
+    }
+
+
+    
     public JButton getBtnIngresar() {
         return btnIngresar;
     }
@@ -114,6 +131,8 @@ public class VistaLogin extends javax.swing.JFrame {
         lbl_title = new javax.swing.JLabel();
         lbl_hide = new javax.swing.JLabel();
         lbl_show = new javax.swing.JLabel();
+        lbl_AlertU = new javax.swing.JLabel();
+        lbl_AlertP = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -154,7 +173,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
-        pnl_2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 91, 382, 10));
+        pnl_2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 71, 382, 10));
 
         lbl_icoUse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/imgUser.png"))); // NOI18N
         lbl_icoUse.setToolTipText("Usuario");
@@ -162,9 +181,10 @@ public class VistaLogin extends javax.swing.JFrame {
 
         jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
-        pnl_2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 173, 287, 10));
+        pnl_2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 287, 10));
 
         txtNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtNombreUsuario.setForeground(new java.awt.Color(204, 204, 204));
         txtNombreUsuario.setText("Ingrese su nombre de usuario");
         txtNombreUsuario.setToolTipText("");
         txtNombreUsuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -205,7 +225,15 @@ public class VistaLogin extends javax.swing.JFrame {
         lbl_show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/show.png"))); // NOI18N
         pnl_2.add(lbl_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 195, 40, 40));
 
-        pnl_Principal.add(pnl_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 520, 470));
+        lbl_AlertU.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_AlertU.setText("Ingrese un usuario");
+        pnl_2.add(lbl_AlertU, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, -1, -1));
+
+        lbl_AlertP.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_AlertP.setText("Ingrese una contraseña");
+        pnl_2.add(lbl_AlertP, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, -1, -1));
+
+        pnl_Principal.add(pnl_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 520, 500));
 
         getContentPane().add(pnl_Principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 470));
 
@@ -221,6 +249,8 @@ public class VistaLogin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel lbl_AlertP;
+    private javax.swing.JLabel lbl_AlertU;
     private javax.swing.JLabel lbl_ani1;
     private javax.swing.JLabel lbl_ani2;
     private javax.swing.JLabel lbl_ani3;
