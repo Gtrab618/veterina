@@ -24,10 +24,10 @@ public class ControlLogin extends Thread {
     private ModeloPersonal modelo;
     private int banderaAni = 1;
 
-    private ImageIcon imgAni1 = new ImageIcon("src/Iconos/login/ani1.png"),
-            imgAni2 = new ImageIcon("src/Iconos/login/ani2.png"),
-            imgAni3 = new ImageIcon("src/Iconos/login/ani3.png");
-
+    private ImageIcon imgAni1 = new ImageIcon("src/Iconos/login/ani1.png");
+            //imgAni2 = new ImageIcon("src/Iconos/login/ani2.png"),
+//            imgAni3 = new ImageIcon("src/Iconos/login/ani3.png");
+    
     public ControlLogin(String name, VistaLogin vistalogin, ModeloPersonal modelo) {
         super(name);
         this.modelo = modelo;
@@ -35,7 +35,9 @@ public class ControlLogin extends Thread {
         this.vistaLogin.setLocationRelativeTo(null);
         this.vistaLogin.requestFocus();
         vistaLogin.setTitle("LOGIN");
-        this.vistaLogin.setIconImage(new ImageIcon(getClass().getResource("../Iconos/login/pet-house.png")).getImage());
+        vistaLogin.getLbl_ani2().setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/gok.gif")));
+        vistaLogin.getLbl_ani3().setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/guk2.gif")));
+        this.vistaLogin.setIconImage(new ImageIcon(getClass().getResource("/Iconos/login/pet-house.png")).getImage());
     }
 
     public ControlLogin(String name, VistaLogin vistalogin) {
@@ -123,8 +125,8 @@ public class ControlLogin extends Thread {
 
     private void referenciarObjetos() {
         vistaLogin.getLbl_ani1().setIcon(escalarImagen(imgAni1, vistaLogin.getLbl_ani1()));
-        vistaLogin.getLbl_ani2().setIcon(escalarImagen(imgAni2, vistaLogin.getLbl_ani2()));
-        vistaLogin.getLbl_ani3().setIcon(escalarImagen(imgAni3, vistaLogin.getLbl_ani3()));
+//        vistaLogin.getLbl_ani2().setIcon(escalarImagen(imgAni2, vistaLogin.getLbl_ani2()));
+//        vistaLogin.getLbl_ani3().setIcon(escalarImagen(imgAni3, vistaLogin.getLbl_ani3()));
 
     }
 
