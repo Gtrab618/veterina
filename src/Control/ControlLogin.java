@@ -19,15 +19,14 @@ import javax.swing.JTextField;
 
 public class ControlLogin extends Thread {
 
-    private SoundEffect sound = new SoundEffect("src/Iconos/song.wav");
     private VistaLogin vistaLogin;
     private ModeloPersonal modelo;
     private int banderaAni = 1;
 
-//    private ImageIcon imgAni1 = new ImageIcon("src/Iconos/login/ani1.png");
-            //imgAni2 = new ImageIcon("src/Iconos/login/ani2.png"),
-//            imgAni3 = new ImageIcon("src/Iconos/login/ani3.png");
-    
+    private ImageIcon imgAni1 = new ImageIcon("src/Iconos/login/ani1.png"),
+            imgAni2 = new ImageIcon("src/Iconos/login/ani2.png"),
+            imgAni3 = new ImageIcon("src/Iconos/login/ani3.png");
+
     public ControlLogin(String name, VistaLogin vistalogin, ModeloPersonal modelo) {
         super(name);
         this.modelo = modelo;
@@ -35,9 +34,6 @@ public class ControlLogin extends Thread {
         this.vistaLogin.setLocationRelativeTo(null);
         this.vistaLogin.requestFocus();
         vistaLogin.setTitle("LOGIN");
-        vistaLogin.getLbl_ani2().setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/gok.gif")));
-        vistaLogin.getLbl_ani3().setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/guk2.gif")));
-        vistaLogin.getLbl_ani1().setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/guk3.gif")));
         this.vistaLogin.setIconImage(new ImageIcon(getClass().getResource("/Iconos/login/pet-house.png")).getImage());
     }
 
@@ -66,7 +62,7 @@ public class ControlLogin extends Thread {
     }
 
     public void iniciarControl() {
-        sound.PlaySound();
+
         vistaLogin.getBtnIngresar().addActionListener(l -> registrar());
         //evento para borrar letra ingrese su usuario
         evtTxtControl(vistaLogin.getTxtNombreUsuario(), "usu");
@@ -109,15 +105,23 @@ public class ControlLogin extends Thread {
                 JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
                         + "Por favor ingrese un usuario y/o contraseña correctos",
                         "Acceso denegado", JOptionPane.ERROR_MESSAGE);
+                //poner a la vista  las alertas 
+                if (vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario") || vistaLogin.getTxtNombreUsuario().getText().equals("")) {
+                    vistaLogin.getLbl_AlertU().setLocation(140, 90);
+                }
+
+                if (clavedef.equalsIgnoreCase("********") || clavedef.equalsIgnoreCase("")) {
+                    vistaLogin.getLbl_AlertP().setLocation(140, 170);
+                }
 
             }
         } else {
             //poner a la vista  las alertas 
-            if (vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario")) {
+            if (vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario") || vistaLogin.getTxtNombreUsuario().getText().equals("")) {
                 vistaLogin.getLbl_AlertU().setLocation(140, 90);
             }
 
-            if (clavedef.equalsIgnoreCase("********")) {
+            if (clavedef.equalsIgnoreCase("********") || clavedef.equalsIgnoreCase("")) {
                 vistaLogin.getLbl_AlertP().setLocation(140, 170);
             }
         }
@@ -125,9 +129,9 @@ public class ControlLogin extends Thread {
     }
 
     private void referenciarObjetos() {
-//        vistaLogin.getLbl_ani1().setIcon(escalarImagen(imgAni1, vistaLogin.getLbl_ani1()));
-//        vistaLogin.getLbl_ani2().setIcon(escalarImagen(imgAni2, vistaLogin.getLbl_ani2()));
-//        vistaLogin.getLbl_ani3().setIcon(escalarImagen(imgAni3, vistaLogin.getLbl_ani3()));
+        vistaLogin.getLbl_ani1().setIcon(escalarImagen(imgAni1, vistaLogin.getLbl_ani1()));
+        vistaLogin.getLbl_ani2().setIcon(escalarImagen(imgAni2, vistaLogin.getLbl_ani2()));
+        vistaLogin.getLbl_ani3().setIcon(escalarImagen(imgAni3, vistaLogin.getLbl_ani3()));
 
     }
 
@@ -185,9 +189,7 @@ public class ControlLogin extends Thread {
 
     }
 
-    public void salir(java.awt.event.MouseEvent evt) {
-        System.exit(0);
-    }
+
 
     //tiempo de espera para mover imagen
     private void hiloTrans() {
