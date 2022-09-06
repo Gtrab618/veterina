@@ -92,7 +92,7 @@ public class ControlLogin extends Thread {
         char clave[] = vistaLogin.getTxtContraseña().getPassword();
         String clavedef = new String(clave);
 
-        if (!vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario") && !clavedef.equalsIgnoreCase("********")) {
+        if (!vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario") && !clavedef.equalsIgnoreCase("********") && !vistaLogin.getTxtNombreUsuario().getText().equals("") && !clavedef.equalsIgnoreCase("")  ) {
             //quitar de la vista las alertas 
 
             if (modelo.iniciarSecion(vistaLogin.getTxtNombreUsuario().getText(), clavedef)) {

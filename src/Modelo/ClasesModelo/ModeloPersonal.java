@@ -20,7 +20,7 @@ public class ModeloPersonal extends Personal{
     }
    
     public boolean iniciarSecion(String user, String pass){
-        String sql = "select nal_acceso from personal where nal_usuario ='"+user+"'and nal_contrasena ='"+pass+"';";
+        String sql = "select perl_acceso from personal where perl_usuario ='"+user+"'and perl_contrasena ='"+pass+"';";
         
         ResultSet rs= con.consulta(sql);
         

@@ -6,6 +6,10 @@
 package Vista;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,12 +22,172 @@ public class vistaRegistro extends javax.swing.JPanel {
         initComponents();
     }
 
-    public JButton getBtn_registrar() {
-        return btn_registrar;
+    public JButton getBtn_cancelarR() {
+        return btn_cancelarR;
     }
 
-    public void setBtn_registrar(JButton btn_registrar) {
-        this.btn_registrar = btn_registrar;
+    public void setBtn_cancelarR(JButton btn_cancelarR) {
+        this.btn_cancelarR = btn_cancelarR;
+    }
+
+    public JButton getBtn_examinarR() {
+        return btn_examinarR;
+    }
+
+    public void setBtn_examinarR(JButton btn_examinarR) {
+        this.btn_examinarR = btn_examinarR;
+    }
+
+    public JButton getBtn_registrarR() {
+        return btn_registrarR;
+    }
+
+    public void setBtn_registrarR(JButton btn_registrarR) {
+        this.btn_registrarR = btn_registrarR;
+    }
+
+    public JTextArea getTat_direccionR() {
+        return tat_direccionR;
+    }
+
+    public void setTat_direccionR(JTextArea tat_direccionR) {
+        this.tat_direccionR = tat_direccionR;
+    }
+
+    public JTextField getTxt_cedulaR() {
+        return txt_cedulaR;
+    }
+
+    public void setTxt_cedulaR(JTextField txt_cedulaR) {
+        this.txt_cedulaR = txt_cedulaR;
+    }
+
+    public JTextField getTxt_nombreMR() {
+        return txt_nombreMR;
+    }
+
+    public void setTxt_nombreMR(JTextField txt_nombreMR) {
+        this.txt_nombreMR = txt_nombreMR;
+    }
+
+    public JTextField getTxt_nombreR() {
+        return txt_nombreR;
+    }
+
+    public void setTxt_nombreR(JTextField txt_nombreR) {
+        this.txt_nombreR = txt_nombreR;
+    }
+
+    public JTextField getTxt_pApellidoR() {
+        return txt_pApellidoR;
+    }
+
+    public void setTxt_pApellidoR(JTextField txt_pApellidoR) {
+        this.txt_pApellidoR = txt_pApellidoR;
+    }
+
+    public JTextField getTxt_razaR() {
+        return txt_razaR;
+    }
+
+    public void setTxt_razaR(JTextField txt_razaR) {
+        this.txt_razaR = txt_razaR;
+    }
+
+    public JTextField getTxt_sApellidoR() {
+        return txt_sApellidoR;
+    }
+
+    public void setTxt_sApellidoR(JTextField txt_sApellidoR) {
+        this.txt_sApellidoR = txt_sApellidoR;
+    }
+
+    public JTextField getTxt_telefonoR() {
+        return txt_telefonoR;
+    }
+
+    public void setTxt_telefonoR(JTextField txt_telefonoR) {
+        this.txt_telefonoR = txt_telefonoR;
+    }
+
+    public JComboBox<String> getCmb_especieR() {
+        return cmb_especieR;
+    }
+
+    public void setCmb_especieR(JComboBox<String> cmb_especieR) {
+        this.cmb_especieR = cmb_especieR;
+    }
+
+    public JComboBox<String> getCmb_sexoR() {
+        return cmb_sexoR;
+    }
+
+    public void setCmb_sexoR(JComboBox<String> cmb_sexoR) {
+        this.cmb_sexoR = cmb_sexoR;
+    }
+
+    public JLabel getLblAlertaCcv() {
+        return lblAlertaCcv;
+    }
+
+    public void setLblAlertaCcv(JLabel lblAlertaCcv) {
+        this.lblAlertaCcv = lblAlertaCcv;
+    }
+
+  public JLabel getLblAlertaCf() {
+        return lblAlertaCf;
+    }
+
+    public void setLblAlertaCf(JLabel lblAlertaCf) {
+        this.lblAlertaCf = lblAlertaCf;
+    }
+
+    public JLabel getLblAlertaCnv() {
+        return lblAlertaCnv;
+    }
+
+    public void setLblAlertaCnv(JLabel lblAlertaCnv) {
+        this.lblAlertaCnv = lblAlertaCnv;
+    }
+
+    public JLabel getLblAlertaNMv() {
+        return lblAlertaNMv;
+    }
+
+    public void setLblAlertaNMv(JLabel lblAlertaNMv) {
+        this.lblAlertaNMv = lblAlertaNMv;
+    }
+
+    public JLabel getLblAlertaNv() {
+        return lblAlertaNv;
+    }
+
+    public void setLblAlertaNv(JLabel lblAlertaNv) {
+        this.lblAlertaNv = lblAlertaNv;
+    }
+
+    public JLabel getLblAlertaPAv() {
+        return lblAlertaPAv;
+    }
+
+    public void setLblAlertaPAv(JLabel lblAlertaPAv) {
+        this.lblAlertaPAv = lblAlertaPAv;
+    }
+
+    public JLabel getLblAlertaRv() {
+        return lblAlertaRv;
+    }
+
+    public void setLblAlertaRv(JLabel lblAlertaRv) {
+        this.lblAlertaRv = lblAlertaRv;
+    }
+
+    public JLabel getLblAlertaSAv() {
+        return lblAlertaSAv;
+    }
+
+    public void setLblAlertaSAv(JLabel lblAlertaSAv) {
+        this.lblAlertaSAv = lblAlertaSAv;
     }
 
     
@@ -48,28 +212,36 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblsApellido = new javax.swing.JLabel();
         lblTelefono = new javax.swing.JLabel();
         lblDireccion = new javax.swing.JLabel();
-        txt_cedula = new javax.swing.JTextField();
-        txt_nombre = new javax.swing.JTextField();
-        txt_pApellido = new javax.swing.JTextField();
-        txt_sApellido = new javax.swing.JTextField();
-        txt_telefono = new javax.swing.JTextField();
+        txt_cedulaR = new javax.swing.JTextField();
+        txt_nombreR = new javax.swing.JTextField();
+        txt_pApellidoR = new javax.swing.JTextField();
+        txt_sApellidoR = new javax.swing.JTextField();
+        txt_telefonoR = new javax.swing.JTextField();
         lblMascota = new javax.swing.JLabel();
         lblCedula = new javax.swing.JLabel();
-        txt_direccion = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
         lblRaza = new javax.swing.JLabel();
         lblEspecie = new javax.swing.JLabel();
         lblSexo = new javax.swing.JLabel();
-        txt_nombreM = new javax.swing.JTextField();
-        txt_raza = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        btn_examinar = new javax.swing.JButton();
+        txt_nombreMR = new javax.swing.JTextField();
+        txt_razaR = new javax.swing.JTextField();
+        cmb_especieR = new javax.swing.JComboBox<>();
+        cmb_sexoR = new javax.swing.JComboBox<>();
+        btn_examinarR = new javax.swing.JButton();
         lbl_foto = new javax.swing.JLabel();
         lblIcoP = new javax.swing.JLabel();
         lblIcoM = new javax.swing.JLabel();
-        btn_registrar = new javax.swing.JButton();
-        btn_cancelar = new javax.swing.JButton();
+        btn_registrarR = new javax.swing.JButton();
+        btn_cancelarR = new javax.swing.JButton();
+        tat_direccionR = new javax.swing.JTextArea();
+        lblAlertaCnv = new javax.swing.JLabel();
+        lblAlertaCf = new javax.swing.JLabel();
+        lblAlertaCcv = new javax.swing.JLabel();
+        lblAlertaNv = new javax.swing.JLabel();
+        lblAlertaPAv = new javax.swing.JLabel();
+        lblAlertaSAv = new javax.swing.JLabel();
+        lblAlertaRv = new javax.swing.JLabel();
+        lblAlertaNMv = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(853, 590));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,32 +275,32 @@ public class vistaRegistro extends javax.swing.JPanel {
 
         lblPersona.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblPersona.setText("Persona");
-        jPanel1.add(lblPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+        jPanel1.add(lblPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         lblNombreP.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombreP.setText("Nombre");
-        jPanel1.add(lblNombreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 180, -1));
+        jPanel1.add(lblNombreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 180, -1));
 
         lblApellido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblApellido.setText("Primer Apellido");
-        jPanel1.add(lblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, -1));
+        jPanel1.add(lblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 150, -1));
 
         lblsApellido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblsApellido.setText("Segundo Apellido");
-        jPanel1.add(lblsApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 170, -1));
+        jPanel1.add(lblsApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 170, -1));
 
         lblTelefono.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTelefono.setText("Telefono");
-        jPanel1.add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 80, -1));
+        jPanel1.add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 80, -1));
 
         lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDireccion.setText("Dirección");
-        jPanel1.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 180, -1));
-        jPanel1.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 210, -1));
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 210, -1));
-        jPanel1.add(txt_pApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 210, -1));
-        jPanel1.add(txt_sApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 210, -1));
-        jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 210, -1));
+        jPanel1.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 180, -1));
+        jPanel1.add(txt_cedulaR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 210, -1));
+        jPanel1.add(txt_nombreR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 210, -1));
+        jPanel1.add(txt_pApellidoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 210, -1));
+        jPanel1.add(txt_sApellidoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 210, -1));
+        jPanel1.add(txt_telefonoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 210, -1));
 
         lblMascota.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblMascota.setText("Mascota");
@@ -136,66 +308,110 @@ public class vistaRegistro extends javax.swing.JPanel {
 
         lblCedula.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCedula.setText("Cedula");
-        jPanel1.add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
-        jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 210, -1));
+        jPanel1.add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombre.setText("Nombre ");
-        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, -1));
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
 
         lblRaza.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRaza.setText("Raza");
-        jPanel1.add(lblRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
+        jPanel1.add(lblRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, -1));
 
         lblEspecie.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblEspecie.setText("Especie");
-        jPanel1.add(lblEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, -1));
+        jPanel1.add(lblEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, -1, -1));
 
         lblSexo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblSexo.setText("Sexo");
-        jPanel1.add(lblSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, -1));
-        jPanel1.add(txt_nombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 200, -1));
-        jPanel1.add(txt_raza, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 200, -1));
+        jPanel1.add(lblSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, -1, -1));
+        jPanel1.add(txt_nombreMR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 200, -1));
+        jPanel1.add(txt_razaR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 200, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gato", "Perro" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, -1, -1));
+        cmb_especieR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gato", "Perro" }));
+        jPanel1.add(cmb_especieR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Macho", "Hembra" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, -1, -1));
+        cmb_sexoR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Macho", "Hembra" }));
+        jPanel1.add(cmb_sexoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, -1, -1));
 
-        btn_examinar.setText("Examinar");
-        jPanel1.add(btn_examinar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, -1, -1));
+        btn_examinarR.setText("Examinar");
+        jPanel1.add(btn_examinarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, -1, -1));
 
         lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 150, 160));
 
         lblIcoP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/RePer.png"))); // NOI18N
-        jPanel1.add(lblIcoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 40));
+        jPanel1.add(lblIcoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 40, 40));
 
         lblIcoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ReMas.png"))); // NOI18N
         jPanel1.add(lblIcoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 50, 50));
 
-        btn_registrar.setText("Registrar");
-        jPanel1.add(btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, -1, -1));
+        btn_registrarR.setText("Registrar");
+        jPanel1.add(btn_registrarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, -1, -1));
 
-        btn_cancelar.setText("Cancelar");
-        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, -1));
+        btn_cancelarR.setText("Cancelar");
+        jPanel1.add(btn_cancelarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 550));
+        tat_direccionR.setColumns(20);
+        tat_direccionR.setRows(5);
+        tat_direccionR.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(tat_direccionR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 330, 60));
+
+        lblAlertaCnv.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaCnv.setText("Cedula no valida");
+        jPanel1.add(lblAlertaCnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        lblAlertaCf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaCf.setText("Formato erroneo");
+        jPanel1.add(lblAlertaCf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        lblAlertaCcv.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaCcv.setText("Campo vacio");
+        jPanel1.add(lblAlertaCcv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        lblAlertaNv.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaNv.setText("Campo vacio");
+        jPanel1.add(lblAlertaNv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+
+        lblAlertaPAv.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaPAv.setText("Campo vacio");
+        jPanel1.add(lblAlertaPAv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+
+        lblAlertaSAv.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaSAv.setText("Campo vacio");
+        jPanel1.add(lblAlertaSAv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
+
+        lblAlertaRv.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaRv.setText("Campo vacio");
+        jPanel1.add(lblAlertaRv, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+
+        lblAlertaNMv.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaNMv.setText("Campo vacio");
+        jPanel1.add(lblAlertaNMv, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cancelar;
-    private javax.swing.JButton btn_examinar;
-    private javax.swing.JButton btn_registrar;
+    private javax.swing.JButton btn_cancelarR;
+    private javax.swing.JButton btn_examinarR;
+    private javax.swing.JButton btn_registrarR;
+    private javax.swing.JComboBox<String> cmb_especieR;
+    private javax.swing.JComboBox<String> cmb_sexoR;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblAlertaCcv;
+    private javax.swing.JLabel lblAlertaCf;
+    private javax.swing.JLabel lblAlertaCnv;
+    private javax.swing.JLabel lblAlertaNMv;
+    private javax.swing.JLabel lblAlertaNv;
+    private javax.swing.JLabel lblAlertaPAv;
+    private javax.swing.JLabel lblAlertaRv;
+    private javax.swing.JLabel lblAlertaSAv;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblDireccion;
@@ -211,14 +427,14 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lbl_foto;
     private javax.swing.JLabel lblsApellido;
-    private javax.swing.JTextField txt_cedula;
-    private javax.swing.JTextField txt_direccion;
-    private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_nombreM;
-    private javax.swing.JTextField txt_pApellido;
-    private javax.swing.JTextField txt_raza;
-    private javax.swing.JTextField txt_sApellido;
-    private javax.swing.JTextField txt_telefono;
+    private javax.swing.JTextArea tat_direccionR;
+    private javax.swing.JTextField txt_cedulaR;
+    private javax.swing.JTextField txt_nombreMR;
+    private javax.swing.JTextField txt_nombreR;
+    private javax.swing.JTextField txt_pApellidoR;
+    private javax.swing.JTextField txt_razaR;
+    private javax.swing.JTextField txt_sApellidoR;
+    private javax.swing.JTextField txt_telefonoR;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -220,7 +220,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                     .addGroup(pnlBtnClienLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pnlMenu.add(pnlBtnClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 119, 300, -1));
@@ -324,7 +324,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         pnlMenu.add(pnlBtnHist, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 308, 300, 60));
 
-        fondo.add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 670));
+        fondo.add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 750));
 
         pnlHead.setBackground(new java.awt.Color(23, 32, 52));
         pnlHead.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -345,12 +345,12 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         );
         pnlContentLayout.setVerticalGroup(
             pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 670, Short.MAX_VALUE)
         );
 
-        fondo.add(pnlContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 835, 590));
+        fondo.add(pnlContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 835, 670));
 
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 670));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 750));
 
         jMenu1.setText("Ajustes");
 

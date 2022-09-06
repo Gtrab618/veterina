@@ -20,7 +20,9 @@ import javax.swing.JPanel;
 public class ControlMenuPrincipal {
 
     private VistaMenuPrincipal vistaMP;
-    private vistaRegistro vRegis= new vistaRegistro();
+    private vistaRegistro vRegis = new vistaRegistro();
+    private Validaciones vali = new Validaciones();
+
     private JPanel[] panelsBtn = new JPanel[5];
     //Controla el cambio de temas de modo dark
     private int bandera = 0;
@@ -28,22 +30,24 @@ public class ControlMenuPrincipal {
 
     public ControlMenuPrincipal(VistaMenuPrincipal vista) {
         this.vistaMP = vista;
+        this.vistaMP.setLocationRelativeTo(null);
+        //this.vistaMP.setSize(500,500);
         referenciarObjetos();
         cambiarFondo(r, g, b);
         vista.setVisible(true);
-    
+
     }
 
     public void iniciarControlMenu() {
         //labels
-
         vistaMP.getMenuDarkMode().addActionListener(l -> VisualizarDarkMode());
-        vRegis.getBtn_registrar().addActionListener(l-> imprimir());
+        vRegis.getBtn_registrarR().addActionListener(l -> registrar());
+
         evtMouseBtn(vistaMP.getPnlBtnClien(), "cliente");
         evtMouseBtn(vistaMP.getPnlBtnGroo(), "grooming");
         evtMouseBtn(vistaMP.getPnlBtnMasc(), "mascota");
         evtMouseBtn(vistaMP.getPnlBtnHist(), "historial");
-        
+
     }
 
     private void referenciarObjetos() {
@@ -52,12 +56,20 @@ public class ControlMenuPrincipal {
         vistaMP.getPnlBtnMasc().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         vistaMP.getPnlBtnHist().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        //vista Registro personaMascota
+        desactivarLblVRegis();
+        //salto de linea vistaRegistro tat
+        vRegis.getTat_direccionR().setLineWrap(true);
+        //Evitar corte de palabras por la mitad
+        vRegis.getTat_direccionR().setWrapStyleWord(true);
+        //desactivar alertas
+
         //Poner fecha
         LocalDate now = LocalDate.now();
         int year = now.getYear();
         int dia = now.getDayOfMonth();
         int month = now.getMonthValue();
-        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", " ;Septiembre",
+        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", " Septiembre",
             "Octubre", "Noviembre", "Diciemrbre"};
         vistaMP.getLblFecha().setText("Es " + dia + " de " + meses[month - 1] + " de " + year);
     }
@@ -111,11 +123,11 @@ public class ControlMenuPrincipal {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
                 switch (name) {
                     case "cliente":
                         vRegis.resetKeyboardActions();
-                        vRegis.setSize(835, 597);
+                        vRegis.setSize(1155, 863);
                         vRegis.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
                         vistaMP.getPnlContent().add(vRegis, BorderLayout.CENTER);
@@ -142,23 +154,100 @@ public class ControlMenuPrincipal {
                         break;
                     case "historial":
                         VistaMas vM = new VistaMas();
-                        vM.setSize(835, 597);
+                        vM.setSize(835, 670);
                         vM.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
                         vistaMP.getPnlContent().add(vM, BorderLayout.CENTER);
                         vistaMP.revalidate();
                         vistaMP.getPnlContent().repaint();
                         break;
-                   
+
                 }
 
             }
         });
     }
-    
-    private void imprimir(){
-        System.out.println("conprobar");
+
+    private void registrar() {
+        desactivarLblVRegis();
+        String cedula = "", nombre = "", pApellido = "",
+                sApellido = "", telefono = "", direccion = "",
+                nombreM = "", raza = "", especie = "", sexo = "";
+        int bandera = 0;
+
+        cedula = vRegis.getTxt_cedulaR().getText();
+        nombre = vRegis.getTxt_nombreR().getText();
+        pApellido = vRegis.getTxt_pApellidoR().getText();
+        sApellido = vRegis.getTxt_sApellidoR().getText();
+        telefono = vRegis.getTxt_telefonoR().getText();
+        direccion = vRegis.getTat_direccionR().getText();
+        nombreM = vRegis.getTxt_nombreMR().getText();
+        raza = vRegis.getTxt_razaR().getText();
+        //Recuperar datos de un combobox
+        especie = vRegis.getCmb_especieR().getSelectedItem().toString();
+        sexo = vRegis.getCmb_sexoR().getSelectedItem().toString();
+        //iMPLEMENTAR METODO LIMPIAR 
+        System.out.println(cedula);
+        if (!cedula.equals("")) {
+            bandera = vali.valiCedula(cedula);
+
+            switch (bandera) {
+                case 0:
+
+                    break;
+                case 1:
+                    vRegis.getLblAlertaCnv().setVisible(true);
+                    break;
+                default:
+                    vRegis.getLblAlertaCf().setVisible(true);
+                    break;
+            }
+
+        } else {
+
+            vRegis.getLblAlertaCcv().setVisible(true);
+        }
+
+        if (!nombre.equals("")) {
+
+        } else {
+            vRegis.getLblAlertaNv().setVisible(true);
+        }
+        if (!pApellido.equals("")) {
+
+        } else {
+            vRegis.getLblAlertaPAv().setVisible(true);
+        }
+        if (!sApellido.equals("")) {
+
+        } else {
+            vRegis.getLblAlertaSAv().setVisible(true);
+        }
+//        if (!telefono.equals("")) {
+//            
+//        }else{
+//           
+//        }
+//        if (!direccion.equals("")) {
+//            
+//        }else{
+//            
+//        }
+
+        if (!nombreM.equals("")) {
+            
+        } else {
+            vRegis.getLblAlertaNMv().setVisible(true);
+        }
+        
+        if (!raza.equals("")) {
+
+        } else {
+            vRegis.getLblAlertaRv().setVisible(true);
+        }
+
     }
+
     private void VisualizarDarkMode() {
         if (vistaMP.getMenuDarkMode().isSelected()) {
             EventQueue.invokeLater(new Runnable() {
@@ -211,4 +300,16 @@ public class ControlMenuPrincipal {
             }
         });
     }
+
+    private void desactivarLblVRegis() {
+        vRegis.getLblAlertaCcv().setVisible(false);
+        vRegis.getLblAlertaCf().setVisible(false);
+        vRegis.getLblAlertaCnv().setVisible(false);
+        vRegis.getLblAlertaNv().setVisible(false);
+        vRegis.getLblAlertaPAv().setVisible(false);
+        vRegis.getLblAlertaSAv().setVisible(false);
+        vRegis.getLblAlertaNMv().setVisible(false);
+        vRegis.getLblAlertaRv().setVisible(false);
+    }
+
 }
