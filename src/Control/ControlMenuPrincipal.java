@@ -20,9 +20,7 @@ import javax.swing.JPanel;
 public class ControlMenuPrincipal {
 
     private VistaMenuPrincipal vistaMP;
-    private vistaRegistro vRegis = new vistaRegistro();
-    private Validaciones vali = new Validaciones();
-
+   
     private JPanel[] panelsBtn = new JPanel[5];
     //Controla el cambio de temas de modo dark
     private int bandera = 0;
@@ -31,17 +29,18 @@ public class ControlMenuPrincipal {
     public ControlMenuPrincipal(VistaMenuPrincipal vista) {
         this.vistaMP = vista;
         this.vistaMP.setLocationRelativeTo(null);
+        SinDarck();
         //this.vistaMP.setSize(500,500);
         referenciarObjetos();
         cambiarFondo(r, g, b);
         vista.setVisible(true);
-
+        
     }
 
     public void iniciarControlMenu() {
         //labels
         vistaMP.getMenuDarkMode().addActionListener(l -> VisualizarDarkMode());
-        vRegis.getBtn_registrarR().addActionListener(l -> registrar());
+        
 
         evtMouseBtn(vistaMP.getPnlBtnClien(), "cliente");
         evtMouseBtn(vistaMP.getPnlBtnGroo(), "grooming");
@@ -57,11 +56,7 @@ public class ControlMenuPrincipal {
         vistaMP.getPnlBtnHist().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         //vista Registro personaMascota
-        desactivarLblVRegis();
-        //salto de linea vistaRegistro tat
-        vRegis.getTat_direccionR().setLineWrap(true);
-        //Evitar corte de palabras por la mitad
-        vRegis.getTat_direccionR().setWrapStyleWord(true);
+        
         //desactivar alertas
 
         //Poner fecha
@@ -126,6 +121,9 @@ public class ControlMenuPrincipal {
 
                 switch (name) {
                     case "cliente":
+                        vistaRegistro vRegis = new vistaRegistro();
+                        ControlRegistro ctn = new ControlRegistro(vRegis);
+                        ctn.iniciarControl();
                         vRegis.resetKeyboardActions();
                         vRegis.setSize(1155, 863);
                         vRegis.setLocation(0, 0);
@@ -133,6 +131,7 @@ public class ControlMenuPrincipal {
                         vistaMP.getPnlContent().add(vRegis, BorderLayout.CENTER);
                         vistaMP.revalidate();
                         vistaMP.getPnlContent().repaint();
+                        
                         break;
                     case "grooming":
                         VistaMas vMas = new VistaMas();
@@ -168,85 +167,7 @@ public class ControlMenuPrincipal {
         });
     }
 
-    private void registrar() {
-        desactivarLblVRegis();
-        String cedula = "", nombre = "", pApellido = "",
-                sApellido = "", telefono = "", direccion = "",
-                nombreM = "", raza = "", especie = "", sexo = "";
-        int bandera = 0;
 
-        cedula = vRegis.getTxt_cedulaR().getText();
-        nombre = vRegis.getTxt_nombreR().getText();
-        pApellido = vRegis.getTxt_pApellidoR().getText();
-        sApellido = vRegis.getTxt_sApellidoR().getText();
-        telefono = vRegis.getTxt_telefonoR().getText();
-        direccion = vRegis.getTat_direccionR().getText();
-        nombreM = vRegis.getTxt_nombreMR().getText();
-        raza = vRegis.getTxt_razaR().getText();
-        //Recuperar datos de un combobox
-        especie = vRegis.getCmb_especieR().getSelectedItem().toString();
-        sexo = vRegis.getCmb_sexoR().getSelectedItem().toString();
-        //iMPLEMENTAR METODO LIMPIAR 
-        System.out.println(cedula);
-        if (!cedula.equals("")) {
-            bandera = vali.valiCedula(cedula);
-
-            switch (bandera) {
-                case 0:
-
-                    break;
-                case 1:
-                    vRegis.getLblAlertaCnv().setVisible(true);
-                    break;
-                default:
-                    vRegis.getLblAlertaCf().setVisible(true);
-                    break;
-            }
-
-        } else {
-
-            vRegis.getLblAlertaCcv().setVisible(true);
-        }
-
-        if (!nombre.equals("")) {
-
-        } else {
-            vRegis.getLblAlertaNv().setVisible(true);
-        }
-        if (!pApellido.equals("")) {
-
-        } else {
-            vRegis.getLblAlertaPAv().setVisible(true);
-        }
-        if (!sApellido.equals("")) {
-
-        } else {
-            vRegis.getLblAlertaSAv().setVisible(true);
-        }
-//        if (!telefono.equals("")) {
-//            
-//        }else{
-//           
-//        }
-//        if (!direccion.equals("")) {
-//            
-//        }else{
-//            
-//        }
-
-        if (!nombreM.equals("")) {
-            
-        } else {
-            vRegis.getLblAlertaNMv().setVisible(true);
-        }
-        
-        if (!raza.equals("")) {
-
-        } else {
-            vRegis.getLblAlertaRv().setVisible(true);
-        }
-
-    }
 
     private void VisualizarDarkMode() {
         if (vistaMP.getMenuDarkMode().isSelected()) {
@@ -301,15 +222,20 @@ public class ControlMenuPrincipal {
         });
     }
 
-    private void desactivarLblVRegis() {
-        vRegis.getLblAlertaCcv().setVisible(false);
-        vRegis.getLblAlertaCf().setVisible(false);
-        vRegis.getLblAlertaCnv().setVisible(false);
-        vRegis.getLblAlertaNv().setVisible(false);
-        vRegis.getLblAlertaPAv().setVisible(false);
-        vRegis.getLblAlertaSAv().setVisible(false);
-        vRegis.getLblAlertaNMv().setVisible(false);
-        vRegis.getLblAlertaRv().setVisible(false);
+    //iniciar sin darck mode
+    private void SinDarck(){
+        vistaMP.getMenuDarkMode().isSelected();
+        EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    FlatIntelliJLaf.setup();
+                    FlatLaf.updateUI();
+                    cambiarFondo(13, 71, 161);
+                    r = 13;
+                    g = 71;
+                    b = 161;
+                }
+            });
     }
 
 }

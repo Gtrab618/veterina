@@ -190,6 +190,78 @@ public class vistaRegistro extends javax.swing.JPanel {
         this.lblAlertaSAv = lblAlertaSAv;
     }
 
+    public JLabel getLblAlertaNMf() {
+        return lblAlertaNMf;
+    }
+
+    public void setLblAlertaNMf(JLabel lblAlertaNMf) {
+        this.lblAlertaNMf = lblAlertaNMf;
+    }
+
+    public JLabel getLblAlertaNf() {
+        return lblAlertaNf;
+    }
+
+    public void setLblAlertaNf(JLabel lblAlertaNf) {
+        this.lblAlertaNf = lblAlertaNf;
+    }
+
+    public JLabel getLblAlertaPAf() {
+        return lblAlertaPAf;
+    }
+
+    public void setLblAlertaPAf(JLabel lblAlertaPAf) {
+        this.lblAlertaPAf = lblAlertaPAf;
+    }
+
+    public JLabel getLblAlertaRf() {
+        return lblAlertaRf;
+    }
+
+    public void setLblAlertaRf(JLabel lblAlertaRf) {
+        this.lblAlertaRf = lblAlertaRf;
+    }
+
+    public JLabel getLblAlertaSAf() {
+        return lblAlertaSAf;
+    }
+
+    public void setLblAlertaSAf(JLabel lblAlertaSAf) {
+        this.lblAlertaSAf = lblAlertaSAf;
+    }
+
+    public JLabel getLblAlertaTf() {
+        return lblAlertaTf;
+    }
+
+    public void setLblAlertaTf(JLabel lblAlertaTf) {
+        this.lblAlertaTf = lblAlertaTf;
+    }
+
+    public JLabel getLblAlertaTnv() {
+        return lblAlertaTnv;
+    }
+
+    public void setLblAlertaTnv(JLabel lblAlertaTnv) {
+        this.lblAlertaTnv = lblAlertaTnv;
+    }
+
+    public JLabel getLblAlertaDf() {
+        return lblAlertaDf;
+    }
+
+    public void setLblAlertaDf(JLabel lblAlertaDf) {
+        this.lblAlertaDf = lblAlertaDf;
+    }
+
+    public JLabel getLbl_foto() {
+        return lbl_foto;
+    }
+
+    public void setLbl_foto(JLabel lbl_foto) {
+        this.lbl_foto = lbl_foto;
+    }
+
     
     
     /** This method is called from within the constructor to
@@ -242,6 +314,14 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblAlertaSAv = new javax.swing.JLabel();
         lblAlertaRv = new javax.swing.JLabel();
         lblAlertaNMv = new javax.swing.JLabel();
+        lblAlertaTf = new javax.swing.JLabel();
+        lblAlertaTnv = new javax.swing.JLabel();
+        lblAlertaNf = new javax.swing.JLabel();
+        lblAlertaPAf = new javax.swing.JLabel();
+        lblAlertaNMf = new javax.swing.JLabel();
+        lblAlertaRf = new javax.swing.JLabel();
+        lblAlertaSAf = new javax.swing.JLabel();
+        lblAlertaDf = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(853, 590));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -335,10 +415,10 @@ public class vistaRegistro extends javax.swing.JPanel {
         jPanel1.add(cmb_sexoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, -1, -1));
 
         btn_examinarR.setText("Examinar");
-        jPanel1.add(btn_examinarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, -1, -1));
+        jPanel1.add(btn_examinarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
 
         lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 150, 160));
+        jPanel1.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 210, 210));
 
         lblIcoP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/RePer.png"))); // NOI18N
         jPanel1.add(lblIcoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 40, 40));
@@ -358,7 +438,7 @@ public class vistaRegistro extends javax.swing.JPanel {
         jPanel1.add(tat_direccionR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 330, 60));
 
         lblAlertaCnv.setForeground(new java.awt.Color(255, 102, 0));
-        lblAlertaCnv.setText("Cedula no valida");
+        lblAlertaCnv.setText("Cédula no válida");
         jPanel1.add(lblAlertaCnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         lblAlertaCf.setForeground(new java.awt.Color(212, 172, 13));
@@ -370,15 +450,15 @@ public class vistaRegistro extends javax.swing.JPanel {
         jPanel1.add(lblAlertaCcv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         lblAlertaNv.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaNv.setText("Campo vacio");
+        lblAlertaNv.setText("Campo vacío");
         jPanel1.add(lblAlertaNv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         lblAlertaPAv.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaPAv.setText("Campo vacio");
+        lblAlertaPAv.setText("Campo vacío");
         jPanel1.add(lblAlertaPAv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
         lblAlertaSAv.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaSAv.setText("Campo vacio");
+        lblAlertaSAv.setText("Campo vacío");
         jPanel1.add(lblAlertaSAv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
 
         lblAlertaRv.setForeground(new java.awt.Color(204, 0, 204));
@@ -388,6 +468,38 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblAlertaNMv.setForeground(new java.awt.Color(204, 0, 204));
         lblAlertaNMv.setText("Campo vacio");
         jPanel1.add(lblAlertaNMv, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
+
+        lblAlertaTf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaTf.setText("Formato erróneo");
+        jPanel1.add(lblAlertaTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
+
+        lblAlertaTnv.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaTnv.setText("Revise longitud");
+        jPanel1.add(lblAlertaTnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
+
+        lblAlertaNf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaNf.setText("Ingrese solo texto");
+        jPanel1.add(lblAlertaNf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+
+        lblAlertaPAf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaPAf.setText("Ingrese solo texto");
+        jPanel1.add(lblAlertaPAf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+
+        lblAlertaNMf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaNMf.setText("Ingrese solo texto");
+        jPanel1.add(lblAlertaNMf, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
+
+        lblAlertaRf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaRf.setText("Ingrese solo texto");
+        jPanel1.add(lblAlertaRf, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, 30));
+
+        lblAlertaSAf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaSAf.setText("Ingrese solo texto");
+        jPanel1.add(lblAlertaSAf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
+
+        lblAlertaDf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaDf.setText("Dirección muy corta");
+        jPanel1.add(lblAlertaDf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
     }// </editor-fold>//GEN-END:initComponents
@@ -407,11 +519,19 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertaCcv;
     private javax.swing.JLabel lblAlertaCf;
     private javax.swing.JLabel lblAlertaCnv;
+    private javax.swing.JLabel lblAlertaDf;
+    private javax.swing.JLabel lblAlertaNMf;
     private javax.swing.JLabel lblAlertaNMv;
+    private javax.swing.JLabel lblAlertaNf;
     private javax.swing.JLabel lblAlertaNv;
+    private javax.swing.JLabel lblAlertaPAf;
     private javax.swing.JLabel lblAlertaPAv;
+    private javax.swing.JLabel lblAlertaRf;
     private javax.swing.JLabel lblAlertaRv;
+    private javax.swing.JLabel lblAlertaSAf;
     private javax.swing.JLabel lblAlertaSAv;
+    private javax.swing.JLabel lblAlertaTf;
+    private javax.swing.JLabel lblAlertaTnv;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblDireccion;

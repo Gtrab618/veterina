@@ -139,7 +139,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     }
     
     
-
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -354,7 +354,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Ajustes");
 
-        menuDarkMode.setSelected(true);
         menuDarkMode.setText("DarkMode");
         jMenu1.add(menuDarkMode);
 

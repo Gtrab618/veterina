@@ -2,12 +2,10 @@ package Control;
 
 public class Validaciones {
 
-    private int valicacion;
-
     public int valiCedula(String cedula) {
         //si la cedula es una cadena numerica
         if (cedula.matches("[0-9]{10}")) {
-            
+
             int numero = 0, suma = 0, resultado = 0;
 
             for (int i = 0; i < cedula.length(); i++) {
@@ -42,15 +40,36 @@ public class Validaciones {
                 return 0;
             }
             //la cedula contiene letras o no cumple con el formato
-        }else{
-            //si el formato de la cedula es incorrecto
+        } else {
+
             return 2;
         }
 
-        
+    }
+
+    public boolean valiNombreApe(String nomAp) {
+        return nomAp.matches("[a-zA-z]{3,15}");
+    }
+
+    public int valiNumTelefono(String tel) {
+
+        if (tel.matches("[+-]?\\d*(\\.\\d+)?")) {
+
+            if (tel.matches("[0-9]{10}") || tel.matches("[0-9]{7}") || tel.matches("[0-9]{9}")) {
+                return 0;
+
+            } else {
+               
+                return 1;
+            }
+        } else {
+            return 2;
+        }
+
     }
     
-    public boolean valiNombreApe(String nomAp){
-        return nomAp.matches("[a-zA-z]{3,10}");
+    public boolean valiDirec(String nomAp) {
+        return nomAp.matches("[a-zA-z]{7,}");
     }
+ 
 }
