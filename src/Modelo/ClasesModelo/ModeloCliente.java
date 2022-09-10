@@ -58,11 +58,11 @@ public class ModeloCliente extends Cliente {
 
     }
 
-    public List<Cliente> recuperarCliente() {
+    public List<Cliente> recuperarClientes() {
 
         List<Cliente> listaClientes = new ArrayList<Cliente>();
         String sql = "select c.cli_id,p.per_cedula, p.per_nombre, p.per_apellido1 from persona p \n"
-                + "JOIN cliente c on(p.per_id = c.per_id);";
+                + "JOIN cliente c on(p.per_id = c.per_id) where p.per_estado='1';";
         ResultSet rs= pgcon.consulta(sql);
         
         try {
@@ -73,7 +73,6 @@ public class ModeloCliente extends Cliente {
                 cliente.setPer_dni(rs.getString("per_cedula"));
                 cliente.setPer_nombre1(rs.getString("per_nombre"));
                 cliente.setPer_apellido1(rs.getString("per_apellido1"));
-                
                 listaClientes.add(cliente);
             }
             
@@ -82,6 +81,31 @@ public class ModeloCliente extends Cliente {
         }
         
         return listaClientes;
+    }
+    
+     public Cliente getClienteEspecifico(String cedula) {
+
+        Cliente Cliente = new Cliente();
+        String sql = "select c.cli_id,p.per_cedula, p.per_nombre, p.per_apellido1 from persona p \n"
+                + "JOIN cliente c on(p.per_id = c.per_id) where p.per_estado='1' and cedula='"+getPer_dni()+"';";
+        ResultSet rs= pgcon.consulta(sql);
+        
+        try {
+            
+            while(rs.next()){
+                Cliente cliente = new Cliente();
+                cliente.setCli_id(rs.getInt("cli_id"));
+                cliente.setPer_dni(rs.getString("per_cedula"));
+                cliente.setPer_nombre1(rs.getString("per_nombre"));
+                cliente.setPer_apellido1(rs.getString("per_apellido1"));
+               
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return Cliente;
     }
 
 }

@@ -19,6 +19,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,7 +35,7 @@ public class ControlRegistro {
     private Validaciones vali = new Validaciones();
     private JFileChooser jfc;
     private int i;
-    private boolean banderaFoto ;
+    private boolean banderaFoto;
 
     public ControlRegistro(vistaRegistro vRegis, ModeloPersona Mper, ModeloMascota Mmas, ModeloCliente Ccli) {
         this.vRegis = vRegis;
@@ -47,8 +48,11 @@ public class ControlRegistro {
     public void iniciarControl() {
         vRegis.getBtn_registrarR().addActionListener(l -> registrar());
         vRegis.getBtn_examinarR().addActionListener(l -> examinarFoto());
-        vRegis.getBtn_Vbuscar().addActionListener(l -> cambiarPanel("BUSCAR"));
+        vRegis.getBtn_Vbuscar().addActionListener(l -> cambiarPanel("buscar"));
         vRegis.getBtn_Vregistrar().addActionListener(l -> cambiarPanel("registrar"));
+        vRegis.getBtn_Vmodificar().addActionListener(l -> cambiarPanel("modificar"));
+        evtTxtControl(vRegis.getTxt_Mcedula());
+
     }
 
     private void cambiarPanel(String tipo) {
@@ -56,9 +60,15 @@ public class ControlRegistro {
         if (tipo.equalsIgnoreCase("buscar")) {
             vRegis.getPnl_busqueda().setVisible(true);
             vRegis.getPnlRegistro().setVisible(false);
-        } else {
+            vRegis.getPnlModificar().setVisible(false);
+        } else if (tipo.equalsIgnoreCase("registrar")) {
             vRegis.getPnl_busqueda().setVisible(false);
             vRegis.getPnlRegistro().setVisible(true);
+            vRegis.getPnlModificar().setVisible(false);
+        } else if (tipo.equalsIgnoreCase("modificar")) {
+            vRegis.getPnlModificar().setVisible(true);
+            vRegis.getPnl_busqueda().setVisible(false);
+            vRegis.getPnlRegistro().setVisible(false);
         }
 
     }
@@ -78,11 +88,11 @@ public class ControlRegistro {
                 vRegis.getLbl_foto().setIcon(icono);
                 vRegis.getLbl_foto().updateUI();
 
-                banderaFoto=true;
+                banderaFoto = true;
             } catch (IOException ex) {
                 Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
 
     }
@@ -97,6 +107,38 @@ public class ControlRegistro {
 
         //linea de prueba hay que borrar mas despues
         vRegis.getPnl_busqueda().setVisible(false);
+        vRegis.getPnlModificar().setVisible(false);
+    }
+
+    //sierve para recuperar la cedula y guardar los datos
+    private void evtTxtControl(JTextField txt) {
+
+        txt.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                int bandera = 0;
+                String cedula = "";
+                cedula = vRegis.getTxt_Mcedula().getText().trim();
+
+                if (!cedula.equalsIgnoreCase("")) {
+
+                    if (!cedula.equals("")) {
+                        bandera = vali.valiCedula(cedula);
+
+                        if (bandera == 0) {
+                            //busco la cedula para cargar los datos
+                            
+                        }
+                    }
+
+                }
+            }
+        });
+    }
+
+    //capitalizar letra
+    private String capitalize(final String line) {
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1).toLowerCase();
     }
 
     private void registrar() {
@@ -107,14 +149,14 @@ public class ControlRegistro {
                 sApellido = "", telefono = "", direccion = "",
                 nombreM = "", raza = "", especie = "", sexo = "";
 
-        cedula = vRegis.getTxt_cedulaR().getText();
-        nombre = vRegis.getTxt_nombreR().getText();
-        pApellido = vRegis.getTxt_pApellidoR().getText();
-        sApellido = vRegis.getTxt_sApellidoR().getText();
-        telefono = vRegis.getTxt_telefonoR().getText();
-        direccion = vRegis.getTat_direccionR().getText();
-        nombreM = vRegis.getTxt_nombreMR().getText();
-        raza = vRegis.getTxt_razaR().getText();
+        cedula = vRegis.getTxt_cedulaR().getText().trim();
+        nombre = vRegis.getTxt_nombreR().getText().trim();
+        pApellido = vRegis.getTxt_pApellidoR().getText().trim();
+        sApellido = vRegis.getTxt_sApellidoR().getText().trim();
+        telefono = vRegis.getTxt_telefonoR().getText().trim();
+        direccion = vRegis.getTat_direccionR().getText().trim();
+        nombreM = vRegis.getTxt_nombreMR().getText().trim();
+        raza = vRegis.getTxt_razaR().getText().trim();
         //Recuperar datos de un combobox
         especie = vRegis.getCmb_especieR().getSelectedItem().toString();
         sexo = vRegis.getCmb_sexoR().getSelectedItem().toString();
@@ -139,7 +181,6 @@ public class ControlRegistro {
 //            vRegis.getLblAlertaCcv().setVisible(true);
 //            bandera = bandera + 1;
 //        }
-
         if (!nombre.equals("")) {
             if (!vali.valiNombreApe(nombre)) {
                 //nombre formato incorrecto
@@ -226,6 +267,14 @@ public class ControlRegistro {
         }
 
         if (bandera == 0) {
+            //capitalizar la letra         
+            nombre = capitalize(nombre);
+            pApellido = capitalize(pApellido);
+            sApellido = capitalize(sApellido);
+            nombreM = capitalize(nombreM);
+            raza = capitalize(raza);
+            //Recuperar datos de un combobox
+
             //Guardar persona
             Mper.setPer_dni(cedula);
             Mper.setPer_nombre1(nombre);
@@ -269,11 +318,11 @@ public class ControlRegistro {
                 //Recuperar ruta del sistema para guradar una imagen en caso 
                 //que este vacia 
                 String ruta = System.getProperty("user.dir");
-                ruta= ruta+"/src/Iconos/mascotasFoto.png";
-                
+                ruta = ruta + "/src/Iconos/mascotasFoto.png";
+
                 try {
                     File Icon = new File(ruta);
-                  
+
                     byte[] bitIcon = new byte[(int) Icon.length()];
                     InputStream input = new FileInputStream(Icon);
                     input.read(bitIcon);
@@ -292,26 +341,26 @@ public class ControlRegistro {
         }
 
     }
-    
-    private void llenarTabla(){
-        
-        i=0;
+
+    private void llenarTabla() {
+
+        i = 0;
         DefaultTableModel estructuraTabla;
         estructuraTabla = (DefaultTableModel) vRegis.getTblClientes().getModel();
         estructuraTabla.setNumRows(0);
-        List<Cliente> listC= Ccli.recuperarCliente();
+        List<Cliente> listC = Ccli.recuperarClientes();
         listC.stream().forEach(cliente -> {
-        estructuraTabla.addRow(new Object[3]);
-        
-        vRegis.getTblClientes()
-                .setValueAt(cliente.getCli_id(), i, 0);
-        vRegis.getTblClientes()
-                .setValueAt(cliente.getPer_dni(),i,1);
-        vRegis.getTblClientes()
-                .setValueAt(cliente.getPer_nombre1(),i,2);
-        vRegis.getTblClientes()
-                .setValueAt(cliente.getPer_apellido1(),i,3);
-                i=i+1;
+            estructuraTabla.addRow(new Object[3]);
+
+            vRegis.getTblClientes()
+                    .setValueAt(cliente.getCli_id(), i, 0);
+            vRegis.getTblClientes()
+                    .setValueAt(cliente.getPer_dni(), i, 1);
+            vRegis.getTblClientes()
+                    .setValueAt(cliente.getPer_nombre1(), i, 2);
+            vRegis.getTblClientes()
+                    .setValueAt(cliente.getPer_apellido1(), i, 3);
+            i = i + 1;
         });
     }
 

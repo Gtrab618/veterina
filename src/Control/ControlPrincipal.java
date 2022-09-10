@@ -10,4 +10,5 @@ public class ControlPrincipal {
         vlogin.setVisible(true);
         
     }
+    
 }

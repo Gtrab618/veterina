@@ -304,6 +304,94 @@ public class vistaRegistro extends javax.swing.JPanel {
         this.TblClientes = TblClientes;
     }
 
+    public JPanel getPnlModificar() {
+        return pnlModificar;
+    }
+
+    public void setPnlModificar(JPanel pnlModificar) {
+        this.pnlModificar = pnlModificar;
+    }
+
+    public JButton getBtn_Vmodificar() {
+        return btn_Vmodificar;
+    }
+
+    public void setBtn_Vmodificar(JButton btn_Vmodificar) {
+        this.btn_Vmodificar = btn_Vmodificar;
+    }
+
+    public JButton getBtn_eliminar() {
+        return btn_eliminar;
+    }
+
+    public void setBtn_eliminar(JButton btn_eliminar) {
+        this.btn_eliminar = btn_eliminar;
+    }
+
+    public JButton getBtn_modificar() {
+        return btn_modificar;
+    }
+
+    public void setBtn_modificar(JButton btn_modificar) {
+        this.btn_modificar = btn_modificar;
+    }
+
+    public JTextArea getTat_Mdireccion() {
+        return tat_Mdireccion;
+    }
+
+    public void setTat_Mdireccion(JTextArea tat_Mdireccion) {
+        this.tat_Mdireccion = tat_Mdireccion;
+    }
+
+    public JTable getTbl_mascota() {
+        return tbl_mascota;
+    }
+
+    public void setTbl_mascota(JTable tbl_mascota) {
+        this.tbl_mascota = tbl_mascota;
+    }
+
+    public JTextField getTxt_MPApellido() {
+        return txt_MPApellido;
+    }
+
+    public void setTxt_MPApellido(JTextField txt_MPApellido) {
+        this.txt_MPApellido = txt_MPApellido;
+    }
+
+    public JTextField getTxt_MSApellido() {
+        return txt_MSApellido;
+    }
+
+    public void setTxt_MSApellido(JTextField txt_MSApellido) {
+        this.txt_MSApellido = txt_MSApellido;
+    }
+
+    public JTextField getTxt_Mcedula() {
+        return txt_Mcedula;
+    }
+
+    public void setTxt_Mcedula(JTextField txt_Mcedula) {
+        this.txt_Mcedula = txt_Mcedula;
+    }
+
+    public JTextField getTxt_Mnombre() {
+        return txt_Mnombre;
+    }
+
+    public void setTxt_Mnombre(JTextField txt_Mnombre) {
+        this.txt_Mnombre = txt_Mnombre;
+    }
+
+    public JTextField getTxt_Mtelefono() {
+        return txt_Mtelefono;
+    }
+
+    public void setTxt_Mtelefono(JTextField txt_Mtelefono) {
+        this.txt_Mtelefono = txt_Mtelefono;
+    }
+
     
     
     /** This method is called from within the constructor to
@@ -318,7 +406,7 @@ public class vistaRegistro extends javax.swing.JPanel {
         jToolBar1 = new javax.swing.JToolBar();
         btn_Vregistrar = new javax.swing.JButton();
         btn_Vbuscar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_Vmodificar = new javax.swing.JButton();
         pnlRegistro = new javax.swing.JPanel();
         lblPersona = new javax.swing.JLabel();
         lblNombreP = new javax.swing.JLabel();
@@ -364,12 +452,34 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblAlertaRf = new javax.swing.JLabel();
         lblAlertaSAf = new javax.swing.JLabel();
         lblAlertaDf = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        pnlModificar = new javax.swing.JPanel();
+        lblApartado = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblIcoP1 = new javax.swing.JLabel();
+        lblMcedula = new javax.swing.JLabel();
+        txt_Mcedula = new javax.swing.JTextField();
+        lblMnombre = new javax.swing.JLabel();
+        txt_Mnombre = new javax.swing.JTextField();
+        lblMPApellido = new javax.swing.JLabel();
+        lblMSApellido = new javax.swing.JLabel();
+        txt_MPApellido = new javax.swing.JTextField();
+        txt_MSApellido = new javax.swing.JTextField();
+        lblMtelefono = new javax.swing.JLabel();
+        lblMdireccion = new javax.swing.JLabel();
+        txt_Mtelefono = new javax.swing.JTextField();
+        tat_Mdireccion = new javax.swing.JTextArea();
+        btn_modificar = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_mascota = new javax.swing.JTable();
         pnl_busqueda = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblClientes = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(853, 590));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -391,11 +501,11 @@ public class vistaRegistro extends javax.swing.JPanel {
         btn_Vbuscar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btn_Vbuscar);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/eliminar_32px.png"))); // NOI18N
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        btn_Vmodificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/eliminar_32px.png"))); // NOI18N
+        btn_Vmodificar.setFocusable(false);
+        btn_Vmodificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Vmodificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btn_Vmodificar);
 
         add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 42));
 
@@ -549,7 +659,80 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblAlertaDf.setText("Dirección muy corta");
         pnlRegistro.add(lblAlertaDf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setText("Registro");
+        pnlRegistro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
         add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
+
+        pnlModificar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblApartado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblApartado.setText("Modificar información");
+        pnlModificar.add(lblApartado, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 5, -1, -1));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setText("Cliente");
+        pnlModificar.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
+
+        lblIcoP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/RePer.png"))); // NOI18N
+        pnlModificar.add(lblIcoP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 40, 40));
+
+        lblMcedula.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblMcedula.setText("Cédula");
+        pnlModificar.add(lblMcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        pnlModificar.add(txt_Mcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 210, -1));
+
+        lblMnombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblMnombre.setText("Nombre");
+        pnlModificar.add(lblMnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, -1, -1));
+        pnlModificar.add(txt_Mnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 220, -1));
+
+        lblMPApellido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblMPApellido.setText("Primer Apellido");
+        pnlModificar.add(lblMPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+
+        lblMSApellido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblMSApellido.setText("Segundo Apellido");
+        pnlModificar.add(lblMSApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
+        pnlModificar.add(txt_MPApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, -1));
+        pnlModificar.add(txt_MSApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 220, -1));
+
+        lblMtelefono.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblMtelefono.setText("Teléfono");
+        pnlModificar.add(lblMtelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+
+        lblMdireccion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblMdireccion.setText("Dirección");
+        pnlModificar.add(lblMdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+        pnlModificar.add(txt_Mtelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 210, -1));
+
+        tat_Mdireccion.setColumns(20);
+        tat_Mdireccion.setRows(5);
+        pnlModificar.add(tat_Mdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
+
+        btn_modificar.setText("Modificar");
+        pnlModificar.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, -1, -1));
+
+        btn_eliminar.setText("Eliminar");
+        pnlModificar.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, -1, -1));
+
+        tbl_mascota.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Mascota", "Especie"
+            }
+        ));
+        jScrollPane2.setViewportView(tbl_mascota);
+
+        pnlModificar.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 370, 180));
+
+        add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 670));
 
         pnl_busqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -569,11 +752,15 @@ public class vistaRegistro extends javax.swing.JPanel {
         pnl_busqueda.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 790, -1));
         pnl_busqueda.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 250, -1));
 
-        jButton1.setText("Agregar mascota");
-        pnl_busqueda.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, -1));
+        jButton2.setText("Modificar");
+        pnl_busqueda.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
 
-        jButton2.setText("Editar Cliente");
-        pnl_busqueda.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Busqueda");
+        pnl_busqueda.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
+
+        jButton3.setText("Registrar");
+        pnl_busqueda.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
         add(pnl_busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
     }// </editor-fold>//GEN-END:initComponents
@@ -582,16 +769,21 @@ public class vistaRegistro extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TblClientes;
     private javax.swing.JButton btn_Vbuscar;
+    private javax.swing.JButton btn_Vmodificar;
     private javax.swing.JButton btn_Vregistrar;
     private javax.swing.JButton btn_cancelarR;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_examinarR;
+    private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_registrarR;
     private javax.swing.JComboBox<String> cmb_especieR;
     private javax.swing.JComboBox<String> cmb_sexoR;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblAlertaCcv;
@@ -610,24 +802,41 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertaSAv;
     private javax.swing.JLabel lblAlertaTf;
     private javax.swing.JLabel lblAlertaTnv;
+    private javax.swing.JLabel lblApartado;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblEspecie;
     private javax.swing.JLabel lblIcoM;
     private javax.swing.JLabel lblIcoP;
+    private javax.swing.JLabel lblIcoP1;
+    private javax.swing.JLabel lblMPApellido;
+    private javax.swing.JLabel lblMSApellido;
     private javax.swing.JLabel lblMascota;
+    private javax.swing.JLabel lblMcedula;
+    private javax.swing.JLabel lblMdireccion;
+    private javax.swing.JLabel lblMnombre;
+    private javax.swing.JLabel lblMtelefono;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreP;
     private javax.swing.JLabel lblPersona;
     private javax.swing.JLabel lblRaza;
     private javax.swing.JLabel lblSexo;
     private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lbl_foto;
     private javax.swing.JLabel lblsApellido;
+    private javax.swing.JPanel pnlModificar;
     private javax.swing.JPanel pnlRegistro;
     private javax.swing.JPanel pnl_busqueda;
+    private javax.swing.JTextArea tat_Mdireccion;
     private javax.swing.JTextArea tat_direccionR;
+    private javax.swing.JTable tbl_mascota;
+    private javax.swing.JTextField txt_MPApellido;
+    private javax.swing.JTextField txt_MSApellido;
+    private javax.swing.JTextField txt_Mcedula;
+    private javax.swing.JTextField txt_Mnombre;
+    private javax.swing.JTextField txt_Mtelefono;
     private javax.swing.JTextField txt_cedulaR;
     private javax.swing.JTextField txt_nombreMR;
     private javax.swing.JTextField txt_nombreR;
