@@ -1,26 +1,33 @@
 
 package Modelo;
 
+import java.awt.Image;
+import java.io.FileInputStream;
+
 public class Mascota {
     private int mas_id;
-    private String mas_nombreDue;
     private String mas_nombreMas;
     private String mas_sexo;
     private String mas_raza;
-    private byte mas_foto;
-    private boolean mas_estado;
+    private String mas_especie;
+    private Image foto;
+    private FileInputStream imageFile;
+    private int length;
+    private String mas_estado;
     private int cli_idFK;
-    
-    public Mascota(){
-        
+
+    public Mascota() {
     }
-    public Mascota(int mas_id, String mas_nombreDue, String mas_nombreMas, String mas_sexo, String mas_raza, byte mas_foto, boolean mas_estado, int cli_idFK) {
+
+    public Mascota(int mas_id, String mas_nombreMas, String mas_sexo, String mas_raza, String mas_especie, Image foto, FileInputStream imageFile, int length, String mas_estado, int cli_idFK) {
         this.mas_id = mas_id;
-        this.mas_nombreDue = mas_nombreDue;
         this.mas_nombreMas = mas_nombreMas;
         this.mas_sexo = mas_sexo;
         this.mas_raza = mas_raza;
-        this.mas_foto = mas_foto;
+        this.mas_especie = mas_especie;
+        this.foto = foto;
+        this.imageFile = imageFile;
+        this.length = length;
         this.mas_estado = mas_estado;
         this.cli_idFK = cli_idFK;
     }
@@ -31,14 +38,6 @@ public class Mascota {
 
     public void setMas_id(int mas_id) {
         this.mas_id = mas_id;
-    }
-
-    public String getMas_nombreDue() {
-        return mas_nombreDue;
-    }
-
-    public void setMas_nombreDue(String mas_nombreDue) {
-        this.mas_nombreDue = mas_nombreDue;
     }
 
     public String getMas_nombreMas() {
@@ -65,19 +64,43 @@ public class Mascota {
         this.mas_raza = mas_raza;
     }
 
-    public byte getMas_foto() {
-        return mas_foto;
+    public String getMas_especie() {
+        return mas_especie;
     }
 
-    public void setMas_foto(byte mas_foto) {
-        this.mas_foto = mas_foto;
+    public void setMas_especie(String mas_especie) {
+        this.mas_especie = mas_especie;
     }
 
-    public boolean isMas_estado() {
+    public Image getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Image foto) {
+        this.foto = foto;
+    }
+
+    public FileInputStream getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(FileInputStream imageFile) {
+        this.imageFile = imageFile;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public String getMas_estado() {
         return mas_estado;
     }
 
-    public void setMas_estado(boolean mas_estado) {
+    public void setMas_estado(String mas_estado) {
         this.mas_estado = mas_estado;
     }
 
@@ -88,7 +111,9 @@ public class Mascota {
     public void setCli_idFK(int cli_idFK) {
         this.cli_idFK = cli_idFK;
     }
-    
+
+   
+  
     
     
     

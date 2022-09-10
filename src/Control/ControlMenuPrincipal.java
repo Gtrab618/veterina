@@ -1,5 +1,7 @@
 package Control;
 
+import Modelo.ClasesModelo.ModeloCliente;
+import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
 import Vista.VistaMas;
 import Vista.VistaMascota;
@@ -122,7 +124,10 @@ public class ControlMenuPrincipal {
                 switch (name) {
                     case "cliente":
                         vistaRegistro vRegis = new vistaRegistro();
-                        ControlRegistro ctn = new ControlRegistro(vRegis);
+                        ModeloPersona Mper= new ModeloPersona();
+                        ModeloMascota Mmas = new ModeloMascota();
+                        ModeloCliente Ccli = new ModeloCliente();
+                        ControlRegistro ctn = new ControlRegistro(vRegis,Mper,Mmas,Ccli);
                         ctn.iniciarControl();
                         vRegis.resetKeyboardActions();
                         vRegis.setSize(1155, 863);

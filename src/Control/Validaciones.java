@@ -27,16 +27,16 @@ public class Validaciones {
                 resultado = 10 - (suma % 10);
 
                 if (resultado == numero) {
-                    System.out.println("su cedula esta validada" + cedula);
+                    
                     //si la cedula es correcta
                     return 0;
                 } else {
-                    System.out.println("cedula invalida");
+                    
                     //si la cedula no es valida
                     return 1;
                 }
             } else {
-                System.out.println("su cedula esta valida" + cedula);
+                
                 return 0;
             }
             //la cedula contiene letras o no cumple con el formato

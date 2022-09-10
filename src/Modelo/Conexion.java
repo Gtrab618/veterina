@@ -47,6 +47,8 @@ public class Conexion {
         }
     }
     
+    
+    
     public boolean accion(String sql){
         
         
@@ -64,6 +66,8 @@ public class Conexion {
         
         return correcto;
     }
+    
+   
 
     public Connection getCon() {
         return con;
