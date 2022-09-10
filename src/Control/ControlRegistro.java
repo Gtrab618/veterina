@@ -3,9 +3,15 @@ package Control;
 import Modelo.ClasesModelo.ModeloCliente;
 import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
+import Modelo.Cliente;
 import Vista.vistaRegistro;
 import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -13,6 +19,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,8 +33,10 @@ public class ControlRegistro {
     private ModeloCliente Ccli;
     private Validaciones vali = new Validaciones();
     private JFileChooser jfc;
+    private int i;
+    private boolean banderaFoto ;
 
-    public ControlRegistro(vistaRegistro vRegis, ModeloPersona Mper, ModeloMascota Mmas,ModeloCliente Ccli) {
+    public ControlRegistro(vistaRegistro vRegis, ModeloPersona Mper, ModeloMascota Mmas, ModeloCliente Ccli) {
         this.vRegis = vRegis;
         this.Mper = Mper;
         this.Mmas = Mmas;
@@ -69,17 +78,18 @@ public class ControlRegistro {
                 vRegis.getLbl_foto().setIcon(icono);
                 vRegis.getLbl_foto().updateUI();
 
+                banderaFoto=true;
             } catch (IOException ex) {
                 Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
         }
 
     }
 
     private void referenciarObjetos() {
         desactivarLblVRegis();
-
+        llenarTabla();
         //salto de linea vistaRegistro tat
         vRegis.getTat_direccionR().setLineWrap(true);
         //Evitar corte de palabras por la mitad
@@ -109,26 +119,26 @@ public class ControlRegistro {
         especie = vRegis.getCmb_especieR().getSelectedItem().toString();
         sexo = vRegis.getCmb_sexoR().getSelectedItem().toString();
 
-        if (!cedula.equals("")) {
-            bandera = vali.valiCedula(cedula);
-
-            switch (bandera) {
-
-                case 1:
-                    vRegis.getLblAlertaCnv().setVisible(true);
-                    bandera = bandera + 1;
-                    break;
-                case 2:
-                    vRegis.getLblAlertaCf().setVisible(true);
-                    bandera = bandera + 1;
-                    break;
-            }
-
-        } else {
-
-            vRegis.getLblAlertaCcv().setVisible(true);
-            bandera = bandera + 1;
-        }
+//        if (!cedula.equals("")) {
+//            bandera = vali.valiCedula(cedula);
+//
+//            switch (bandera) {
+//
+//                case 1:
+//                    vRegis.getLblAlertaCnv().setVisible(true);
+//                    bandera = bandera + 1;
+//                    break;
+//                case 2:
+//                    vRegis.getLblAlertaCf().setVisible(true);
+//                    bandera = bandera + 1;
+//                    break;
+//            }
+//
+//        } else {
+//
+//            vRegis.getLblAlertaCcv().setVisible(true);
+//            bandera = bandera + 1;
+//        }
 
         if (!nombre.equals("")) {
             if (!vali.valiNombreApe(nombre)) {
@@ -224,23 +234,85 @@ public class ControlRegistro {
 
             //Recuperar id persona
             id = Mper.guardarPersonaId();
-            
+
             //Guardar cliente
             Ccli.setCli_direccion(direccion);
             Ccli.setCli_telefono(telefono);
             Ccli.setPer_idFk(id);
-            
+
             //recuperar id para guardar mascota
-            id=Ccli.guardarClienteRId();
-            
+            id = Ccli.guardarClienteRId();
+
+            //Guardar mascota
             Mmas.setMas_nombreMas(nombreM);
             Mmas.setMas_sexo(sexo);
             Mmas.setMas_raza(raza);
             Mmas.setMas_especie(especie);
-            
-            //Guardar mascota
+            Mmas.setCli_idFK(id);
+            //Recuperar foto
+            if (banderaFoto) {
+
+                try {
+
+                    byte[] bitIcon = new byte[(int) jfc.getSelectedFile().getAbsoluteFile().length()];
+                    InputStream input = new FileInputStream(jfc.getSelectedFile().getAbsoluteFile());
+                    input.read(bitIcon);
+                    Mmas.setFoto(bitIcon);
+
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //si no tiene foto precargar una para evitar una expcion
+            } else {
+                //Recuperar ruta del sistema para guradar una imagen en caso 
+                //que este vacia 
+                String ruta = System.getProperty("user.dir");
+                ruta= ruta+"/src/Iconos/mascotasFoto.png";
+                
+                try {
+                    File Icon = new File(ruta);
+                  
+                    byte[] bitIcon = new byte[(int) Icon.length()];
+                    InputStream input = new FileInputStream(Icon);
+                    input.read(bitIcon);
+                    Mmas.setFoto(bitIcon);
+                    if (Mmas.guardarMascota()) {
+                        JOptionPane.showMessageDialog(vRegis, "registro exitoso");
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+
         }
 
+    }
+    
+    private void llenarTabla(){
+        
+        i=0;
+        DefaultTableModel estructuraTabla;
+        estructuraTabla = (DefaultTableModel) vRegis.getTblClientes().getModel();
+        estructuraTabla.setNumRows(0);
+        List<Cliente> listC= Ccli.recuperarCliente();
+        listC.stream().forEach(cliente -> {
+        estructuraTabla.addRow(new Object[3]);
+        
+        vRegis.getTblClientes()
+                .setValueAt(cliente.getCli_id(), i, 0);
+        vRegis.getTblClientes()
+                .setValueAt(cliente.getPer_dni(),i,1);
+        vRegis.getTblClientes()
+                .setValueAt(cliente.getPer_nombre1(),i,2);
+        vRegis.getTblClientes()
+                .setValueAt(cliente.getPer_apellido1(),i,3);
+                i=i+1;
+        });
     }
 
     public void desactivarLblVRegis() {

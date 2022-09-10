@@ -1,37 +1,32 @@
 
 package Modelo;
 
-import java.awt.Image;
-import java.io.FileInputStream;
-
 public class Mascota {
     private int mas_id;
     private String mas_nombreMas;
     private String mas_sexo;
     private String mas_raza;
     private String mas_especie;
-    private Image foto;
-    private FileInputStream imageFile;
-    private int length;
+    private byte[] foto;
     private String mas_estado;
     private int cli_idFK;
 
     public Mascota() {
     }
 
-    public Mascota(int mas_id, String mas_nombreMas, String mas_sexo, String mas_raza, String mas_especie, Image foto, FileInputStream imageFile, int length, String mas_estado, int cli_idFK) {
+    public Mascota(int mas_id, String mas_nombreMas, String mas_sexo, String mas_raza, String mas_especie, byte[] foto, String mas_estado, int cli_idFK) {
         this.mas_id = mas_id;
         this.mas_nombreMas = mas_nombreMas;
         this.mas_sexo = mas_sexo;
         this.mas_raza = mas_raza;
         this.mas_especie = mas_especie;
         this.foto = foto;
-        this.imageFile = imageFile;
-        this.length = length;
         this.mas_estado = mas_estado;
         this.cli_idFK = cli_idFK;
     }
 
+    
+    
     public int getMas_id() {
         return mas_id;
     }
@@ -72,28 +67,12 @@ public class Mascota {
         this.mas_especie = mas_especie;
     }
 
-    public Image getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(Image foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
-    }
-
-    public FileInputStream getImageFile() {
-        return imageFile;
-    }
-
-    public void setImageFile(FileInputStream imageFile) {
-        this.imageFile = imageFile;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
     }
 
     public String getMas_estado() {
@@ -112,9 +91,6 @@ public class Mascota {
         this.cli_idFK = cli_idFK;
     }
 
-   
-  
-    
     
     
 }

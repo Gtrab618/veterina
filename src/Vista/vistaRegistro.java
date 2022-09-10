@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -295,6 +296,14 @@ public class vistaRegistro extends javax.swing.JPanel {
         this.pnl_busqueda = pnl_busqueda;
     }
 
+    public JTable getTblClientes() {
+        return TblClientes;
+    }
+
+    public void setTblClientes(JTable TblClientes) {
+        this.TblClientes = TblClientes;
+    }
+
     
     
     /** This method is called from within the constructor to
@@ -357,7 +366,7 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblAlertaDf = new javax.swing.JLabel();
         pnl_busqueda = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TblClientes = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -544,7 +553,7 @@ public class vistaRegistro extends javax.swing.JPanel {
 
         pnl_busqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -552,10 +561,10 @@ public class vistaRegistro extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id Cliente", "Cedula", "Nombre", "PApellido"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TblClientes);
 
         pnl_busqueda.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 790, -1));
         pnl_busqueda.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 250, -1));
@@ -571,6 +580,7 @@ public class vistaRegistro extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TblClientes;
     private javax.swing.JButton btn_Vbuscar;
     private javax.swing.JButton btn_Vregistrar;
     private javax.swing.JButton btn_cancelarR;
@@ -582,7 +592,6 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblAlertaCcv;
