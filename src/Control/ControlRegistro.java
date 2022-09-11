@@ -533,9 +533,11 @@ public class ControlRegistro {
         } else {
 
             llenarTabla();
+            vRegis.getLblAlertBne().setVisible(false);
         }
     }
 
+    //busqueda incremental
     private void llenarTablaBusqueda(String criterio) {
         i=0;
         DefaultTableModel estructuraTabla;
@@ -545,6 +547,7 @@ public class ControlRegistro {
         List<Cliente> listC = Ccli.busquedaIncrementalCliente(criterio);
 
         if (!listC.isEmpty()) {
+            vRegis.getLblAlertBne().setVisible(false);
             listC.stream().forEach(cliente -> {
                 estructuraTabla.addRow(new Object[3]);
 
@@ -558,6 +561,9 @@ public class ControlRegistro {
                         .setValueAt(cliente.getPer_apellido1(), i, 3);
                 i = i + 1;
             });
+            
+        }else{
+            vRegis.getLblAlertBne().setVisible(true);
         }
 
     }
@@ -656,5 +662,6 @@ public class ControlRegistro {
         vRegis.getLblAlertaMtf().setVisible(false);
         vRegis.getLblAlertaMdf().setVisible(false);
         vRegis.getLblAlertaMcne().setVisible(false);
+        vRegis.getLblAlertBne().setVisible(false);
     }
 }

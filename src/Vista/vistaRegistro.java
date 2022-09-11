@@ -486,6 +486,14 @@ public class vistaRegistro extends javax.swing.JPanel {
         this.scrBusqueda = scrBusqueda;
     }
 
+    public JLabel getLblAlertBne() {
+        return lblAlertBne;
+    }
+
+    public void setLblAlertBne(JLabel lblAlertBne) {
+        this.lblAlertBne = lblAlertBne;
+    }
+
     
     
     /** This method is called from within the constructor to
@@ -583,7 +591,9 @@ public class vistaRegistro extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        lblAlertBne = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(853, 590));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -890,7 +900,7 @@ public class vistaRegistro extends javax.swing.JPanel {
         scrBusqueda.setViewportView(TblBusqueda);
 
         pnl_busqueda.add(scrBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 790, -1));
-        pnl_busqueda.add(txt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 250, -1));
+        pnl_busqueda.add(txt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 270, -1));
 
         jButton2.setText("Modificar");
         pnl_busqueda.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
@@ -902,9 +912,15 @@ public class vistaRegistro extends javax.swing.JPanel {
         jButton3.setText("Registrar");
         pnl_busqueda.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("No hay coincidencias");
-        pnl_busqueda.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        lblAlertBne.setForeground(new java.awt.Color(255, 0, 0));
+        lblAlertBne.setText("No hay coincidencias");
+        pnl_busqueda.add(lblAlertBne, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        jLabel1.setText("Nombre, Cedula, Apellido");
+        pnl_busqueda.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel4.setText("Ingrese");
+        pnl_busqueda.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         add(pnl_busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
     }// </editor-fold>//GEN-END:initComponents
@@ -927,7 +943,9 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblAlertBne;
     private javax.swing.JLabel lblAlertaCcv;
     private javax.swing.JLabel lblAlertaCf;
     private javax.swing.JLabel lblAlertaCnv;
