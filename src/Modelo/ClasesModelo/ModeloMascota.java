@@ -46,6 +46,9 @@ public class ModeloMascota extends Mascota {
         }
 
     }
+    
+    
+    
 
     public List<Mascota> consultarMascotaCedu(String cedula) {
 
