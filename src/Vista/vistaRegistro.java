@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 
 package Vista;
 
@@ -9,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -296,14 +294,6 @@ public class vistaRegistro extends javax.swing.JPanel {
         this.pnl_busqueda = pnl_busqueda;
     }
 
-    public JTable getTblClientes() {
-        return TblClientes;
-    }
-
-    public void setTblClientes(JTable TblClientes) {
-        this.TblClientes = TblClientes;
-    }
-
     public JPanel getPnlModificar() {
         return pnlModificar;
     }
@@ -392,6 +382,110 @@ public class vistaRegistro extends javax.swing.JPanel {
         this.txt_Mtelefono = txt_Mtelefono;
     }
 
+    public JLabel getLblAlertaMcf() {
+        return lblAlertaMcf;
+    }
+
+    public void setLblAlertaMcf(JLabel lblAlertaMcf) {
+        this.lblAlertaMcf = lblAlertaMcf;
+    }
+
+    public JLabel getLblAlertaMcnv() {
+        return lblAlertaMcnv;
+    }
+
+    public void setLblAlertaMcnv(JLabel lblAlertaMcnv) {
+        this.lblAlertaMcnv = lblAlertaMcnv;
+    }
+
+    public JLabel getLblAlertaMdf() {
+        return lblAlertaMdf;
+    }
+
+    public void setLblAlertaMdf(JLabel lblAlertaMdf) {
+        this.lblAlertaMdf = lblAlertaMdf;
+    }
+
+    public JLabel getLblAlertaMnv() {
+        return lblAlertaMnv;
+    }
+
+    public void setLblAlertaMnv(JLabel lblAlertaMnv) {
+        this.lblAlertaMnv = lblAlertaMnv;
+    }
+
+    public JLabel getLblAlertaMpav() {
+        return lblAlertaMpav;
+    }
+
+    public void setLblAlertaMpav(JLabel lblAlertaMpav) {
+        this.lblAlertaMpav = lblAlertaMpav;
+    }
+
+    public JLabel getLblAlertaMsav() {
+        return lblAlertaMsav;
+    }
+
+    public void setLblAlertaMsav(JLabel lblAlertaMsav) {
+        this.lblAlertaMsav = lblAlertaMsav;
+    }
+
+    public JLabel getLblAlertaMtf() {
+        return lblAlertaMtf;
+    }
+
+    public void setLblAlertaMtf(JLabel lblAlertaMtf) {
+        this.lblAlertaMtf = lblAlertaMtf;
+    }
+
+    public JLabel getLblAlertaMtnv() {
+        return lblAlertaMtnv;
+    }
+
+    public void setLblAlertaMtnv(JLabel lblAlertaMtnv) {
+        this.lblAlertaMtnv = lblAlertaMtnv;
+    }
+
+    public JLabel getLblAlertaMcne() {
+        return lblAlertaMcne;
+    }
+
+    public void setLblAlertaMcne(JLabel lblAlertaMcne) {
+        this.lblAlertaMcne = lblAlertaMcne;
+    }
+
+    public JScrollPane getScr_Mascota() {
+        return scr_Mascota;
+    }
+
+    public void setScr_Mascota(JScrollPane scr_Mascota) {
+        this.scr_Mascota = scr_Mascota;
+    }
+
+    public JTextField getTxt_buscar() {
+        return txt_buscar;
+    }
+
+    public void setTxt_buscar(JTextField txt_buscar) {
+        this.txt_buscar = txt_buscar;
+    }
+
+    public JTable getTblBusqueda() {
+        return TblBusqueda;
+    }
+
+    public void setTblBusqueda(JTable TblBusqueda) {
+        this.TblBusqueda = TblBusqueda;
+    }
+
+    public JScrollPane getScrBusqueda() {
+        return scrBusqueda;
+    }
+
+    public void setScrBusqueda(JScrollPane scrBusqueda) {
+        this.scrBusqueda = scrBusqueda;
+    }
+
     
     
     /** This method is called from within the constructor to
@@ -471,15 +565,25 @@ public class vistaRegistro extends javax.swing.JPanel {
         tat_Mdireccion = new javax.swing.JTextArea();
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scr_Mascota = new javax.swing.JScrollPane();
         tbl_mascota = new javax.swing.JTable();
+        lblAlertaMcnv = new javax.swing.JLabel();
+        lblAlertaMcf = new javax.swing.JLabel();
+        lblAlertaMnv = new javax.swing.JLabel();
+        lblAlertaMsav = new javax.swing.JLabel();
+        lblAlertaMpav = new javax.swing.JLabel();
+        lblAlertaMtnv = new javax.swing.JLabel();
+        lblAlertaMtf = new javax.swing.JLabel();
+        lblAlertaMdf = new javax.swing.JLabel();
+        lblAlertaMcne = new javax.swing.JLabel();
         pnl_busqueda = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TblClientes = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        scrBusqueda = new javax.swing.JScrollPane();
+        TblBusqueda = new javax.swing.JTable();
+        txt_buscar = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(853, 590));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -669,14 +773,14 @@ public class vistaRegistro extends javax.swing.JPanel {
 
         lblApartado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblApartado.setText("Modificar información");
-        pnlModificar.add(lblApartado, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 5, -1, -1));
+        pnlModificar.add(lblApartado, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, -1));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitulo.setText("Cliente");
-        pnlModificar.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
+        pnlModificar.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
 
         lblIcoP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/RePer.png"))); // NOI18N
-        pnlModificar.add(lblIcoP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 40, 40));
+        pnlModificar.add(lblIcoP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 40, 40));
 
         lblMcedula.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblMcedula.setText("Cédula");
@@ -715,7 +819,7 @@ public class vistaRegistro extends javax.swing.JPanel {
         pnlModificar.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, -1, -1));
 
         btn_eliminar.setText("Eliminar");
-        pnlModificar.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, -1, -1));
+        pnlModificar.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
 
         tbl_mascota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -728,15 +832,51 @@ public class vistaRegistro extends javax.swing.JPanel {
                 "Mascota", "Especie"
             }
         ));
-        jScrollPane2.setViewportView(tbl_mascota);
+        scr_Mascota.setViewportView(tbl_mascota);
 
-        pnlModificar.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 370, 180));
+        pnlModificar.add(scr_Mascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 270, 170));
+
+        lblAlertaMcnv.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaMcnv.setText("Cédula no válida");
+        pnlModificar.add(lblAlertaMcnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        lblAlertaMcf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaMcf.setText("Formato erroneo");
+        pnlModificar.add(lblAlertaMcf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        lblAlertaMnv.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaMnv.setText("Campo vacío");
+        pnlModificar.add(lblAlertaMnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, -1, -1));
+
+        lblAlertaMsav.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaMsav.setText("Campo vacío");
+        pnlModificar.add(lblAlertaMsav, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
+
+        lblAlertaMpav.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaMpav.setText("Campo vacío");
+        pnlModificar.add(lblAlertaMpav, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        lblAlertaMtnv.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaMtnv.setText("Revise longitud");
+        pnlModificar.add(lblAlertaMtnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+
+        lblAlertaMtf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaMtf.setText("Formato erróneo");
+        pnlModificar.add(lblAlertaMtf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+
+        lblAlertaMdf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaMdf.setText("Dirección muy corta");
+        pnlModificar.add(lblAlertaMdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, -1, 20));
+
+        lblAlertaMcne.setForeground(new java.awt.Color(255, 0, 0));
+        lblAlertaMcne.setText("Cliente no encotrado");
+        pnlModificar.add(lblAlertaMcne, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 670));
 
         pnl_busqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TblClientes.setModel(new javax.swing.table.DefaultTableModel(
+        TblBusqueda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -747,10 +887,10 @@ public class vistaRegistro extends javax.swing.JPanel {
                 "Id Cliente", "Cedula", "Nombre", "PApellido"
             }
         ));
-        jScrollPane1.setViewportView(TblClientes);
+        scrBusqueda.setViewportView(TblBusqueda);
 
-        pnl_busqueda.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 790, -1));
-        pnl_busqueda.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 250, -1));
+        pnl_busqueda.add(scrBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 790, -1));
+        pnl_busqueda.add(txt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 250, -1));
 
         jButton2.setText("Modificar");
         pnl_busqueda.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
@@ -762,12 +902,16 @@ public class vistaRegistro extends javax.swing.JPanel {
         jButton3.setText("Registrar");
         pnl_busqueda.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setText("No hay coincidencias");
+        pnl_busqueda.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
         add(pnl_busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TblClientes;
+    private javax.swing.JTable TblBusqueda;
     private javax.swing.JButton btn_Vbuscar;
     private javax.swing.JButton btn_Vmodificar;
     private javax.swing.JButton btn_Vregistrar;
@@ -780,16 +924,23 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmb_sexoR;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblAlertaCcv;
     private javax.swing.JLabel lblAlertaCf;
     private javax.swing.JLabel lblAlertaCnv;
     private javax.swing.JLabel lblAlertaDf;
+    private javax.swing.JLabel lblAlertaMcf;
+    private javax.swing.JLabel lblAlertaMcne;
+    private javax.swing.JLabel lblAlertaMcnv;
+    private javax.swing.JLabel lblAlertaMdf;
+    private javax.swing.JLabel lblAlertaMnv;
+    private javax.swing.JLabel lblAlertaMpav;
+    private javax.swing.JLabel lblAlertaMsav;
+    private javax.swing.JLabel lblAlertaMtf;
+    private javax.swing.JLabel lblAlertaMtnv;
     private javax.swing.JLabel lblAlertaNMf;
     private javax.swing.JLabel lblAlertaNMv;
     private javax.swing.JLabel lblAlertaNf;
@@ -829,6 +980,8 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JPanel pnlModificar;
     private javax.swing.JPanel pnlRegistro;
     private javax.swing.JPanel pnl_busqueda;
+    private javax.swing.JScrollPane scrBusqueda;
+    private javax.swing.JScrollPane scr_Mascota;
     private javax.swing.JTextArea tat_Mdireccion;
     private javax.swing.JTextArea tat_direccionR;
     private javax.swing.JTable tbl_mascota;
@@ -837,6 +990,7 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JTextField txt_Mcedula;
     private javax.swing.JTextField txt_Mnombre;
     private javax.swing.JTextField txt_Mtelefono;
+    private javax.swing.JTextField txt_buscar;
     private javax.swing.JTextField txt_cedulaR;
     private javax.swing.JTextField txt_nombreMR;
     private javax.swing.JTextField txt_nombreR;

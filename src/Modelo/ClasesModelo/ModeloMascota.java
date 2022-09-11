@@ -3,7 +3,10 @@ package Modelo.ClasesModelo;
 import Modelo.Conexion;
 import Modelo.Mascota;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,9 +34,9 @@ public class ModeloMascota extends Mascota {
             ps.setString(2, getMas_sexo());
             ps.setString(3, getMas_raza());
             ps.setString(4, getMas_especie());
-            ps.setBytes(5,getFoto());
-            ps.setInt(6,1);
-            ps.setInt(7,getCli_idFK());
+            ps.setBytes(5, getFoto());
+            ps.setInt(6, 1);
+            ps.setInt(7, getCli_idFK());
             ps.execute();
             ps.close();
             return true;
@@ -42,6 +45,29 @@ public class ModeloMascota extends Mascota {
             return false;
         }
 
+    }
+
+    public List<Mascota> consultarMascotaCedu(String cedula) {
+
+        List<Mascota> listMasc = new ArrayList<>();
+        String sql = " SELECT m.mas_nombremascota ,m.mas_especie\n"
+                + "	FROM mascota m join cliente c on (m.cli_id=c.cli_id) \n"
+                + "    join persona p on (c.per_id =p.per_id) where m.mas_estado= '1' and p.per_cedula='" + cedula + "';";
+
+        ResultSet rs = pgcon.consulta(sql);
+        
+        try {
+            while(rs.next()){
+                Mascota mascota = new Mascota();
+                mascota.setMas_nombreMas(rs.getString("mas_nombremascota"));
+                mascota.setMas_especie(rs.getString("mas_especie"));
+                listMasc.add(mascota);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listMasc;
     }
 
 }

@@ -69,7 +69,10 @@ public class Validaciones {
     }
     
     public boolean valiDirec(String nomAp) {
-        return nomAp.matches("[a-zA-z]{7,}");
+        return nomAp.length()>4;
     }
  
+    public boolean valiString(String cadena){
+        return !cadena.matches("[+-]?\\d*(\\.\\d+)?");
+    }
 }

@@ -4,6 +4,7 @@ import Modelo.ClasesModelo.ModeloCliente;
 import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
 import Modelo.Cliente;
+import Modelo.Mascota;
 import Vista.vistaRegistro;
 import java.awt.Image;
 import java.io.File;
@@ -51,15 +52,21 @@ public class ControlRegistro {
         vRegis.getBtn_Vbuscar().addActionListener(l -> cambiarPanel("buscar"));
         vRegis.getBtn_Vregistrar().addActionListener(l -> cambiarPanel("registrar"));
         vRegis.getBtn_Vmodificar().addActionListener(l -> cambiarPanel("modificar"));
+        vRegis.getBtn_modificar().addActionListener(l -> modificarCliente());
+        vRegis.getBtn_eliminar().addActionListener(l -> EliminarCliente());
+        evtBusquedaIncre(vRegis.getTxt_buscar());
         evtTxtControl(vRegis.getTxt_Mcedula());
 
     }
 
     private void cambiarPanel(String tipo) {
-
+        limpiarModificacion();
+        limpiarRegistro();
         if (tipo.equalsIgnoreCase("buscar")) {
+            llenarTabla();
             vRegis.getPnl_busqueda().setVisible(true);
             vRegis.getPnlRegistro().setVisible(false);
+            llenarTabla();
             vRegis.getPnlModificar().setVisible(false);
         } else if (tipo.equalsIgnoreCase("registrar")) {
             vRegis.getPnl_busqueda().setVisible(false);
@@ -99,7 +106,7 @@ public class ControlRegistro {
 
     private void referenciarObjetos() {
         desactivarLblVRegis();
-        llenarTabla();
+
         //salto de linea vistaRegistro tat
         vRegis.getTat_direccionR().setLineWrap(true);
         //Evitar corte de palabras por la mitad
@@ -116,24 +123,57 @@ public class ControlRegistro {
         txt.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
+                desactivarLblVRegis();
                 int bandera = 0;
                 String cedula = "";
                 cedula = vRegis.getTxt_Mcedula().getText().trim();
 
                 if (!cedula.equalsIgnoreCase("")) {
 
-                    if (!cedula.equals("")) {
-                        bandera = vali.valiCedula(cedula);
+                    bandera = vali.valiCedula(cedula);
 
-                        if (bandera == 0) {
-                            //busco la cedula para cargar los datos
-                            
-                        }
+                    switch (bandera) {
+                        case 0:
+                            Cliente clien = Ccli.getClienteEspecifico(cedula);
+
+                            //si la cedula es valida y esta guardado en la base de datos
+                            if (clien.getPer_dni() != null) {
+                                vRegis.getTxt_Mcedula().setEnabled(false);
+                                //recupero los datos para ser llenados y modificados 
+                                recuperarDatos(clien);
+                                //Activar botones para modificar o eliminar
+                                vRegis.getBtn_modificar().setEnabled(true);
+                                vRegis.getBtn_eliminar().setEnabled(true);
+                                //si la cedula es valida pero no esta guardado en la base de datos
+                            } else {
+
+                                vRegis.getLblAlertaMcne().setVisible(true);
+                            }
+                            break;
+                        case 1:
+                            vRegis.getLblAlertaMcnv().setVisible(true);
+
+                            break;
+                        case 2:
+                            //cedula con formato erroneo
+                            vRegis.getLblAlertaMcf().setVisible(true);
+
+                            break;
                     }
 
                 }
             }
         });
+    }
+
+    private void evtBusquedaIncre(JTextField busc) {
+        busc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+
+                buscar();
+            }
+        });
+
     }
 
     //capitalizar letra
@@ -255,7 +295,7 @@ public class ControlRegistro {
         }
 
         if (!raza.equals("")) {
-            if (!vali.valiNombreApe(raza)) {
+            if (!vali.valiString(raza)) {
                 //error raza contiene numeros
                 vRegis.getLblAlertaRf().setVisible(true);
                 bandera = bandera + 1;
@@ -307,7 +347,7 @@ public class ControlRegistro {
                     InputStream input = new FileInputStream(jfc.getSelectedFile().getAbsoluteFile());
                     input.read(bitIcon);
                     Mmas.setFoto(bitIcon);
-
+                    JOptionPane.showMessageDialog(vRegis, "Registro Exitoso");
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
@@ -328,8 +368,9 @@ public class ControlRegistro {
                     input.read(bitIcon);
                     Mmas.setFoto(bitIcon);
                     if (Mmas.guardarMascota()) {
-                        JOptionPane.showMessageDialog(vRegis, "registro exitoso");
+                        JOptionPane.showMessageDialog(vRegis, "Registro Exitoso");
                     }
+
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
@@ -338,7 +379,232 @@ public class ControlRegistro {
 
             }
 
+            limpiarRegistro();
+
         }
+
+    }
+
+    private void recuperarDatos(Cliente cli) {
+
+        String cedula = "", nombre = "", pApellido = "",
+                sApellido = "", telefono = "", direccion = "";
+
+        nombre = cli.getPer_nombre1();
+        pApellido = cli.getPer_apellido1();
+        sApellido = cli.getPer_apellido2();
+        telefono = cli.getCli_telefono();
+        direccion = cli.getCli_direccion();
+
+        vRegis.getTxt_Mnombre().setText(nombre);
+        vRegis.getTxt_MPApellido().setText(pApellido);
+        vRegis.getTxt_MSApellido().setText(sApellido);
+        vRegis.getTxt_Mtelefono().setText(telefono);
+        vRegis.getTat_Mdireccion().setText(direccion);
+
+    }
+
+    private void modificarCliente() {
+        //iMPLEMENTAR METODO desactivar label
+        desactivarLblVRegis();
+        int bandera = 0;
+        String cedula = "", nombre = "", pApellido = "",
+                sApellido = "", telefono = "", direccion = "";
+
+        cedula = vRegis.getTxt_Mcedula().getText().trim();
+        nombre = vRegis.getTxt_Mnombre().getText().trim();
+        pApellido = vRegis.getTxt_MPApellido().getText().trim();
+        sApellido = vRegis.getTxt_MSApellido().getText().trim();
+        telefono = vRegis.getTxt_Mtelefono().getText().trim();
+        direccion = vRegis.getTat_Mdireccion().getText().trim();
+
+        if (!nombre.equals("")) {
+            if (!vali.valiNombreApe(nombre)) {
+                //nombre formato incorrecto
+
+                bandera = bandera + 1;
+            }
+        } else {
+            //campo vacio
+            vRegis.getLblAlertaMnv().setVisible(true);
+            bandera = bandera + 1;
+        }
+
+        if (!pApellido.equals("")) {
+            if (!vali.valiNombreApe(pApellido)) {
+                //papellido error de formato
+                vRegis.getLblAlertaPAf().setVisible(true);
+                bandera = bandera + 1;
+            }
+        } else {
+            //campo vacio
+            vRegis.getLblAlertaMpav().setVisible(true);
+            bandera = bandera + 1;
+        }
+
+        if (!sApellido.equals("")) {
+            if (!vali.valiNombreApe(sApellido)) {
+                //error contiene numeros
+                vRegis.getLblAlertaSAf().setVisible(true);
+                bandera = bandera + 1;
+            }
+        } else {
+            //error campo vacio
+            vRegis.getLblAlertaMsav().setVisible(true);
+            bandera = bandera + 1;
+        }
+
+        if (!telefono.equals("")) {
+            bandera = vali.valiNumTelefono(telefono);
+
+            switch (bandera) {
+                case 1:
+                    //telefono error longitud
+                    vRegis.getLblAlertaMtnv().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+                case 2:
+                    //telefono error contiene letras
+                    vRegis.getLblAlertaMtf().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+
+            }
+        }
+
+        if (!direccion.equals("")) {
+            if (!vali.valiDirec(direccion)) {
+                //error direccion muy corta
+                vRegis.getLblAlertaMdf().setVisible(true);
+                bandera = bandera + 1;
+            }
+        }
+
+        if (bandera == 0) {
+
+            Ccli.setPer_nombre1(nombre);
+            Ccli.setPer_apellido1(pApellido);
+            Ccli.setPer_apellido2(sApellido);
+            Ccli.setCli_direccion(direccion);
+            Ccli.setCli_telefono(telefono);
+
+            if (Ccli.updateCliente(cedula) && Ccli.updatePersona(cedula)) {
+                JOptionPane.showMessageDialog(vRegis, "Cliente Modificado");
+                limpiarModificacion();
+            }
+
+        }
+
+    }
+
+    private void EliminarCliente() {
+        String cedula = "";
+        cedula = vRegis.getTxt_Mcedula().getText();
+
+        llenarTablaMascotas(cedula);
+        vRegis.getScr_Mascota().setVisible(true);
+        if (Mmas.consultarMascotaCedu(cedula).isEmpty()) {
+
+            int respuesta = 0;
+
+            respuesta = JOptionPane.showConfirmDialog(null, "¿Esta seguro?", "Eliminar!", JOptionPane.YES_NO_OPTION);
+            if (respuesta == 0) {
+                Ccli.eliminarCliente(cedula);
+                limpiarModificacion();
+            } else {
+
+                JOptionPane.showMessageDialog(vRegis, "Cancelado");
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Elimine a las mascotas primero", "Accion no permitida", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+    }
+
+    private void buscar() {
+        String criterio = vRegis.getTxt_buscar().getText();
+
+        if (!criterio.equals("")) {
+
+            llenarTablaBusqueda(criterio);
+
+        } else {
+
+            llenarTabla();
+        }
+    }
+
+    private void llenarTablaBusqueda(String criterio) {
+        i=0;
+        DefaultTableModel estructuraTabla;
+        estructuraTabla = (DefaultTableModel) vRegis.getTblBusqueda().getModel();
+        estructuraTabla.setNumRows(0);
+        criterio= criterio.toLowerCase();
+        List<Cliente> listC = Ccli.busquedaIncrementalCliente(criterio);
+
+        if (!listC.isEmpty()) {
+            listC.stream().forEach(cliente -> {
+                estructuraTabla.addRow(new Object[3]);
+
+                vRegis.getTblBusqueda()
+                        .setValueAt(cliente.getCli_id(), i, 0);
+                vRegis.getTblBusqueda()
+                        .setValueAt(cliente.getPer_dni(), i, 1);
+                vRegis.getTblBusqueda()
+                        .setValueAt(cliente.getPer_nombre1(), i, 2);
+                vRegis.getTblBusqueda()
+                        .setValueAt(cliente.getPer_apellido1(), i, 3);
+                i = i + 1;
+            });
+        }
+
+    }
+
+    private void llenarTablaMascotas(String cedula) {
+        DefaultTableModel estructuraTabla;
+        estructuraTabla = (DefaultTableModel) vRegis.getTbl_mascota().getModel();
+        estructuraTabla.setNumRows(0);
+        List<Mascota> listmas = Mmas.consultarMascotaCedu(cedula);
+        i = 0;
+
+        listmas.stream().forEach(mascota -> {
+            estructuraTabla.addRow(new Object[3]);
+            vRegis.getTbl_mascota()
+                    .setValueAt(mascota.getMas_nombreMas(),
+                            i, 0);
+            vRegis.getTbl_mascota()
+                    .setValueAt(mascota.getMas_especie(),
+                            i, 1);
+
+            i = i + 1;
+
+        });
+    }
+
+    private void limpiarModificacion() {
+        vRegis.getTxt_Mcedula().setText("");
+        vRegis.getTxt_Mnombre().setText("");
+        vRegis.getTxt_MPApellido().setText("");
+        vRegis.getTxt_MSApellido().setText("");
+        vRegis.getTxt_Mtelefono().setText("");
+        vRegis.getTat_Mdireccion().setText("");
+        vRegis.getTxt_Mcedula().setEnabled(true);
+        vRegis.getBtn_modificar().setEnabled(false);
+        vRegis.getBtn_eliminar().setEnabled(false);
+        vRegis.getScr_Mascota().setVisible(false);
+    }
+
+    private void limpiarRegistro() {
+        vRegis.getTxt_cedulaR().setText("");
+        vRegis.getTxt_nombreMR().setText("");
+        vRegis.getTxt_pApellidoR().setText("");
+        vRegis.getTxt_sApellidoR().setText("");
+        vRegis.getTxt_telefonoR().setText("");
+        vRegis.getTat_direccionR().setText("");
+        vRegis.getTxt_nombreMR().setText("");
+        vRegis.getTxt_razaR().setText("");
 
     }
 
@@ -346,19 +612,19 @@ public class ControlRegistro {
 
         i = 0;
         DefaultTableModel estructuraTabla;
-        estructuraTabla = (DefaultTableModel) vRegis.getTblClientes().getModel();
+        estructuraTabla = (DefaultTableModel) vRegis.getTblBusqueda().getModel();
         estructuraTabla.setNumRows(0);
         List<Cliente> listC = Ccli.recuperarClientes();
         listC.stream().forEach(cliente -> {
             estructuraTabla.addRow(new Object[3]);
 
-            vRegis.getTblClientes()
+            vRegis.getTblBusqueda()
                     .setValueAt(cliente.getCli_id(), i, 0);
-            vRegis.getTblClientes()
+            vRegis.getTblBusqueda()
                     .setValueAt(cliente.getPer_dni(), i, 1);
-            vRegis.getTblClientes()
+            vRegis.getTblBusqueda()
                     .setValueAt(cliente.getPer_nombre1(), i, 2);
-            vRegis.getTblClientes()
+            vRegis.getTblBusqueda()
                     .setValueAt(cliente.getPer_apellido1(), i, 3);
             i = i + 1;
         });
@@ -381,5 +647,14 @@ public class ControlRegistro {
         vRegis.getLblAlertaTf().setVisible(false);
         vRegis.getLblAlertaTnv().setVisible(false);
         vRegis.getLblAlertaDf().setVisible(false);
+        vRegis.getLblAlertaMcnv().setVisible(false);
+        vRegis.getLblAlertaMcf().setVisible(false);
+        vRegis.getLblAlertaMnv().setVisible(false);
+        vRegis.getLblAlertaMsav().setVisible(false);
+        vRegis.getLblAlertaMpav().setVisible(false);
+        vRegis.getLblAlertaMtnv().setVisible(false);
+        vRegis.getLblAlertaMtf().setVisible(false);
+        vRegis.getLblAlertaMdf().setVisible(false);
+        vRegis.getLblAlertaMcne().setVisible(false);
     }
 }
