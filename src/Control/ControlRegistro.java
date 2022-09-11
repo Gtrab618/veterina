@@ -288,7 +288,7 @@ public class ControlRegistro {
 //            bandera = bandera + 1;
 //        }
             if (!nombre.equals("")) {
-                if (!vali.valiNombreApe(nombre)) {
+                if (!vali.valiString(nombre)) {
                     //nombre formato incorrecto
                     vRegis.getLblAlertaNf().setVisible(true);
                     bandera = bandera + 1;
