@@ -20,6 +20,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,6 +36,8 @@ public class ControlRegistro {
     private ModeloCliente Ccli;
     private Validaciones vali = new Validaciones();
     private JFileChooser jfc;
+    private String cedulaB;
+    private boolean banderaRegistro = true;
     private int i;
     private boolean banderaFoto;
 
@@ -54,6 +57,11 @@ public class ControlRegistro {
         vRegis.getBtn_Vmodificar().addActionListener(l -> cambiarPanel("modificar"));
         vRegis.getBtn_modificar().addActionListener(l -> modificarCliente());
         vRegis.getBtn_eliminar().addActionListener(l -> EliminarCliente());
+        //Al dar clic en la tabla busqueda tiene que dirigir 
+        //una de las dos ventanas 
+        evtBusquedaVentana(vRegis.getTblBusqueda());
+        vRegis.getBtn_Bmodificar().addActionListener(l -> dirigerModificarCli(cedulaB));
+
         evtBusquedaIncre(vRegis.getTxt_buscar());
         evtTxtControl(vRegis.getTxt_Mcedula());
 
@@ -63,10 +71,10 @@ public class ControlRegistro {
         limpiarModificacion();
         limpiarRegistro();
         if (tipo.equalsIgnoreCase("buscar")) {
+            limpiarBusqueda();
             llenarTabla();
             vRegis.getPnl_busqueda().setVisible(true);
             vRegis.getPnlRegistro().setVisible(false);
-            llenarTabla();
             vRegis.getPnlModificar().setVisible(false);
         } else if (tipo.equalsIgnoreCase("registrar")) {
             vRegis.getPnl_busqueda().setVisible(false);
@@ -167,10 +175,20 @@ public class ControlRegistro {
     }
 
     private void evtBusquedaIncre(JTextField busc) {
+
         busc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
 
                 buscar();
+            }
+        });
+
+    }
+
+    private void evtBusquedaVentana(JTable busqueda) {
+        busqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verIdDatos(evt);
             }
         });
 
@@ -182,6 +200,7 @@ public class ControlRegistro {
     }
 
     private void registrar() {
+
         //iMPLEMENTAR METODO LIMPIAR 
         desactivarLblVRegis();
         int bandera = 0, id = 0;
@@ -523,6 +542,31 @@ public class ControlRegistro {
 
     }
 
+    //desde la tabla busqueda dirige a recupera el cliente para ser modificado o eliminados posteior mente
+    private void dirigerModificarCli(String cedula) {
+
+        vRegis.getPnlModificar().setVisible(true);
+        vRegis.getPnl_busqueda().setVisible(false);
+        vRegis.getTxt_Mcedula().setText(cedula);
+        //desabilitar boton para que no realize busquedas 
+        vRegis.getTxt_Mcedula().setEnabled(false);
+        vRegis.getBtn_modificar().setEnabled(true);
+        vRegis.getBtn_eliminar().setEnabled(true);
+        Cliente clien = Ccli.getClienteEspecifico(cedula);
+        recuperarDatos(clien);
+
+    }
+
+    private void verIdDatos(java.awt.event.MouseEvent evt) {
+        cedulaB = "";
+        vRegis.getBtn_Bmodificar().setEnabled(true);
+        vRegis.getBtn_Bregistrar().setEnabled(true);
+        DefaultTableModel tm = (DefaultTableModel) vRegis.getTblBusqueda().getModel();
+
+        cedulaB = String.valueOf(tm.getValueAt(vRegis.getTblBusqueda().getSelectedRow(), 1));
+
+    }
+
     private void buscar() {
         String criterio = vRegis.getTxt_buscar().getText();
 
@@ -539,11 +583,11 @@ public class ControlRegistro {
 
     //busqueda incremental
     private void llenarTablaBusqueda(String criterio) {
-        i=0;
+        i = 0;
         DefaultTableModel estructuraTabla;
         estructuraTabla = (DefaultTableModel) vRegis.getTblBusqueda().getModel();
         estructuraTabla.setNumRows(0);
-        criterio= criterio.toLowerCase();
+        criterio = criterio.toLowerCase();
         List<Cliente> listC = Ccli.busquedaIncrementalCliente(criterio);
 
         if (!listC.isEmpty()) {
@@ -561,8 +605,8 @@ public class ControlRegistro {
                         .setValueAt(cliente.getPer_apellido1(), i, 3);
                 i = i + 1;
             });
-            
-        }else{
+
+        } else {
             vRegis.getLblAlertBne().setVisible(true);
         }
 
@@ -587,6 +631,13 @@ public class ControlRegistro {
             i = i + 1;
 
         });
+    }
+
+    private void limpiarBusqueda() {
+        vRegis.getTxt_buscar().setText("");
+        vRegis.getBtn_Bmodificar().setEnabled(false);
+        vRegis.getBtn_Bregistrar().setEnabled(false);
+        //vRegis.getTblBusqueda().clearSelection();
     }
 
     private void limpiarModificacion() {

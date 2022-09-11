@@ -494,6 +494,24 @@ public class vistaRegistro extends javax.swing.JPanel {
         this.lblAlertBne = lblAlertBne;
     }
 
+    public JButton getBtn_Bmodificar() {
+        return btn_Bmodificar;
+    }
+
+    public void setBtn_Bmodificar(JButton btn_Bmodificar) {
+        this.btn_Bmodificar = btn_Bmodificar;
+    }
+
+   
+    
+    public JButton getBtn_Bregistrar() {
+        return btn_Bregistrar;
+    }
+
+    public void setBtn_Bregistrar(JButton btn_Bregistrar) {
+        this.btn_Bregistrar = btn_Bregistrar;
+    }
+
     
     
     /** This method is called from within the constructor to
@@ -588,9 +606,9 @@ public class vistaRegistro extends javax.swing.JPanel {
         scrBusqueda = new javax.swing.JScrollPane();
         TblBusqueda = new javax.swing.JTable();
         txt_buscar = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btn_Bmodificar = new javax.swing.JButton();
+        lblTitleB = new javax.swing.JLabel();
+        btn_Bregistrar = new javax.swing.JButton();
         lblAlertBne = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -902,15 +920,15 @@ public class vistaRegistro extends javax.swing.JPanel {
         pnl_busqueda.add(scrBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 790, -1));
         pnl_busqueda.add(txt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 270, -1));
 
-        jButton2.setText("Modificar");
-        pnl_busqueda.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
+        btn_Bmodificar.setText("Modificar");
+        pnl_busqueda.add(btn_Bmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("Busqueda");
-        pnl_busqueda.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
+        lblTitleB.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTitleB.setText("Busqueda");
+        pnl_busqueda.add(lblTitleB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
 
-        jButton3.setText("Registrar");
-        pnl_busqueda.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
+        btn_Bregistrar.setText("Registrar");
+        pnl_busqueda.add(btn_Bregistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
         lblAlertBne.setForeground(new java.awt.Color(255, 0, 0));
         lblAlertBne.setText("No hay coincidencias");
@@ -928,6 +946,8 @@ public class vistaRegistro extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TblBusqueda;
+    private javax.swing.JButton btn_Bmodificar;
+    private javax.swing.JButton btn_Bregistrar;
     private javax.swing.JButton btn_Vbuscar;
     private javax.swing.JButton btn_Vmodificar;
     private javax.swing.JButton btn_Vregistrar;
@@ -938,11 +958,8 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JButton btn_registrarR;
     private javax.swing.JComboBox<String> cmb_especieR;
     private javax.swing.JComboBox<String> cmb_sexoR;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblAlertBne;
@@ -992,6 +1009,7 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel lblRaza;
     private javax.swing.JLabel lblSexo;
     private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblTitleB;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lbl_foto;
     private javax.swing.JLabel lblsApellido;
