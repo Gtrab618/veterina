@@ -4,7 +4,7 @@ import Modelo.ClasesModelo.ModeloCliente;
 import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
 import Vista.VistaMas;
-import Vista.VistaMascota;
+
 import Vista.VistaMenuPrincipal;
 import Vista.vistaRegistro;
 import com.formdev.flatlaf.FlatIntelliJLaf;
@@ -14,8 +14,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -27,6 +31,8 @@ public class ControlMenuPrincipal {
     //Controla el cambio de temas de modo dark
     private int bandera = 0;
     private int r = 23, g = 32, b = 48;
+    //solo temproal al final se boora
+    VistaMas vMas = new VistaMas();
 
     public ControlMenuPrincipal(VistaMenuPrincipal vista) {
         this.vistaMP = vista;
@@ -69,6 +75,9 @@ public class ControlMenuPrincipal {
         String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", " Septiembre",
             "Octubre", "Noviembre", "Diciemrbre"};
         vistaMP.getLblFecha().setText("Es " + dia + " de " + meses[month - 1] + " de " + year);
+        
+        
+        
     }
 
     private void evtMouseBtn(JPanel panel, String name) {
@@ -139,31 +148,33 @@ public class ControlMenuPrincipal {
                         
                         break;
                     case "grooming":
-                        VistaMas vMas = new VistaMas();
-                        vMas.setSize(835, 597);
+                        
+                        vMas.setSize(835, 863);
+                        vMas.setLocation(0, 0);
+                        vistaMP.getPnlContent().removeAll();
+                        vistaMP.getPnlContent().add(vMas, BorderLayout.CENTER);
+                        vistaMP.revalidate();       
+                        vistaMP.getPnlContent().repaint();
+     
+                        break;
+                    case "mascota":
+                        
+                        vMas.setSize(835, 863);
+                        vMas.setLocation(0, 0);
+                        vistaMP.getPnlContent().removeAll();
+                        vistaMP.getPnlContent().add(vMas, BorderLayout.CENTER);                       
+                        vistaMP.revalidate();
+                        vistaMP.getPnlContent().repaint();
+                        break;
+                    case "historial":
+                      
+                        vMas.setSize(835, 670);
                         vMas.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
                         vistaMP.getPnlContent().add(vMas, BorderLayout.CENTER);
                         vistaMP.revalidate();
                         vistaMP.getPnlContent().repaint();
-                        break;
-                    case "mascota":
-                        VistaMas vMa = new VistaMas();
-                        vMa.setSize(835, 597);
-                        vMa.setLocation(0, 0);
-                        vistaMP.getPnlContent().removeAll();
-                        vistaMP.getPnlContent().add(vMa, BorderLayout.CENTER);
-                        vistaMP.revalidate();
-                        vistaMP.getPnlContent().repaint();
-                        break;
-                    case "historial":
-                        VistaMas vM = new VistaMas();
-                        vM.setSize(835, 670);
-                        vM.setLocation(0, 0);
-                        vistaMP.getPnlContent().removeAll();
-                        vistaMP.getPnlContent().add(vM, BorderLayout.CENTER);
-                        vistaMP.revalidate();
-                        vistaMP.getPnlContent().repaint();
+                    
                         break;
 
                 }
@@ -213,19 +224,7 @@ public class ControlMenuPrincipal {
         vistaMP.getPnlHead().setBackground(new Color(r, g, b + 30));
     }
 
-    private void VisualizarMascota(JLabel lab) {
-        lab.addMouseListener(new java.awt.event.MouseAdapter() {
 
-            @Override
-            public void mouseClicked(MouseEvent ex8) {
-
-                VistaMascota vm = new VistaMascota();
-                ModeloMascota mm = new ModeloMascota();
-
-                Control.ControlMascota control = new ControlMascota(mm, vm);
-            }
-        });
-    }
 
     //iniciar sin darck mode
     private void SinDarck(){
@@ -243,4 +242,6 @@ public class ControlMenuPrincipal {
             });
     }
 
+    
+   
 }
