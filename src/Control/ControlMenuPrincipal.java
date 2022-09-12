@@ -4,6 +4,7 @@ import Modelo.ClasesModelo.ModeloCliente;
 import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
 import Vista.VistaMas;
+import Vista.VistaMascota;
 
 import Vista.VistaMenuPrincipal;
 import Vista.vistaRegistro;
@@ -14,13 +15,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import java.awt.EventQueue;
-import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ControlMenuPrincipal {
@@ -31,8 +27,8 @@ public class ControlMenuPrincipal {
     //Controla el cambio de temas de modo dark
     private int bandera = 0;
     private int r = 23, g = 32, b = 48;
-    //solo temproal al final se boora
-    VistaMas vMas = new VistaMas();
+ 
+    
 
     public ControlMenuPrincipal(VistaMenuPrincipal vista) {
         this.vistaMP = vista;
@@ -148,17 +144,23 @@ public class ControlMenuPrincipal {
                         
                         break;
                     case "grooming":
+                        VistaMas vMasc = new VistaMas();
                         
-                        vMas.setSize(835, 863);
-                        vMas.setLocation(0, 0);
+                        vMasc.setSize(835, 863);
+                        vMasc.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
-                        vistaMP.getPnlContent().add(vMas, BorderLayout.CENTER);
+                        vistaMP.getPnlContent().add(vMasc, BorderLayout.CENTER);
                         vistaMP.revalidate();       
                         vistaMP.getPnlContent().repaint();
      
                         break;
                     case "mascota":
-                        
+                       
+                        VistaMascota vMas = new VistaMascota();
+                        ModeloCliente cliM = new ModeloCliente(); 
+                        ModeloMascota masM = new ModeloMascota();
+                        ControlMascota cntM= new ControlMascota(vMas,cliM,masM);
+                        cntM.iniciarControl();
                         vMas.setSize(835, 863);
                         vMas.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
@@ -167,11 +169,11 @@ public class ControlMenuPrincipal {
                         vistaMP.getPnlContent().repaint();
                         break;
                     case "historial":
-                      
-                        vMas.setSize(835, 670);
-                        vMas.setLocation(0, 0);
+                        VistaMas vMasco = new VistaMas();
+                        vMasco.setSize(835, 670);
+                        vMasco.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
-                        vistaMP.getPnlContent().add(vMas, BorderLayout.CENTER);
+                        vistaMP.getPnlContent().add(vMasco, BorderLayout.CENTER);
                         vistaMP.revalidate();
                         vistaMP.getPnlContent().repaint();
                     

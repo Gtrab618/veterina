@@ -61,7 +61,7 @@ public class ModeloCliente extends Cliente {
     public List<Cliente> recuperarClientes() {
 
         List<Cliente> listaClientes = new ArrayList<Cliente>();
-        String sql = "select c.cli_id,p.per_cedula, p.per_nombre, p.per_apellido1 from persona p \n"
+        String sql = "select c.cli_id,p.per_cedula, p.per_nombre, p.per_apellido1,p.per_apellido2 from persona p \n"
                 + "JOIN cliente c on(p.per_id = c.per_id) where p.per_estado='1';";
         ResultSet rs = pgcon.consulta(sql);
 
@@ -73,6 +73,7 @@ public class ModeloCliente extends Cliente {
                 cliente.setPer_dni(rs.getString("per_cedula"));
                 cliente.setPer_nombre1(rs.getString("per_nombre"));
                 cliente.setPer_apellido1(rs.getString("per_apellido1"));
+                cliente.setPer_apellido2(rs.getString("per_apellido2"));
                 listaClientes.add(cliente);
             }
 

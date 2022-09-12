@@ -51,6 +51,9 @@ public class ControlRegistro {
     }
 
     public void iniciarControl() {
+        //Al dar clic en la tabla busqueda tiene que dirigir 
+        //una de las dos ventanas 
+        evtBusquedaVentana(vRegis.getTblBusqueda());
         vRegis.getBtn_registrarR().addActionListener(l -> registrar());
         vRegis.getBtn_examinarR().addActionListener(l -> examinarFoto());
         vRegis.getBtn_Vbuscar().addActionListener(l -> cambiarPanel("buscar"));
@@ -58,12 +61,9 @@ public class ControlRegistro {
         vRegis.getBtn_Vmodificar().addActionListener(l -> cambiarPanel("modificar"));
         vRegis.getBtn_modificar().addActionListener(l -> modificarCliente());
         vRegis.getBtn_eliminar().addActionListener(l -> EliminarCliente());
-        //Al dar clic en la tabla busqueda tiene que dirigir 
-        //una de las dos ventanas 
-        evtBusquedaVentana(vRegis.getTblBusqueda());
         vRegis.getBtn_Bmodificar().addActionListener(l -> dirigerModificarCli(cedulaB));
         vRegis.getBtn_Bregistrar().addActionListener(l -> registrarCliente(cedulaB));
-        vRegis.getBtn_cancelarR().addActionListener(l->limpiarRegistro());
+        vRegis.getBtn_cancelarR().addActionListener(l -> cancelar());
         evtBusquedaIncre(vRegis.getTxt_buscar());
         evtTxtControl(vRegis.getTxt_Mcedula());
         evtTxtControlRegis(vRegis.getTxt_cedulaR());
@@ -72,6 +72,7 @@ public class ControlRegistro {
     private void cambiarPanel(String tipo) {
         limpiarModificacion();
         limpiarRegistro();
+        desactivarLblVRegis();
         if (tipo.equalsIgnoreCase("buscar")) {
             limpiarBusqueda();
             llenarTabla();
@@ -200,13 +201,11 @@ public class ControlRegistro {
                             if (clien.getPer_dni() != null) {
 
                                 idCli = clien.getCli_id();
-                                  //con la bandera eligo el tipo de registro si es completo o solo la mascota
+                                //con la bandera eligo el tipo de registro si es completo o solo la mascota
                                 desactivarRegistroPerson();
                                 JOptionPane.showMessageDialog(null, "Cliente encontrado Por favor ingrese los datos de la mascota");
-                              
 
                                 //si la cedula es valida pero no esta guardado en la base de datos
-
                             } else {
                                 banderaRegistro = true;
 
@@ -267,26 +266,26 @@ public class ControlRegistro {
             especie = vRegis.getCmb_especieR().getSelectedItem().toString();
             sexo = vRegis.getCmb_sexoR().getSelectedItem().toString();
 
-//        if (!cedula.equals("")) {
-//            bandera = vali.valiCedula(cedula);
-//
-//            switch (bandera) {
-//
-//                case 1:
-//                    vRegis.getLblAlertaCnv().setVisible(true);
-//                    bandera = bandera + 1;
-//                    break;
-//                case 2:
-//                    vRegis.getLblAlertaCf().setVisible(true);
-//                    bandera = bandera + 1;
-//                    break;
-//            }
-//
-//        } else {
-//
-//            vRegis.getLblAlertaCcv().setVisible(true);
-//            bandera = bandera + 1;
-//        }
+        if (!cedula.equals("")) {
+            bandera = vali.valiCedula(cedula);
+
+            switch (bandera) {
+
+                case 1:
+                    vRegis.getLblAlertaCnv().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+                case 2:
+                    vRegis.getLblAlertaCf().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+            }
+
+        } else {
+
+            vRegis.getLblAlertaCcv().setVisible(true);
+            bandera = bandera + 1;
+        }
             if (!nombre.equals("")) {
                 if (!vali.valiString(nombre)) {
                     //nombre formato incorrecto
@@ -413,7 +412,9 @@ public class ControlRegistro {
                         InputStream input = new FileInputStream(jfc.getSelectedFile().getAbsoluteFile());
                         input.read(bitIcon);
                         Mmas.setFoto(bitIcon);
-                        JOptionPane.showMessageDialog(vRegis, "Registro Exitoso");
+                        if (Mmas.guardarMascota()) {
+                            JOptionPane.showMessageDialog(vRegis, "Registro Exitoso");
+                        }
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
@@ -711,7 +712,7 @@ public class ControlRegistro {
         //desactiva atributos cuando la persona es registrada
         desactivarRegistroPerson();
         JOptionPane.showMessageDialog(null, "Ingrese datos de la Mascota");
-      
+
     }
 
     private void desactivarRegistroPerson() {
@@ -787,7 +788,7 @@ public class ControlRegistro {
         i = 0;
 
         listmas.stream().forEach(mascota -> {
-            estructuraTabla.addRow(new Object[3]);
+            estructuraTabla.addRow(new Object[2]);
             vRegis.getTbl_mascota()
                     .setValueAt(mascota.getMas_nombreMas(),
                             i, 0);
@@ -800,6 +801,12 @@ public class ControlRegistro {
         });
     }
 
+    private void cancelar(){
+        limpiarRegistro();
+        limpiarRegistro();
+        desactivarLblVRegis();
+    }
+    
     private void limpiarBusqueda() {
         vRegis.getTxt_buscar().setText("");
         vRegis.getBtn_Bmodificar().setEnabled(false);

@@ -46,31 +46,54 @@ public class ModeloMascota extends Mascota {
         }
 
     }
-    
-    
-    
 
     public List<Mascota> consultarMascotaCedu(String cedula) {
 
         List<Mascota> listMasc = new ArrayList<>();
-        String sql = " SELECT m.mas_nombremascota ,m.mas_especie\n"
+        String sql = " SELECT m.mas_id,m.mas_nombremascota ,m.mas_especie,m.mas_raza\n"
                 + "	FROM mascota m join cliente c on (m.cli_id=c.cli_id) \n"
                 + "    join persona p on (c.per_id =p.per_id) where m.mas_estado= '1' and p.per_cedula='" + cedula + "';";
 
         ResultSet rs = pgcon.consulta(sql);
-        
+
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 Mascota mascota = new Mascota();
+                mascota.setMas_id(rs.getInt("mas_id"));
                 mascota.setMas_nombreMas(rs.getString("mas_nombremascota"));
                 mascota.setMas_especie(rs.getString("mas_especie"));
+                mascota.setMas_raza(rs.getString("mas_raza"));
                 listMasc.add(mascota);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return listMasc;
+    }
+
+    public Mascota verFotoMascota(int id) {
+        Mascota mas = new Mascota();
+        
+        try {
+            
+            byte[] bytea;
+
+            String sql = "SELECT mas_nombremascota, mas_foto FROM mascota where mas_id='" + id + "';";
+            ResultSet rs = pgcon.consulta(sql);
+
+            while (rs.next()) {
+                mas.setMas_nombreMas(rs.getString("mas_nombremascota"));
+                bytea = rs.getBytes("mas_foto");
+                if (bytea!=null) mas.setFoto(bytea);
+                    
+                    
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return mas;
     }
 
 }
