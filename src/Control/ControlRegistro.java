@@ -370,9 +370,9 @@ public class ControlRegistro {
             }
 
             if (!telefono.equals("")) {
-                bandera = vali.valiNumTelefono(telefono);
+                int banderaTel = vali.valiNumTelefono(telefono);
 
-                switch (bandera) {
+                switch (banderaTel) {
                     case 1:
                         //telefono error longitud
                         vRegis.getLblAlertaTnv().setVisible(true);
@@ -711,7 +711,7 @@ public class ControlRegistro {
             Ccli.setPer_nombre1(capitalize(nombre));
             Ccli.setPer_apellido1(capitalize(pApellido));
             Ccli.setPer_apellido2(capitalize(sApellido));
-            Ccli.setCli_direccion(capitalize(direccion));
+            Ccli.setCli_direccion(direccion);
             Ccli.setCli_telefono(telefono);
 
             if (Ccli.updateCliente(cedula) && Ccli.updatePersona(cedula)) {

@@ -297,7 +297,10 @@ public class ControlMascota {
         if (respuesta == 0) {
 
             if (masM.eliminarMascota(id_mascota)) {
-                JOptionPane.showMessageDialog(null, "Mascota eliminadad");
+                limpiarVmodificarM();
+                desabilitarBtns();
+                JOptionPane.showMessageDialog(null, "Mascota elimina");
+
             }
 
         } else {
