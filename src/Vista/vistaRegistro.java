@@ -2,6 +2,7 @@
 
 package Vista;
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -512,6 +513,22 @@ public class vistaRegistro extends javax.swing.JPanel {
         this.btn_Bregistrar = btn_Bregistrar;
     }
 
+    public JDateChooser getDtc_fechaNac() {
+        return dtc_fechaNac;
+    }
+
+    public void setDtc_fechaNac(JDateChooser dtc_fechaNac) {
+        this.dtc_fechaNac = dtc_fechaNac;
+    }
+
+    public JLabel getLblEdadMas() {
+        return lblEdadMas;
+    }
+
+    public void setLblEdadMas(JLabel lblEdadMas) {
+        this.lblEdadMas = lblEdadMas;
+    }
+
     
     
     /** This method is called from within the constructor to
@@ -573,9 +590,11 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblAlertaSAf = new javax.swing.JLabel();
         lblAlertaDf = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblSexo1 = new javax.swing.JLabel();
+        dtc_fechaNac = new com.toedter.calendar.JDateChooser();
+        lbledad = new javax.swing.JLabel();
+        lblEdadMas = new javax.swing.JLabel();
         pnlModificar = new javax.swing.JPanel();
-        lblApartado = new javax.swing.JLabel();
-        lblTitulo = new javax.swing.JLabel();
         lblIcoP1 = new javax.swing.JLabel();
         lblMcedula = new javax.swing.JLabel();
         txt_Mcedula = new javax.swing.JTextField();
@@ -602,6 +621,7 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblAlertaMtf = new javax.swing.JLabel();
         lblAlertaMdf = new javax.swing.JLabel();
         lblAlertaMcne = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         pnl_busqueda = new javax.swing.JPanel();
         scrBusqueda = new javax.swing.JScrollPane();
         TblBusqueda = new javax.swing.JTable();
@@ -644,7 +664,7 @@ public class vistaRegistro extends javax.swing.JPanel {
         pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPersona.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblPersona.setText("Persona");
+        lblPersona.setText("Propietario");
         pnlRegistro.add(lblPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         lblNombreP.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -677,7 +697,7 @@ public class vistaRegistro extends javax.swing.JPanel {
         pnlRegistro.add(lblMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
 
         lblCedula.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblCedula.setText("Cedula");
+        lblCedula.setText("Cédula");
         pnlRegistro.add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -693,34 +713,34 @@ public class vistaRegistro extends javax.swing.JPanel {
         pnlRegistro.add(lblEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, -1, -1));
 
         lblSexo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblSexo.setText("Sexo");
-        pnlRegistro.add(lblSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, -1, -1));
+        lblSexo.setText("Fecha de nacimiento");
+        pnlRegistro.add(lblSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
         pnlRegistro.add(txt_nombreMR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 200, -1));
         pnlRegistro.add(txt_razaR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 200, -1));
 
-        cmb_especieR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gato", "Perro" }));
+        cmb_especieR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Felino", "Canino" }));
         pnlRegistro.add(cmb_especieR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
 
         cmb_sexoR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Macho", "Hembra" }));
         pnlRegistro.add(cmb_sexoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, -1, -1));
 
         btn_examinarR.setText("Examinar");
-        pnlRegistro.add(btn_examinarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
+        pnlRegistro.add(btn_examinarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, -1, -1));
 
         lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        pnlRegistro.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 210, 210));
+        pnlRegistro.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 210, 210));
 
         lblIcoP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/RePer.png"))); // NOI18N
-        pnlRegistro.add(lblIcoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 40, 40));
+        pnlRegistro.add(lblIcoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 40));
 
         lblIcoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ReMas.png"))); // NOI18N
         pnlRegistro.add(lblIcoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 50, 50));
 
         btn_registrarR.setText("Registrar");
-        pnlRegistro.add(btn_registrarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, -1, -1));
+        pnlRegistro.add(btn_registrarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, -1, -1));
 
         btn_cancelarR.setText("Cancelar");
-        pnlRegistro.add(btn_cancelarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, -1));
+        pnlRegistro.add(btn_cancelarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 530, -1, -1));
 
         tat_direccionR.setColumns(20);
         tat_direccionR.setRows(5);
@@ -795,20 +815,21 @@ public class vistaRegistro extends javax.swing.JPanel {
         jLabel2.setText("Registro");
         pnlRegistro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
+        lblSexo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblSexo1.setText("Sexo");
+        pnlRegistro.add(lblSexo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, -1, -1));
+        pnlRegistro.add(dtc_fechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 170, -1));
+
+        lbledad.setText("Edad Actual");
+        pnlRegistro.add(lbledad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
+        pnlRegistro.add(lblEdadMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 240, 30));
+
         add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
 
         pnlModificar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblApartado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblApartado.setText("Modificar información");
-        pnlModificar.add(lblApartado, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, -1));
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitulo.setText("Cliente");
-        pnlModificar.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
-
         lblIcoP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/RePer.png"))); // NOI18N
-        pnlModificar.add(lblIcoP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 40, 40));
+        pnlModificar.add(lblIcoP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 40, 40));
 
         lblMcedula.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblMcedula.setText("Cédula");
@@ -900,19 +921,23 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblAlertaMcne.setText("Cliente no encotrado");
         pnlModificar.add(lblAlertaMcne, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
-        add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 670));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Modificar Propietario");
+        pnlModificar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+
+        add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
 
         pnl_busqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TblBusqueda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id Cliente", "Cedula", "Nombre", "PApellido"
+                "Id Cliente", "Cedula", "Nombre", "PApellido", "SApellido"
             }
         ));
         scrBusqueda.setViewportView(TblBusqueda);
@@ -958,8 +983,10 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JButton btn_registrarR;
     private javax.swing.JComboBox<String> cmb_especieR;
     private javax.swing.JComboBox<String> cmb_sexoR;
+    private com.toedter.calendar.JDateChooser dtc_fechaNac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblAlertBne;
@@ -988,10 +1015,10 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertaSAv;
     private javax.swing.JLabel lblAlertaTf;
     private javax.swing.JLabel lblAlertaTnv;
-    private javax.swing.JLabel lblApartado;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblDireccion;
+    private javax.swing.JLabel lblEdadMas;
     private javax.swing.JLabel lblEspecie;
     private javax.swing.JLabel lblIcoM;
     private javax.swing.JLabel lblIcoP;
@@ -1008,10 +1035,11 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel lblPersona;
     private javax.swing.JLabel lblRaza;
     private javax.swing.JLabel lblSexo;
+    private javax.swing.JLabel lblSexo1;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTitleB;
-    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lbl_foto;
+    private javax.swing.JLabel lbledad;
     private javax.swing.JLabel lblsApellido;
     private javax.swing.JPanel pnlModificar;
     private javax.swing.JPanel pnlRegistro;

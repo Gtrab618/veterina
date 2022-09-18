@@ -1,5 +1,11 @@
 package Control;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
+
 public class Validaciones {
 
     public int valiCedula(String cedula) {
@@ -74,5 +80,31 @@ public class Validaciones {
  
     public boolean valiString(String cadena){
         return cadena.matches("[a-zA-z]{3,15}[\\s]{0,1}[a-zA-z]{0,15}");
+    }
+    
+    //---------------------------------------------------------------------------------------
+    //validar de la fecha de nacimiento es anterior a la actual para calcular la edad
+//    public boolean validarFechaNac(Date fechaNac){
+//
+//            return fechaNac.before(Date.from(Instant.now()));
+//       
+//    }
+    
+    
+    //Pasar la edad a años
+    public String calcularEdad(Date fechaN){
+                String edad;
+      
+                LocalDate fechaNac =fechaN.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                Period periodo = Period.between(fechaNac, LocalDate.now());
+                
+                edad = "Años: "+periodo.getYears()+" Meses: "+ periodo.getMonths()+" Dias: "+ periodo.getDays()+" ";
+                //coloca debajo de cada uno el año gracias a %s
+//                 System.out.printf("Tu edad es: %s años, %s meses y %s días",
+//                        periodo.getYears(), periodo.getMonths(), periodo.getDays());
+               
+                
+           return edad;
     }
 }

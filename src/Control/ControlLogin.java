@@ -95,7 +95,7 @@ public class ControlLogin extends Thread {
         if (!vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario") && !clavedef.equalsIgnoreCase("********") && !vistaLogin.getTxtNombreUsuario().getText().equals("") && !clavedef.equalsIgnoreCase("")  ) {
             //quitar de la vista las alertas 
 
-            if (modelo.iniciarSecion(vistaLogin.getTxtNombreUsuario().getText(), clavedef)) {
+            if (modelo.iniciarSecion(vistaLogin.getTxtNombreUsuario().getText().trim(), clavedef)) {
                 vistaLogin.dispose();
                 VistaMenuPrincipal menuv = new VistaMenuPrincipal();
                 Control.ControlMenuPrincipal controlador = new ControlMenuPrincipal(menuv);

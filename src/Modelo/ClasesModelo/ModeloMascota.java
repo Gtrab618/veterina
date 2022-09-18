@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,15 +18,15 @@ public class ModeloMascota extends Mascota {
     public ModeloMascota() {
     }
 
-    public ModeloMascota(int mas_id, String mas_nombreMas, String mas_sexo, String mas_raza, String mas_especie, byte[] foto, String mas_estado, int cli_idFK) {
-        super(mas_id, mas_nombreMas, mas_sexo, mas_raza, mas_especie, foto, mas_estado, cli_idFK);
+    public ModeloMascota(int mas_id, String mas_nombreMas, String mas_sexo, String mas_raza, String mas_especie, Date mas_fechaNac, byte[] foto, String mas_estado, int cli_idFK) {
+        super(mas_id, mas_nombreMas, mas_sexo, mas_raza, mas_especie, mas_fechaNac, foto, mas_estado, cli_idFK);
     }
 
     public boolean guardarMascota() {
 
         String sql = "INSERT INTO public.mascota(\n"
-                + "	 mas_nombremascota, mas_sexo, mas_raza, mas_especie, mas_foto, mas_estado, cli_id)\n"
-                + "	VALUES ( ?, ?, ?, ?, ?, ?, ?);";
+                + "	 mas_nombremascota, mas_sexo, mas_raza, mas_especie, mas_foto, mas_estado, cli_id,mas_fechaNac)\n"
+                + "	VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try {
             PreparedStatement ps = pgcon.getCon().prepareStatement(sql);
@@ -37,9 +38,11 @@ public class ModeloMascota extends Mascota {
             ps.setBytes(5, getFoto());
             ps.setInt(6, 1);
             ps.setInt(7, getCli_idFK());
+            ps.setDate(8, new java.sql.Date(((Date) getMas_fechaNac()).getTime()));
             ps.execute();
             ps.close();
             return true;
+
         } catch (SQLException ex) {
             Logger.getLogger(ModeloPersona.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -72,28 +75,76 @@ public class ModeloMascota extends Mascota {
         return listMasc;
     }
 
+    public Mascota consultarMascotaId(String id) {
+        int id_mas = Integer.parseInt(id);
+        byte[] bytea;
+        Mascota mas = new Mascota();
+        String sql = " SELECT mas_id, mas_nombremascota, mas_sexo, mas_raza, mas_especie, mas_foto, mas_estado, cli_id, mas_fechanac\n"
+                + "	FROM mascota where mas_estado= '1' and  mas_id ='" + id_mas + "'";
+
+        ResultSet rs = pgcon.consulta(sql);
+
+        try {
+            while (rs.next()) {
+
+                mas.setMas_id(rs.getInt("mas_id"));
+                mas.setMas_nombreMas(rs.getString("mas_nombremascota"));
+                mas.setMas_sexo(rs.getString("mas_sexo"));
+                //recupero la foto y le paso a un array de bit 
+                bytea = rs.getBytes("mas_foto");
+                //mando el array de bits para se mostrado
+                mas.setFoto(bytea);
+                mas.setMas_fechaNac(rs.getDate("mas_fechanac"));
+                mas.setMas_especie(rs.getString("mas_especie"));
+                mas.setMas_raza(rs.getString("mas_raza"));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return mas;
+    }
+
     public Mascota verFotoMascota(int id) {
         Mascota mas = new Mascota();
-        
+
         try {
-            
+
             byte[] bytea;
 
-            String sql = "SELECT mas_nombremascota, mas_foto FROM mascota where mas_id='" + id + "';";
+            String sql = "SELECT mas_nombremascota, mas_foto FROM mascota where mas_estado= '1' and  mas_id='" + id + "';";
             ResultSet rs = pgcon.consulta(sql);
 
             while (rs.next()) {
                 mas.setMas_nombreMas(rs.getString("mas_nombremascota"));
                 bytea = rs.getBytes("mas_foto");
-                if (bytea!=null) mas.setFoto(bytea);
-                    
-                    
+                if (bytea != null) {
+                    mas.setFoto(bytea);
+                }
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
         return mas;
     }
 
+    public boolean eliminarMascota(String idMas) {
+        try {
+            String sql = "UPDATE mascota SET mas_estado=?\n"
+                    + "	WHERE mas_id='" + idMas + "';";
+
+            PreparedStatement ps = pgcon.getCon().prepareStatement(sql);
+            ps.setString(1, "0");
+            ps.execute();
+            ps.close();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
 }
