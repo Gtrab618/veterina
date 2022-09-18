@@ -8,6 +8,8 @@ import Vista.VistaMascota;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -51,7 +53,8 @@ public class ControlMascota {
         Vmas.getBtn_Vmodificar().addActionListener(l -> cambiarPanel("modificar"));
         Vmas.getBtnBgestionMascota().addActionListener(l -> CargarDatosModificarMascota());
         Vmas.getBtn_eliminarM().addActionListener(l -> eliminarMascota());
-        Vmas.getBtn_examinarM().addActionListener(l->cambiarFoto());
+        Vmas.getBtn_examinarM().addActionListener(l -> cambiarFoto());
+        Vmas.getBtn_modificarM().addActionListener(l -> modificarMascota());
         evtVerMascota(Vmas.getTblBpersona());
         evtVerFotoMas(Vmas.getTblBmascota());
         evtBusquedaIncre(Vmas.getTxtBpersona());
@@ -81,6 +84,7 @@ public class ControlMascota {
                 limpiarVmodificarM();
                 //desabilitar los botones de panel modificar mascota
                 desabilitarBtns();
+                desabilitarAlertarModificar();
                 Vmas.getPnlBmascota().setVisible(false);
                 Vmas.getPnlGestionarM().setVisible(true);
                 break;
@@ -95,7 +99,8 @@ public class ControlMascota {
         Vmas.getJdcFechaNacM().setDate(Date.from(Instant.now()));
         //limitar rango de fechas de ingreso 
         limitarFechaJday();
-
+        //desactivar labels
+        desabilitarAlertarModificar();
         //Desactivar la tabla de mascotas para ser mostradas despues si tiene
         Vmas.getScrBmascota().setVisible(false);
         Vmas.getLblBselecMas().setVisible(false);
@@ -196,6 +201,93 @@ public class ControlMascota {
 
     }
 
+    private void modificarMascota() {
+        desabilitarAlertarModificar();
+        String nombreM = "", raza = "", especie = "", sexo = "";
+        int bandera = 0;
+        Date fechaNac;
+
+        nombreM = Vmas.getTxtNombreM().getText().trim();
+        raza = Vmas.getTxtRazaM().getText().trim();
+        fechaNac = Vmas.getJdcFechaNacM().getDate();
+        //Recuperar datos de un combobox
+        especie = Vmas.getCmb_especieM().getSelectedItem().toString();
+        sexo = Vmas.getCmb_sexoM().getSelectedItem().toString();
+
+        if (!nombreM.equals("")) {
+            if (!vali.valiNombreApe(nombreM)) {
+                //nombre de la mascota contiene numeros
+                Vmas.getLblAlertaMnf().setVisible(true);
+                bandera = bandera + 1;
+            }
+        } else {
+            //nombre de la mascota vacio
+
+            Vmas.getLblAlertaMnv().setVisible(true);
+            bandera = bandera + 1;
+        }
+
+        if (!raza.equals("")) {
+            if (!vali.valiString(raza)) {
+                //error raza contiene numeros
+                Vmas.getLblAlertaMrf().setVisible(true);
+                bandera = bandera + 1;
+            }
+        } else {
+            //error raza esta vacio
+
+            Vmas.getLblAlertaMrv().setVisible(true);
+            bandera = bandera + 1;
+        }
+
+        //si todo esta bien re registra se actualiza la mascota
+        if (bandera == 0) {
+
+            //capitalizo la letra 
+            masM.setMas_nombreMas(capitalize(nombreM));
+            masM.setMas_sexo(sexo);
+            masM.setMas_raza(capitalize(raza));
+            masM.setMas_fechaNac(fechaNac);
+            masM.setMas_especie(especie);
+            //si cambia la foto 
+            if (banderaFoto) {
+                try {
+
+                    byte[] bitIcon = new byte[(int) jfc.getSelectedFile().getAbsoluteFile().length()];
+                    InputStream input = new FileInputStream(jfc.getSelectedFile().getAbsoluteFile());
+                    input.read(bitIcon);
+                    masM.setFoto(bitIcon);
+                    if (masM.actualizarMascotaFoto(id_mascota)) {
+                        limpiarVmodificarM();
+                        desabilitarBtns();
+                        JOptionPane.showMessageDialog(null, "Modificación Exitoso.");
+
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //si no cambia la foto
+            } else {
+                if (masM.actualizarMascotaSinFoto(id_mascota)) {
+
+                    //reiniciar panel
+                    limpiarVmodificarM();
+                    desabilitarBtns();
+                    JOptionPane.showMessageDialog(null, "Modificación Exitoso");
+
+                }
+            }
+
+        }
+
+    }
+
+    private String capitalize(final String line) {
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1).toLowerCase();
+    }
+
     //cambiar de estado la mascota
     private void eliminarMascota() {
 
@@ -234,9 +326,8 @@ public class ControlMascota {
         }
     }
 
-    
     //buscar foto de mascota
-    private void cambiarFoto(){
+    private void cambiarFoto() {
         jfc = new JFileChooser();
         jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int estado = jfc.showOpenDialog(Vmas);
@@ -251,21 +342,21 @@ public class ControlMascota {
                 Vmas.getLblFotoM().updateUI();
 
                 banderaFoto = true;
-                
-               //el ioexcepcio tambien captura las imagenes png por lo que para ver si el archivo es compatible se crea el null exption
+
+                //el ioexcepcio tambien captura las imagenes png por lo que para ver si el archivo es compatible se crea el null exption
             } catch (IOException ex) {
                 Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
 
                 //no detecta los png y si otros formatos que no sean  de tipo foto
-            }catch (NullPointerException ex) {
-                
-                JOptionPane.showMessageDialog(null,"Formato de archivo no admitido" , "Revise el archivo", JOptionPane.ERROR_MESSAGE);
-                System.out.println(banderaFoto);
+            } catch (NullPointerException ex) {
+
+                JOptionPane.showMessageDialog(null, "Formato de archivo no admitido", "Revise el archivo", JOptionPane.ERROR_MESSAGE);
+
             }
-           
 
         }
     }
+
     //recuper el criterio de buscque si este esta vacio lleno la tabla con todos las personas
     //registradas
     private void buscar() {
@@ -454,21 +545,29 @@ public class ControlMascota {
         Vmas.getBtn_examinarM().setEnabled(false);
     }
 
+    private void desabilitarAlertarModificar() {
+        Vmas.getLblAlertaMnf().setVisible(false);
+        Vmas.getLblAlertaMnv().setVisible(false);
+        Vmas.getLblAlertaMrf().setVisible(false);
+        Vmas.getLblAlertaMrv().setVisible(false);
+    }
+
     private void habilitarBtns() {
         Vmas.getBtn_eliminarM().setEnabled(true);
         Vmas.getBtn_modificarM().setEnabled(true);
         Vmas.getBtn_examinarM().setEnabled(true);
     }
-    
-    private void limpiarVmodificarM(){
+
+    private void limpiarVmodificarM() {
         Vmas.getLblCedulaM().setText("");
         Vmas.getLblNombrePM().setText("");
         Vmas.getTxtNombreM().setText("");
         Vmas.getTxtRazaM().setText("");
         Vmas.getJdcFechaNacM().setDate(Date.from(Instant.now()));
         Vmas.getLblFotoM().setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/vtMain.png")));
-        dni_persona="";
-        id_mascota="";
-        banderaFoto=false;
+        dni_persona = "";
+        id_mascota = "";
+        banderaFoto = false;
     }
+
 }

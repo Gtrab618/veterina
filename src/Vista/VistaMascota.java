@@ -225,6 +225,38 @@ public class VistaMascota extends javax.swing.JPanel {
     public void setTxtRazaM(JTextField txtRazaM) {
         this.txtRazaM = txtRazaM;
     }
+
+    public JLabel getLblAlertaMnf() {
+        return lblAlertaMnf;
+    }
+
+    public void setLblAlertaMnf(JLabel lblAlertaMnf) {
+        this.lblAlertaMnf = lblAlertaMnf;
+    }
+
+    public JLabel getLblAlertaMnv() {
+        return lblAlertaMnv;
+    }
+
+    public void setLblAlertaMnv(JLabel lblAlertaMnv) {
+        this.lblAlertaMnv = lblAlertaMnv;
+    }
+
+    public JLabel getLblAlertaMrf() {
+        return lblAlertaMrf;
+    }
+
+    public void setLblAlertaMrf(JLabel lblAlertaMrf) {
+        this.lblAlertaMrf = lblAlertaMrf;
+    }
+
+    public JLabel getLblAlertaMrv() {
+        return lblAlertaMrv;
+    }
+
+    public void setLblAlertaMrv(JLabel lblAlertaMrv) {
+        this.lblAlertaMrv = lblAlertaMrv;
+    }
     
     
     
@@ -282,6 +314,10 @@ public class VistaMascota extends javax.swing.JPanel {
         lblIdMas = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        lblAlertaMrv = new javax.swing.JLabel();
+        lblAlertaMnv = new javax.swing.JLabel();
+        lblAlertaMrf = new javax.swing.JLabel();
+        lblAlertaMnf = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -414,7 +450,7 @@ public class VistaMascota extends javax.swing.JPanel {
         pnlGestionarM.add(jdcFechaNacM, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 180, -1));
 
         btn_examinarM.setText("Examinar");
-        pnlGestionarM.add(btn_examinarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, -1, -1));
+        pnlGestionarM.add(btn_examinarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, -1, -1));
 
         btn_modificarM.setText("Modificar");
         pnlGestionarM.add(btn_modificarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 130, -1));
@@ -439,6 +475,22 @@ public class VistaMascota extends javax.swing.JPanel {
         pnlGestionarM.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 270, 20));
         pnlGestionarM.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 170, 20));
 
+        lblAlertaMrv.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaMrv.setText("Campo vacio");
+        pnlGestionarM.add(lblAlertaMrv, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
+
+        lblAlertaMnv.setForeground(new java.awt.Color(204, 0, 204));
+        lblAlertaMnv.setText("Campo vacio");
+        pnlGestionarM.add(lblAlertaMnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
+
+        lblAlertaMrf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaMrf.setText("Ingrese solo texto");
+        pnlGestionarM.add(lblAlertaMrf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
+
+        lblAlertaMnf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaMnf.setText("Ingrese solo texto");
+        pnlGestionarM.add(lblAlertaMnf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
+
         add(pnlGestionarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 860, 630));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -457,6 +509,10 @@ public class VistaMascota extends javax.swing.JPanel {
     private javax.swing.JToolBar jToolBar1;
     private com.toedter.calendar.JDateChooser jdcFechaNacM;
     private javax.swing.JLabel lblAlertBne;
+    private javax.swing.JLabel lblAlertaMnf;
+    private javax.swing.JLabel lblAlertaMnv;
+    private javax.swing.JLabel lblAlertaMrf;
+    private javax.swing.JLabel lblAlertaMrv;
     private javax.swing.JLabel lblBFoto;
     private javax.swing.JLabel lblBselecMas;
     private javax.swing.JLabel lblCedulaM;

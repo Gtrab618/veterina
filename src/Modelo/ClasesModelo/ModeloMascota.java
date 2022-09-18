@@ -147,4 +147,49 @@ public class ModeloMascota extends Mascota {
         }
 
     }
+
+    public boolean actualizarMascotaFoto(String idMas) {
+        try {
+            String sql = "UPDATE mascota\n"
+                    + "	SET mas_nombremascota=?, mas_sexo=?, mas_raza=?, mas_especie=?, mas_fechanac=?, mas_foto=?\n"
+                    + "	WHERE mas_id='" + idMas + "';";
+
+            PreparedStatement ps = pgcon.getCon().prepareStatement(sql);
+
+            ps.setString(1, getMas_nombreMas());
+            ps.setString(2, getMas_sexo());
+            ps.setString(3, getMas_raza());
+            ps.setString(4, getMas_especie());
+            ps.setDate(5, new java.sql.Date(((Date) getMas_fechaNac()).getTime()));
+            ps.setBytes(6, getFoto());
+            ps.execute();
+            ps.close();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean actualizarMascotaSinFoto(String idMas) {
+        try {
+            String sql = "UPDATE mascota\n"
+                    + "	SET mas_nombremascota=?, mas_sexo=?, mas_raza=?, mas_especie=?, mas_fechanac=?\n"
+                    + "	WHERE mas_id='" + idMas + "';";
+
+            PreparedStatement ps = pgcon.getCon().prepareStatement(sql);
+
+            ps.setString(1, getMas_nombreMas());
+            ps.setString(2, getMas_sexo());
+            ps.setString(3, getMas_raza());
+            ps.setString(4, getMas_especie());
+            ps.setDate(5, new java.sql.Date(((Date) getMas_fechaNac()).getTime()));
+            ps.execute();
+            ps.close();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 }

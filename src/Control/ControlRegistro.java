@@ -6,10 +6,7 @@ import Modelo.ClasesModelo.ModeloMascota;
 import Modelo.Cliente;
 import Modelo.Mascota;
 import Vista.vistaRegistro;
-import com.toedter.calendar.JDateChooser;
 import java.awt.Image;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,9 +15,6 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -46,6 +40,7 @@ public class ControlRegistro {
     private ModeloCliente Ccli;
     private Validaciones vali = new Validaciones();
     private JFileChooser jfc;
+
     //cedula que se recupera desde la tabla para ser modificada posteroirmente
     private String cedulaB;
     private int idCli;
@@ -76,7 +71,7 @@ public class ControlRegistro {
         vRegis.getBtn_Bregistrar().addActionListener(l -> registrarCliente(cedulaB));
         vRegis.getBtn_cancelarR().addActionListener(l -> cancelar());
         //ver si hay algun cambio en la fecha para calcular la edad
-        vRegis.getDtc_fechaNac().addPropertyChangeListener(l->evtCalcularFechaNacimiento());
+        vRegis.getDtc_fechaNac().addPropertyChangeListener(l -> evtCalcularFechaNacimiento());
         evtBusquedaIncre(vRegis.getTxt_buscar());
         evtTxtControl(vRegis.getTxt_Mcedula());
         evtTxtControlRegis(vRegis.getTxt_cedulaR());
@@ -105,7 +100,7 @@ public class ControlRegistro {
     }
 
     private void examinarFoto() {
-        
+
         jfc = new JFileChooser();
         jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int estado = jfc.showOpenDialog(vRegis);
@@ -120,46 +115,45 @@ public class ControlRegistro {
                 vRegis.getLbl_foto().updateUI();
 
                 banderaFoto = true;
-                
-               //el ioexcepcio tambien captura las imagenes png por lo que para ver si el archivo es compatible se crea el null exption
+
+                //el ioexcepcio tambien captura las imagenes png por lo que para ver si el archivo es compatible se crea el null exption
             } catch (IOException ex) {
                 Logger.getLogger(ControlRegistro.class.getName()).log(Level.SEVERE, null, ex);
 
                 //no detecta los png y si otros formatos que no sean  de tipo foto
-            }catch (NullPointerException ex) {
-                
-                JOptionPane.showMessageDialog(null,"Formato de archivo no admitido" , "Revise el archivo", JOptionPane.ERROR_MESSAGE);
-               
+            } catch (NullPointerException ex) {
+
+                JOptionPane.showMessageDialog(null, "Formato de archivo no admitido", "Revise el archivo", JOptionPane.ERROR_MESSAGE);
+
             }
-           
 
         }
 
     }
 
     private void referenciarObjetos() {
-       
-            desactivarLblVRegis();
-            
-            //salto de linea vistaRegistro tat
-            vRegis.getTat_direccionR().setLineWrap(true);
-            //Evitar corte de palabras por la mitad
-            vRegis.getTat_direccionR().setWrapStyleWord(true);
-            //poner la fecha acutal el en jcaledary
-            vRegis.getDtc_fechaNac().setDate(Date.from(Instant.now()));
-            //!!!!!!!!!!!!!!!!!!!!!!desabilitar que introdusca la fecha manualmente!!!!!!!!!!!!!!!!!!!!!!!
-            vRegis.getDtc_fechaNac().getDateEditor().setEnabled(false);
-            
-            //poner un rango de fecha para que el usuario no lo sobre pase la fecha actual
-            limitarFechaJday();
-                
-            //linea de prueba hay que borrar mas despues
-            vRegis.getPnl_busqueda().setVisible(false);
-            vRegis.getPnlModificar().setVisible(false);
-        
+
+        desactivarLblVRegis();
+
+        //salto de linea vistaRegistro tat
+        vRegis.getTat_direccionR().setLineWrap(true);
+        //Evitar corte de palabras por la mitad
+        vRegis.getTat_direccionR().setWrapStyleWord(true);
+        //poner la fecha acutal el en jcaledary
+        vRegis.getDtc_fechaNac().setDate(Date.from(Instant.now()));
+        //!!!!!!!!!!!!!!!!!!!!!!desabilitar que introdusca la fecha manualmente!!!!!!!!!!!!!!!!!!!!!!!
+        vRegis.getDtc_fechaNac().getDateEditor().setEnabled(false);
+
+        //poner un rango de fecha para que el usuario no lo sobre pase la fecha actual
+        limitarFechaJday();
+
+        //linea de prueba hay que borrar mas despues
+        vRegis.getPnl_busqueda().setVisible(false);
+        vRegis.getPnlModificar().setVisible(false);
+
     }
-    
-    private void limitarFechaJday(){
+
+    private void limitarFechaJday() {
         try {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             Date fecha = formato.parse("01/11/1999");
@@ -262,10 +256,10 @@ public class ControlRegistro {
 
     //cuando se acutaliza la fecha calcular la edad
     private void evtCalcularFechaNacimiento() {
-        
+
         //llamo al medoto validacion para calcular la edad actual
         vRegis.getLblEdadMas().setText(vali.calcularEdad(vRegis.getDtc_fechaNac().getDate()));
-        
+
     }
 
     private void evtBusquedaIncre(JTextField busc) {
@@ -314,7 +308,7 @@ public class ControlRegistro {
             direccion = vRegis.getTat_direccionR().getText().trim();
             nombreM = vRegis.getTxt_nombreMR().getText().trim();
             raza = vRegis.getTxt_razaR().getText().trim();
-            fechaNac=vRegis.getDtc_fechaNac().getDate();
+            fechaNac = vRegis.getDtc_fechaNac().getDate();
             //Recuperar datos de un combobox
             especie = vRegis.getCmb_especieR().getSelectedItem().toString();
             sexo = vRegis.getCmb_sexoR().getSelectedItem().toString();
@@ -521,7 +515,7 @@ public class ControlRegistro {
 
             nombreM = vRegis.getTxt_nombreMR().getText().trim();
             raza = vRegis.getTxt_razaR().getText().trim();
-            fechaNac= vRegis.getDtc_fechaNac().getDate();
+            fechaNac = vRegis.getDtc_fechaNac().getDate();
             //Recuperar datos de un combobox
             especie = vRegis.getCmb_especieR().getSelectedItem().toString();
             sexo = vRegis.getCmb_sexoR().getSelectedItem().toString();
@@ -651,23 +645,25 @@ public class ControlRegistro {
         if (!nombre.equals("")) {
             if (!vali.valiNombreApe(nombre)) {
                 //nombre formato incorrecto
-
+                vRegis.getLblAlertaMnf().setVisible(true);
                 bandera = bandera + 1;
             }
         } else {
             //campo vacio
-            vRegis.getLblAlertaMnv().setVisible(true);
+            vRegis.getLblAlertaMnf().setVisible(false);
             bandera = bandera + 1;
         }
 
         if (!pApellido.equals("")) {
             if (!vali.valiNombreApe(pApellido)) {
                 //papellido error de formato
-                vRegis.getLblAlertaPAf().setVisible(true);
+
+                vRegis.getLblAlertaMpaf().setVisible(true);
                 bandera = bandera + 1;
             }
         } else {
             //campo vacio
+
             vRegis.getLblAlertaMpav().setVisible(true);
             bandera = bandera + 1;
         }
@@ -675,7 +671,7 @@ public class ControlRegistro {
         if (!sApellido.equals("")) {
             if (!vali.valiNombreApe(sApellido)) {
                 //error contiene numeros
-                vRegis.getLblAlertaSAf().setVisible(true);
+                vRegis.getLblAlertaMsaf().setVisible(true);
                 bandera = bandera + 1;
             }
         } else {
@@ -685,9 +681,9 @@ public class ControlRegistro {
         }
 
         if (!telefono.equals("")) {
-            bandera = vali.valiNumTelefono(telefono);
+            int banderaTel = vali.valiNumTelefono(telefono);
 
-            switch (bandera) {
+            switch (banderaTel) {
                 case 1:
                     //telefono error longitud
                     vRegis.getLblAlertaMtnv().setVisible(true);
@@ -712,10 +708,10 @@ public class ControlRegistro {
 
         if (bandera == 0) {
 
-            Ccli.setPer_nombre1(nombre);
-            Ccli.setPer_apellido1(pApellido);
-            Ccli.setPer_apellido2(sApellido);
-            Ccli.setCli_direccion(direccion);
+            Ccli.setPer_nombre1(capitalize(nombre));
+            Ccli.setPer_apellido1(capitalize(pApellido));
+            Ccli.setPer_apellido2(capitalize(sApellido));
+            Ccli.setCli_direccion(capitalize(direccion));
             Ccli.setCli_telefono(telefono);
 
             if (Ccli.updateCliente(cedula) && Ccli.updatePersona(cedula)) {
@@ -967,5 +963,8 @@ public class ControlRegistro {
         vRegis.getLblAlertaMdf().setVisible(false);
         vRegis.getLblAlertaMcne().setVisible(false);
         vRegis.getLblAlertBne().setVisible(false);
+        vRegis.getLblAlertaMsaf().setVisible(false);
+        vRegis.getLblAlertaMnf().setVisible(false);
+        vRegis.getLblAlertaMpaf().setVisible(false);
     }
 }

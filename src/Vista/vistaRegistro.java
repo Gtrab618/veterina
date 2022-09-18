@@ -529,6 +529,30 @@ public class vistaRegistro extends javax.swing.JPanel {
         this.lblEdadMas = lblEdadMas;
     }
 
+    public JLabel getLblAlertaMnf() {
+        return lblAlertaMnf;
+    }
+
+    public void setLblAlertaMnf(JLabel lblAlertaMnf) {
+        this.lblAlertaMnf = lblAlertaMnf;
+    }
+
+    public JLabel getLblAlertaMpaf() {
+        return lblAlertaMpaf;
+    }
+
+    public void setLblAlertaMpaf(JLabel lblAlertaMpaf) {
+        this.lblAlertaMpaf = lblAlertaMpaf;
+    }
+
+    public JLabel getLblAlertaMsaf() {
+        return lblAlertaMsaf;
+    }
+
+    public void setLblAlertaMsaf(JLabel lblAlertaMsaf) {
+        this.lblAlertaMsaf = lblAlertaMsaf;
+    }
+
     
     
     /** This method is called from within the constructor to
@@ -622,6 +646,9 @@ public class vistaRegistro extends javax.swing.JPanel {
         lblAlertaMdf = new javax.swing.JLabel();
         lblAlertaMcne = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        lblAlertaMpaf = new javax.swing.JLabel();
+        lblAlertaMnf = new javax.swing.JLabel();
+        lblAlertaMsaf = new javax.swing.JLabel();
         pnl_busqueda = new javax.swing.JPanel();
         scrBusqueda = new javax.swing.JScrollPane();
         TblBusqueda = new javax.swing.JTable();
@@ -925,6 +952,18 @@ public class vistaRegistro extends javax.swing.JPanel {
         jLabel3.setText("Modificar Propietario");
         pnlModificar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
 
+        lblAlertaMpaf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaMpaf.setText("Ingrese solo texto");
+        pnlModificar.add(lblAlertaMpaf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        lblAlertaMnf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaMnf.setText("Ingrese solo texto");
+        pnlModificar.add(lblAlertaMnf, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, -1, -1));
+
+        lblAlertaMsaf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaMsaf.setText("Ingrese solo texto");
+        pnlModificar.add(lblAlertaMsaf, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
+
         add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
 
         pnl_busqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -998,8 +1037,11 @@ public class vistaRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertaMcne;
     private javax.swing.JLabel lblAlertaMcnv;
     private javax.swing.JLabel lblAlertaMdf;
+    private javax.swing.JLabel lblAlertaMnf;
     private javax.swing.JLabel lblAlertaMnv;
+    private javax.swing.JLabel lblAlertaMpaf;
     private javax.swing.JLabel lblAlertaMpav;
+    private javax.swing.JLabel lblAlertaMsaf;
     private javax.swing.JLabel lblAlertaMsav;
     private javax.swing.JLabel lblAlertaMtf;
     private javax.swing.JLabel lblAlertaMtnv;
