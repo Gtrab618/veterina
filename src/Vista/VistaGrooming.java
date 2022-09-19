@@ -5,7 +5,7 @@
 package Vista;
 
 import com.toedter.calendar.JDateChooser;
-import javax.swing.ButtonGroup;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +13,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -214,13 +215,6 @@ public class VistaGrooming extends javax.swing.JPanel {
         this.lblGsexo = lblGsexo;
     }
 
-    public JRadioButton getRdb_GalerS() {
-        return rdb_GalerS;
-    }
-
-    public void setRdb_GalerS(JRadioButton rdb_GalerS) {
-        this.rdb_GalerS = rdb_GalerS;
-    }
 
     public JLabel getLblAlertaGpv() {
         return lblAlertaGpv;
@@ -228,6 +222,14 @@ public class VistaGrooming extends javax.swing.JPanel {
 
     public void setLblAlertaGpv(JLabel lblAlertaGpv) {
         this.lblAlertaGpv = lblAlertaGpv;
+    }
+
+    public JTextArea getTat_Gdescripcion() {
+        return tat_Gdescripcion;
+    }
+
+    public void setTat_Gdescripcion(JTextArea tat_Gdescripcion) {
+        this.tat_Gdescripcion = tat_Gdescripcion;
     }
 
     
@@ -336,16 +338,16 @@ public class VistaGrooming extends javax.swing.JPanel {
         jdt_Gfecha = new com.toedter.calendar.JDateChooser();
         lblmascota1 = new javax.swing.JLabel();
         lblicoM1 = new javax.swing.JLabel();
-        rdb_GalerS = new javax.swing.JRadioButton();
-        rdb_GalerN = new javax.swing.JRadioButton();
         lblnombreM = new javax.swing.JLabel();
-        lblalergia = new javax.swing.JLabel();
         lblfecha = new javax.swing.JLabel();
         lbltipoCorte = new javax.swing.JLabel();
         btn_Gimprimir = new javax.swing.JButton();
         lblAlertaGcv = new javax.swing.JLabel();
         lblAlertaGpv = new javax.swing.JLabel();
         lblAlertaGnf = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tat_Gdescripcion = new javax.swing.JTextArea();
+        lbltipoCorte1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -510,30 +512,17 @@ public class VistaGrooming extends javax.swing.JPanel {
         lblicoM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ReMas.png"))); // NOI18N
         pnl_Registro.add(lblicoM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 50, 50));
 
-        btnGGalergia.add(rdb_GalerS);
-        rdb_GalerS.setText("Si");
-        pnl_Registro.add(rdb_GalerS, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
-
-        btnGGalergia.add(rdb_GalerN);
-        rdb_GalerN.setSelected(true);
-        rdb_GalerN.setText("No");
-        pnl_Registro.add(rdb_GalerN, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
-
         lblnombreM.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblnombreM.setText("Nombre");
         pnl_Registro.add(lblnombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
-
-        lblalergia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblalergia.setText("Alergia");
-        pnl_Registro.add(lblalergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
 
         lblfecha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblfecha.setText("Fecha");
         pnl_Registro.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
 
         lbltipoCorte.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbltipoCorte.setText("Tipo de corte");
-        pnl_Registro.add(lbltipoCorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
+        lbltipoCorte.setText("Descripción");
+        pnl_Registro.add(lbltipoCorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
 
         btn_Gimprimir.setText("Imprimir Reporte");
         pnl_Registro.add(btn_Gimprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 500, 190, -1));
@@ -550,6 +539,16 @@ public class VistaGrooming extends javax.swing.JPanel {
         lblAlertaGnf.setText("Ingrese solo texto");
         pnl_Registro.add(lblAlertaGnf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 435, -1, -1));
 
+        tat_Gdescripcion.setColumns(20);
+        tat_Gdescripcion.setRows(5);
+        jScrollPane1.setViewportView(tat_Gdescripcion);
+
+        pnl_Registro.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, -1, 200));
+
+        lbltipoCorte1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbltipoCorte1.setText("Tipo de corte");
+        pnl_Registro.add(lbltipoCorte1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
+
         add(pnl_Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 860, 640));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -562,6 +561,7 @@ public class VistaGrooming extends javax.swing.JPanel {
     private javax.swing.JButton btn_NueRepor;
     private javax.swing.JButton btn_Pbuscar;
     private javax.swing.JButton btn_Pregistrar;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -586,7 +586,6 @@ public class VistaGrooming extends javax.swing.JPanel {
     private javax.swing.JLabel lblGnombreP;
     private javax.swing.JLabel lblGraza;
     private javax.swing.JLabel lblGsexo;
-    private javax.swing.JLabel lblalergia;
     private javax.swing.JLabel lblcedula;
     private javax.swing.JLabel lbledad;
     private javax.swing.JLabel lblfecha;
@@ -604,14 +603,14 @@ public class VistaGrooming extends javax.swing.JPanel {
     private javax.swing.JLabel lbltext;
     private javax.swing.JLabel lbltext2;
     private javax.swing.JLabel lbltipoCorte;
+    private javax.swing.JLabel lbltipoCorte1;
     private javax.swing.JLabel lbltitle;
     private javax.swing.JLabel lbltitle1;
     private javax.swing.JPanel pnl_Busqueda;
     private javax.swing.JPanel pnl_Registro;
-    private javax.swing.JRadioButton rdb_GalerN;
-    private javax.swing.JRadioButton rdb_GalerS;
     private javax.swing.JScrollPane scrBmascota;
     private javax.swing.JScrollPane srlBpersona;
+    private javax.swing.JTextArea tat_Gdescripcion;
     private javax.swing.JTable tblBmascota;
     private javax.swing.JTable tblBpersona;
     private javax.swing.JTextField txtBpersona;

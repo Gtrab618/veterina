@@ -4,6 +4,7 @@ import Modelo.ClasesModelo.ModeloCliente;
 import Modelo.ClasesModelo.ModeloGrooming;
 import Modelo.ClasesModelo.ModeloMascota;
 import Modelo.Cliente;
+import Modelo.Conexion;
 import Modelo.Mascota;
 import Vista.VistaGrooming;
 import java.awt.Image;
@@ -14,7 +15,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.Instant;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -23,6 +26,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -52,7 +61,7 @@ public class ControlGrooming {
         Vgro.getBtn_Pbuscar().addActionListener(l -> cambiarPanel("buscar"));
         Vgro.getBtn_Pregistrar().addActionListener(l -> cambiarPanel("registro"));
         Vgro.getBtn_NueRepor().addActionListener(l -> cargarDatorReporteNuevo());
-        Vgro.getBtn_Gimprimir().addActionListener(l->imprimirReporte());
+        Vgro.getBtn_Gimprimir().addActionListener(l -> imprimirReporte());
         //eventos de las tablas 
         evtVerMascota(Vgro.getTblBpersona());
         evtVerFotoMas(Vgro.getTblBmascota());
@@ -68,6 +77,7 @@ public class ControlGrooming {
         if (tipo.equalsIgnoreCase("buscar")) {
             limpiarBusqueda();
             llenarTabla();
+            limpiarRegistroGroo();
             Vgro.getPnl_Busqueda().setVisible(true);
             Vgro.getPnl_Registro().setVisible(false);
         } else if (tipo.equalsIgnoreCase("registro")) {
@@ -90,11 +100,15 @@ public class ControlGrooming {
         Vgro.getLblBselecMas().setVisible(false);
         Vgro.getLblBAlertMne().setVisible(false);
         //desabilitar fecha
-        Vgro.getJdt_Gfecha().setEnabled(false);
+//        Vgro.getJdt_Gfecha().setEnabled(false);
         //desactivar lbl
         desabiliarAlertaG();
         //desactivar botones
         desabilitarBtn();
+        //salto de linea vistaRegistro tat
+        Vgro.getTat_Gdescripcion().setLineWrap(true);
+        //Evitar corte de palabras por la mitad
+        Vgro.getTat_Gdescripcion().setWrapStyleWord(true);
     }
 
     //-------------------zona de eventos para teclas o mouse etc-----------------------
@@ -105,7 +119,7 @@ public class ControlGrooming {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 limiarIdBtable();
                 verMascotaDni(evt);
-                
+
             }
         });
     }
@@ -132,7 +146,7 @@ public class ControlGrooming {
         });
 
     }
-    
+
     //limpiar panel cuando seleciono el txt busqueda
     private void evtTxtReiniId(JTextField txt) {
 
@@ -145,10 +159,30 @@ public class ControlGrooming {
 
         });
     }
-    
+
     //-----------------------imprimir reportes------------------------------
-    private void imprimirReporte(){
-        
+    private void imprimirReporte() {
+        String nombreP = Vgro.getLblGnombreP().getText();
+        String rutaLogo = System.getProperty("user.dir");
+        rutaLogo = rutaLogo + "/src/Iconos/vtMain.png";
+        try {
+            Conexion con = new Conexion();
+
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/reportes/ReportGroo2.jasper"));
+            //cargar ruta de imagen
+            Map<String, Object> parametro = new HashMap<String, Object>();
+            
+            parametro.put("rutaLogo", rutaLogo);
+            parametro.put("nombreP",nombreP);
+            parametro.put("cedula",dni_persona);
+            parametro.put("idMascota",Integer.parseInt(id_mascota));
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametro, con.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(ControlGrooming.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     //----------------------------------------zona metodos para las tablas------------------
@@ -392,7 +426,7 @@ public class ControlGrooming {
     private void guardarReporte() {
         desabiliarAlertaG();
         String nombreCorte = "", alergia = "";
-        double precio = 1F;
+        double precio = 0;
 
         //parsear id mascota
         int bandera = 0, mascota_id = 0;
@@ -420,16 +454,7 @@ public class ControlGrooming {
         if (bandera == 0) {
             //capilatizo la letra
             Mgro.setGro_tipo_corte(capitalize(nombreCorte));
-            //recupero alergia
-            if (Vgro.getRdb_GalerS().isSelected()) {
-                //1 si es alergico 
-                alergia = "1";
-                //0 si no es alergico
-            } else {
-                alergia = "0";
-            }
-
-            Mgro.setGro_alergia(alergia);
+            Mgro.setDescripcion(Vgro.getTat_Gdescripcion().getText());
             Mgro.setGro_precio(precio);
             Mgro.setMas_id_mascotafk(mascota_id);
             Mgro.setGro_fecha(Vgro.getJdt_Gfecha().getDate());
@@ -466,6 +491,7 @@ public class ControlGrooming {
         Vgro.getLblGraza().setText("");
         Vgro.getLblGsexo().setText("");
         Vgro.getLblGedad().setText("");
+        Vgro.getTat_Gdescripcion().setText("");
         //poner la fecha actual
         Vgro.getJdt_Gfecha().setDate(Date.from(Instant.now()));
         Vgro.getTxt_GtipoCorte().setText("");
@@ -484,22 +510,23 @@ public class ControlGrooming {
         Vgro.getBtn_GguardarR().setEnabled(true);
         Vgro.getBtn_Gimprimir().setEnabled(true);
     }
-    
+
     private void limpiarIdBuscq() {
-        dni_persona="";
-        id_mascota="";
+        dni_persona = "";
+        id_mascota = "";
         Vgro.getLblBselecMas().setVisible(false);
         Vgro.getScrBmascota().setVisible(false);
         Vgro.getLblBFoto().setIcon(null);
         Vgro.getLblBFoto().updateUI();
         Vgro.getTblBpersona().clearSelection();
-        
+
     }
-    private void limiarIdBtable(){
-        dni_persona="";
-        id_mascota="";
+
+    private void limiarIdBtable() {
+        dni_persona = "";
+        id_mascota = "";
         Vgro.getLblBFoto().setIcon(null);
         Vgro.getLblBFoto().updateUI();
     }
-    
+
 }
