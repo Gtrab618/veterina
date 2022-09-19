@@ -165,6 +165,8 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         pnlHead = new javax.swing.JPanel();
         lblFecha = new javax.swing.JLabel();
         pnlContent = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        lblfondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuDarkMode = new javax.swing.JCheckBoxMenuItem();
@@ -336,19 +338,19 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         fondo.add(pnlHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 840, 80));
 
         pnlContent.setPreferredSize(new java.awt.Dimension(840, 590));
+        pnlContent.setLayout(null);
 
-        javax.swing.GroupLayout pnlContentLayout = new javax.swing.GroupLayout(pnlContent);
-        pnlContent.setLayout(pnlContentLayout);
-        pnlContentLayout.setHorizontalGroup(
-            pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 835, Short.MAX_VALUE)
-        );
-        pnlContentLayout.setVerticalGroup(
-            pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
-        );
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel10.setText("Veterinaria Medican");
+        pnlContent.add(jLabel10);
+        jLabel10.setBounds(50, 50, 318, 48);
 
-        fondo.add(pnlContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 835, 670));
+        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/fodonPrin.png"))); // NOI18N
+        pnlContent.add(lblfondo);
+        lblfondo.setBounds(0, 0, 844, 670);
+
+        fondo.add(pnlContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 840, 670));
 
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 750));
 
@@ -371,6 +373,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel LblTipoAcceso;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -381,6 +384,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblfondo;
     private javax.swing.JCheckBoxMenuItem menuDarkMode;
     private javax.swing.JPanel pnlBtnClien;
     private javax.swing.JPanel pnlBtnGroo;

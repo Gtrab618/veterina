@@ -16,10 +16,10 @@ import javax.swing.JTextField;
  *
  * @author Usuario
  */
-public class vistaRegistro extends javax.swing.JPanel {
+public class VistaRegistro extends javax.swing.JPanel {
 
     /** Creates new form vistaRegistro */
-    public vistaRegistro() {
+    public VistaRegistro() {
         initComponents();
     }
 

@@ -106,6 +106,7 @@ public class ControlMascota {
         Vmas.getLblBselecMas().setVisible(false);
         Vmas.getPnlGestionarM().setVisible(false);
         Vmas.getLblAlertBne().setVisible(false);
+        Vmas.getLblBAlertMne().setVisible(false);
         Vmas.getJdcFechaNacM().getDateEditor().setEnabled(false);
         //desactivar movimiento tralado de columnas jtable
         Vmas.getTblBmascota().getTableHeader().setReorderingAllowed(false);
@@ -126,9 +127,9 @@ public class ControlMascota {
             recuperarMandarDatosModificar();
 
         } else if (dni_persona.equalsIgnoreCase("")) {
-            System.out.println("Por favor seleccione un propietario");
+            JOptionPane.showMessageDialog(null,"Seleccione un propietario");
         } else {
-            System.out.println("Por favor seleccione una mascota");
+            JOptionPane.showMessageDialog(null, "Seleccione una mascota");
         }
     }
 
@@ -473,6 +474,7 @@ public class ControlMascota {
             //activar tabla y label de indicacion
             Vmas.getLblBselecMas().setVisible(true);
             Vmas.getScrBmascota().setVisible(true);
+            Vmas.getLblBAlertMne().setVisible(false);
 
             listmas.stream().forEach(mascota -> {
 
@@ -496,6 +498,7 @@ public class ControlMascota {
         } else {
             Vmas.getScrBmascota().setVisible(false);
             Vmas.getLblBselecMas().setVisible(false);
+            Vmas.getLblBAlertMne().setVisible(true);
         }
 
     }
@@ -539,6 +542,7 @@ public class ControlMascota {
         //quitar la foto de la mascota 
         Vmas.getLblBFoto().setIcon(null);
         //vRegis.getTblBusqueda().clearSelection();
+        Vmas.getLblBAlertMne().setVisible(false);
     }
 
     //descativar botones de eliminar o modificar para evitar validaciones

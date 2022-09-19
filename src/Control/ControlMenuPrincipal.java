@@ -3,11 +3,12 @@ package Control;
 import Modelo.ClasesModelo.ModeloCliente;
 import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
+import Vista.VistaGrooming;
 import Vista.VistaMas;
 import Vista.VistaMascota;
 
 import Vista.VistaMenuPrincipal;
-import Vista.vistaRegistro;
+import Vista.VistaRegistro;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
@@ -128,7 +129,7 @@ public class ControlMenuPrincipal {
 
                 switch (name) {
                     case "cliente":
-                        vistaRegistro vRegis = new vistaRegistro();
+                        VistaRegistro vRegis = new VistaRegistro();
                         ModeloPersona Mper= new ModeloPersona();
                         ModeloMascota Mmas = new ModeloMascota();
                         ModeloCliente Ccli = new ModeloCliente();
@@ -144,12 +145,15 @@ public class ControlMenuPrincipal {
                         
                         break;
                     case "grooming":
-                        VistaMas vMasc = new VistaMas();
-                        
-                        vMasc.setSize(835, 863);
-                        vMasc.setLocation(0, 0);
+                        ModeloCliente cliG= new ModeloCliente();
+                        VistaGrooming Vgro = new VistaGrooming();
+                        ModeloMascota masG = new ModeloMascota();
+                        ControlGrooming cntG= new ControlGrooming(Vgro,cliG,masG);
+                        cntG.iniciarControl();
+                        Vgro.setSize(835, 863);
+                        Vgro.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
-                        vistaMP.getPnlContent().add(vMasc, BorderLayout.CENTER);
+                        vistaMP.getPnlContent().add(Vgro, BorderLayout.CENTER);
                         vistaMP.revalidate();       
                         vistaMP.getPnlContent().repaint();
      

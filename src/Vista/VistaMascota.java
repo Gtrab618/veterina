@@ -257,6 +257,14 @@ public class VistaMascota extends javax.swing.JPanel {
     public void setLblAlertaMrv(JLabel lblAlertaMrv) {
         this.lblAlertaMrv = lblAlertaMrv;
     }
+
+    public JLabel getLblBAlertMne() {
+        return lblBAlertMne;
+    }
+
+    public void setLblBAlertMne(JLabel lblBAlertMne) {
+        this.lblBAlertMne = lblBAlertMne;
+    }
     
     
     
@@ -285,6 +293,7 @@ public class VistaMascota extends javax.swing.JPanel {
         tblBmascota = new javax.swing.JTable();
         btnBgestionMascota = new javax.swing.JButton();
         lblAlertBne = new javax.swing.JLabel();
+        lblBAlertMne = new javax.swing.JLabel();
         pnlGestionarM = new javax.swing.JPanel();
         lblsexo = new javax.swing.JLabel();
         lblnombre = new javax.swing.JLabel();
@@ -366,7 +375,7 @@ public class VistaMascota extends javax.swing.JPanel {
         srlBpersona.setViewportView(tblBpersona);
 
         pnlBmascota.add(srlBpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 220));
-        pnlBmascota.add(lblBFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 180, 180));
+        pnlBmascota.add(lblBFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 180, 180));
 
         lblBselecMas.setText("Seleccione la mascota");
         pnlBmascota.add(lblBselecMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
@@ -387,11 +396,15 @@ public class VistaMascota extends javax.swing.JPanel {
         pnlBmascota.add(scrBmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 490, 210));
 
         btnBgestionMascota.setText("Gestionar Mascota");
-        pnlBmascota.add(btnBgestionMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
+        pnlBmascota.add(btnBgestionMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, -1, -1));
 
         lblAlertBne.setForeground(new java.awt.Color(255, 0, 0));
         lblAlertBne.setText("No hay coincidencias");
         pnlBmascota.add(lblAlertBne, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        lblBAlertMne.setForeground(new java.awt.Color(255, 51, 0));
+        lblBAlertMne.setText("Mascotas no encontradas");
+        pnlBmascota.add(lblBAlertMne, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
         add(pnlBmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 862, 630));
 
@@ -513,6 +526,7 @@ public class VistaMascota extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertaMnv;
     private javax.swing.JLabel lblAlertaMrf;
     private javax.swing.JLabel lblAlertaMrv;
+    private javax.swing.JLabel lblBAlertMne;
     private javax.swing.JLabel lblBFoto;
     private javax.swing.JLabel lblBselecMas;
     private javax.swing.JLabel lblCedulaM;

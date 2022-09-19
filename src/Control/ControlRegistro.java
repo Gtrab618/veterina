@@ -5,7 +5,7 @@ import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
 import Modelo.Cliente;
 import Modelo.Mascota;
-import Vista.vistaRegistro;
+import Vista.VistaRegistro;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,7 +34,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControlRegistro {
 
-    private vistaRegistro vRegis;
+    private VistaRegistro vRegis;
     private ModeloPersona Mper;
     private ModeloMascota Mmas;
     private ModeloCliente Ccli;
@@ -48,7 +48,7 @@ public class ControlRegistro {
     private int i;
     private boolean banderaFoto;
 
-    public ControlRegistro(vistaRegistro vRegis, ModeloPersona Mper, ModeloMascota Mmas, ModeloCliente Ccli) {
+    public ControlRegistro(VistaRegistro vRegis, ModeloPersona Mper, ModeloMascota Mmas, ModeloCliente Ccli) {
         this.vRegis = vRegis;
         this.Mper = Mper;
         this.Mmas = Mmas;

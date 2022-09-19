@@ -146,7 +146,7 @@ public class VistaLogin extends javax.swing.JFrame {
         pnl_1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Control de Acceso");
         pnl_1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
@@ -163,7 +163,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
         pnl_1.add(pnl_animacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 840, 230));
 
-        lbl_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/fondo.png"))); // NOI18N
+        lbl_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/fondoLogin.jpeg"))); // NOI18N
         pnl_1.add(lbl_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 470));
 
         pnl_Principal.add(pnl_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 470));
@@ -183,7 +183,7 @@ public class VistaLogin extends javax.swing.JFrame {
         pnl_2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 287, 10));
 
         txtNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        txtNombreUsuario.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombreUsuario.setForeground(new java.awt.Color(153, 153, 153));
         txtNombreUsuario.setText("Ingrese su nombre de usuario");
         txtNombreUsuario.setToolTipText("");
         txtNombreUsuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -213,7 +213,7 @@ public class VistaLogin extends javax.swing.JFrame {
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnl_2.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 309, 304, 49));
 
-        lbl_title.setFont(new java.awt.Font("MV Boli", 1, 20)); // NOI18N
+        lbl_title.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         lbl_title.setText("Ingrese sus Datos");
         lbl_title.setEnabled(false);
         pnl_2.add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 40, 201, -1));
