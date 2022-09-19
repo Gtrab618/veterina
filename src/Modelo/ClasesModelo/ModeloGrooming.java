@@ -31,7 +31,7 @@ public class ModeloGrooming extends Grooming{
     public ModeloGrooming() {
     }
 
-    public ModeloGrooming(int gro_id_grooming, String gro_tipo_corte, int gro_precio, Date gro_fecha, String gro_alergia, int mas_id_mascotafk) {
+    public ModeloGrooming(int gro_id_grooming, String gro_tipo_corte, double gro_precio, Date gro_fecha, String gro_alergia, int mas_id_mascotafk) {
         super(gro_id_grooming, gro_tipo_corte, gro_precio, gro_fecha, gro_alergia, mas_id_mascotafk);
     }
 
@@ -77,7 +77,7 @@ public class ModeloGrooming extends Grooming{
     */
     public boolean InsertarGrooming() {
         String sql;
-        sql = "INSERT INTO grooming( gro_tipo_corte, gro_precio, gro_fecha, gro_alergia, mas_id_mascotafk)"
+        sql = "INSERT INTO grooming( gro_tipocorte, gro_precio, gro_fecha, gro_alergia, mas_id)"
                 + " VALUES ('" + getGro_tipo_corte()+ "'"
                 + ",'" + getGro_precio()+ "'"
                 + ",'" + getGro_fecha()+ "'"

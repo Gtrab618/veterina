@@ -6,6 +6,7 @@ import Modelo.Cliente;
 import Modelo.Mascota;
 import Vista.VistaMascota;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -58,6 +59,7 @@ public class ControlMascota {
         evtVerMascota(Vmas.getTblBpersona());
         evtVerFotoMas(Vmas.getTblBmascota());
         evtBusquedaIncre(Vmas.getTxtBpersona());
+        evtTxtReiniId(Vmas.getTxtBpersona());
         //evento para calcular la edad cuando se modifica la fecha
         Vmas.getJdcFechaNacM().addPropertyChangeListener(l -> evtCalcularFechaNacimiento());
 
@@ -127,7 +129,7 @@ public class ControlMascota {
             recuperarMandarDatosModificar();
 
         } else if (dni_persona.equalsIgnoreCase("")) {
-            JOptionPane.showMessageDialog(null,"Seleccione un propietario");
+            JOptionPane.showMessageDialog(null, "Seleccione un propietario");
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una mascota");
         }
@@ -170,9 +172,11 @@ public class ControlMascota {
 
     //buscar la mascota con el dni del propietario
     private void evtVerMascota(JTable busqueda) {
+        
         busqueda.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lipiarIdTable();
                 verMascotaDni(evt);
             }
         });
@@ -192,14 +196,27 @@ public class ControlMascota {
 
     //busqueda incremental para la el propietario de la mascota
     private void evtBusquedaIncre(JTextField busc) {
-
         busc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-
+                limpiarIdBuscq();
                 buscar();
+
             }
         });
 
+    }
+
+    //reiniciar datos id y datos al precionar sobre busqueda incremental
+    private void evtTxtReiniId(JTextField txt) {
+        
+        txt.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                limpiarIdBuscq();
+            }
+
+        });
     }
 
     private void modificarMascota() {
@@ -577,4 +594,21 @@ public class ControlMascota {
         banderaFoto = false;
     }
 
+    //limpia los id al hacer busquea incremental
+    private void limpiarIdBuscq() {
+        dni_persona = "";
+        id_mascota = "";
+        Vmas.getLblBselecMas().setVisible(false);
+        Vmas.getScrBmascota().setVisible(false);
+        Vmas.getLblBFoto().setIcon(null);
+        Vmas.getLblBFoto().updateUI();
+        Vmas.getTblBpersona().clearSelection();
+    }
+
+    private void lipiarIdTable(){
+        dni_persona = "";
+        id_mascota = "";
+        Vmas.getLblBFoto().setIcon(null);
+        Vmas.getLblBFoto().updateUI();
+    }
 }

@@ -1,6 +1,7 @@
 package Control;
 
 import Modelo.ClasesModelo.ModeloCliente;
+import Modelo.ClasesModelo.ModeloGrooming;
 import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
 import Vista.VistaGrooming;
@@ -148,7 +149,8 @@ public class ControlMenuPrincipal {
                         ModeloCliente cliG= new ModeloCliente();
                         VistaGrooming Vgro = new VistaGrooming();
                         ModeloMascota masG = new ModeloMascota();
-                        ControlGrooming cntG= new ControlGrooming(Vgro,cliG,masG);
+                        ModeloGrooming Mgro= new ModeloGrooming();
+                        ControlGrooming cntG= new ControlGrooming(Vgro,cliG,masG,Mgro);
                         cntG.iniciarControl();
                         Vgro.setSize(835, 863);
                         Vgro.setLocation(0, 0);

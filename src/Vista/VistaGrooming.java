@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
@@ -213,13 +214,23 @@ public class VistaGrooming extends javax.swing.JPanel {
         this.lblGsexo = lblGsexo;
     }
 
-    public ButtonGroup getBtnGGalergia() {
-        return btnGGalergia;
+    public JRadioButton getRdb_GalerS() {
+        return rdb_GalerS;
     }
 
-    public void setBtnGGalergia(ButtonGroup btnGGalergia) {
-        this.btnGGalergia = btnGGalergia;
+    public void setRdb_GalerS(JRadioButton rdb_GalerS) {
+        this.rdb_GalerS = rdb_GalerS;
     }
+
+    public JLabel getLblAlertaGpv() {
+        return lblAlertaGpv;
+    }
+
+    public void setLblAlertaGpv(JLabel lblAlertaGpv) {
+        this.lblAlertaGpv = lblAlertaGpv;
+    }
+
+    
 
     public JDateChooser getJdt_Gfecha() {
         return jdt_Gfecha;
@@ -260,6 +271,8 @@ public class VistaGrooming extends javax.swing.JPanel {
     public void setLblAlertaGnf(JLabel lblAlertaGnf) {
         this.lblAlertaGnf = lblAlertaGnf;
     }
+
+ 
 
 
     
@@ -323,14 +336,15 @@ public class VistaGrooming extends javax.swing.JPanel {
         jdt_Gfecha = new com.toedter.calendar.JDateChooser();
         lblmascota1 = new javax.swing.JLabel();
         lblicoM1 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rdb_GalerS = new javax.swing.JRadioButton();
+        rdb_GalerN = new javax.swing.JRadioButton();
         lblnombreM = new javax.swing.JLabel();
         lblalergia = new javax.swing.JLabel();
         lblfecha = new javax.swing.JLabel();
         lbltipoCorte = new javax.swing.JLabel();
         btn_Gimprimir = new javax.swing.JButton();
         lblAlertaGcv = new javax.swing.JLabel();
+        lblAlertaGpv = new javax.swing.JLabel();
         lblAlertaGnf = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -485,7 +499,7 @@ public class VistaGrooming extends javax.swing.JPanel {
         pnl_Registro.add(lblGsexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 140, 20));
         pnl_Registro.add(txt_GtipoCorte, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 190, -1));
 
-        jspGprecio.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(1.0f), Float.valueOf(1.0f), Float.valueOf(50.0f), Float.valueOf(1.0f)));
+        jspGprecio.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 50.0d, 1.0d));
         pnl_Registro.add(jspGprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 170, -1));
         pnl_Registro.add(jdt_Gfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 190, -1));
 
@@ -496,14 +510,14 @@ public class VistaGrooming extends javax.swing.JPanel {
         lblicoM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ReMas.png"))); // NOI18N
         pnl_Registro.add(lblicoM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 50, 50));
 
-        btnGGalergia.add(jRadioButton3);
-        jRadioButton3.setText("Si");
-        pnl_Registro.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
+        btnGGalergia.add(rdb_GalerS);
+        rdb_GalerS.setText("Si");
+        pnl_Registro.add(rdb_GalerS, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
 
-        btnGGalergia.add(jRadioButton4);
-        jRadioButton4.setSelected(true);
-        jRadioButton4.setText("No");
-        pnl_Registro.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
+        btnGGalergia.add(rdb_GalerN);
+        rdb_GalerN.setSelected(true);
+        rdb_GalerN.setText("No");
+        pnl_Registro.add(rdb_GalerN, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
 
         lblnombreM.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblnombreM.setText("Nombre");
@@ -528,6 +542,10 @@ public class VistaGrooming extends javax.swing.JPanel {
         lblAlertaGcv.setText("Campo vacio");
         pnl_Registro.add(lblAlertaGcv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 435, -1, -1));
 
+        lblAlertaGpv.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaGpv.setText("Ingrese un precio");
+        pnl_Registro.add(lblAlertaGpv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, -1, -1));
+
         lblAlertaGnf.setForeground(new java.awt.Color(212, 172, 13));
         lblAlertaGnf.setText("Ingrese solo texto");
         pnl_Registro.add(lblAlertaGnf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 435, -1, -1));
@@ -544,8 +562,6 @@ public class VistaGrooming extends javax.swing.JPanel {
     private javax.swing.JButton btn_NueRepor;
     private javax.swing.JButton btn_Pbuscar;
     private javax.swing.JButton btn_Pregistrar;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -559,6 +575,7 @@ public class VistaGrooming extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertBne;
     private javax.swing.JLabel lblAlertaGcv;
     private javax.swing.JLabel lblAlertaGnf;
+    private javax.swing.JLabel lblAlertaGpv;
     private javax.swing.JLabel lblBAlertMne;
     private javax.swing.JLabel lblBFoto;
     private javax.swing.JLabel lblBselecMas;
@@ -591,6 +608,8 @@ public class VistaGrooming extends javax.swing.JPanel {
     private javax.swing.JLabel lbltitle1;
     private javax.swing.JPanel pnl_Busqueda;
     private javax.swing.JPanel pnl_Registro;
+    private javax.swing.JRadioButton rdb_GalerN;
+    private javax.swing.JRadioButton rdb_GalerS;
     private javax.swing.JScrollPane scrBmascota;
     private javax.swing.JScrollPane srlBpersona;
     private javax.swing.JTable tblBmascota;

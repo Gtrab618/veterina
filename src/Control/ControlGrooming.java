@@ -1,11 +1,13 @@
 package Control;
 
 import Modelo.ClasesModelo.ModeloCliente;
+import Modelo.ClasesModelo.ModeloGrooming;
 import Modelo.ClasesModelo.ModeloMascota;
 import Modelo.Cliente;
 import Modelo.Mascota;
 import Vista.VistaGrooming;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -31,15 +33,17 @@ public class ControlGrooming {
     private VistaGrooming Vgro;
     private ModeloCliente Ccli;
     private ModeloMascota Mmas;
+    private ModeloGrooming Mgro;
     private Validaciones vali = new Validaciones();
     //este sirve para contador del bucle tabla 
     private int i = 0;
     private String dni_persona = "", id_mascota = "";
 
-    public ControlGrooming(VistaGrooming Vgro, ModeloCliente Ccli, ModeloMascota Mmas) {
+    public ControlGrooming(VistaGrooming Vgro, ModeloCliente Ccli, ModeloMascota Mmas, ModeloGrooming Mgro) {
         this.Vgro = Vgro;
         this.Ccli = Ccli;
         this.Mmas = Mmas;
+        this.Mgro = Mgro;
         referenciarObjetos();
     }
 
@@ -48,13 +52,15 @@ public class ControlGrooming {
         Vgro.getBtn_Pbuscar().addActionListener(l -> cambiarPanel("buscar"));
         Vgro.getBtn_Pregistrar().addActionListener(l -> cambiarPanel("registro"));
         Vgro.getBtn_NueRepor().addActionListener(l -> cargarDatorReporteNuevo());
+        Vgro.getBtn_Gimprimir().addActionListener(l->imprimirReporte());
         //eventos de las tablas 
         evtVerMascota(Vgro.getTblBpersona());
         evtVerFotoMas(Vgro.getTblBmascota());
         evtBusquedaIncre(Vgro.getTxtBpersona());
         //guardar datos de grooming
         Vgro.getBtn_GguardarR().addActionListener(l -> guardarReporte());
-
+        //reiniciar id al ingresar buscqueda incremental
+        evtTxtReiniId(Vgro.getTxtBpersona());
     }
 
     private void cambiarPanel(String tipo) {
@@ -65,6 +71,8 @@ public class ControlGrooming {
             Vgro.getPnl_Busqueda().setVisible(true);
             Vgro.getPnl_Registro().setVisible(false);
         } else if (tipo.equalsIgnoreCase("registro")) {
+            limpiarRegistroGroo();
+            desabilitarBtn();
             Vgro.getPnl_Busqueda().setVisible(false);
             Vgro.getPnl_Registro().setVisible(true);
         }
@@ -85,6 +93,8 @@ public class ControlGrooming {
         Vgro.getJdt_Gfecha().setEnabled(false);
         //desactivar lbl
         desabiliarAlertaG();
+        //desactivar botones
+        desabilitarBtn();
     }
 
     //-------------------zona de eventos para teclas o mouse etc-----------------------
@@ -93,7 +103,9 @@ public class ControlGrooming {
         busqueda.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                limiarIdBtable();
                 verMascotaDni(evt);
+                
             }
         });
     }
@@ -119,6 +131,24 @@ public class ControlGrooming {
             }
         });
 
+    }
+    
+    //limpiar panel cuando seleciono el txt busqueda
+    private void evtTxtReiniId(JTextField txt) {
+
+        txt.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                limpiarIdBuscq();
+            }
+
+        });
+    }
+    
+    //-----------------------imprimir reportes------------------------------
+    private void imprimirReporte(){
+        
     }
 
     //----------------------------------------zona metodos para las tablas------------------
@@ -323,7 +353,6 @@ public class ControlGrooming {
 
     //recupero los datos para ser llenados en la siguiente interfaz
     private void recuperarMandarDatosModificar() {
-
         //recupero informacion de la mascota para cargar los datos 
         Mascota mas = Mmas.consultarMascotaId(id_mascota);
         //recupedo  imformacion de la persona para cargar los datos 
@@ -356,43 +385,121 @@ public class ControlGrooming {
             Logger.getLogger(ControlMascota.class.getName()).log(Level.SEVERE, null, ex);
         }
         //habilito los botones para la eliminacion modificacion o examinar
-//        habilitarBtns();
+        habilitarBtn();
     }
 
     //---------------------accione de los botones 
     private void guardarReporte() {
         desabiliarAlertaG();
-        String nombreCorte="",alergia="";
-        float precio = 1F; 
-        Date fechaGroming;
-        int bandera =0;
+        String nombreCorte = "", alergia = "";
+        double precio = 1F;
+
+        //parsear id mascota
+        int bandera = 0, mascota_id = 0;
+        mascota_id = Integer.parseInt(id_mascota);
+        //recuperar variables 
         nombreCorte = Vgro.getTxt_GtipoCorte().getText();
-        
-        
+        precio = (double) Vgro.getJspGprecio().getValue();
+
+        //Validaciones 
         if (!nombreCorte.equalsIgnoreCase("")) {
             if (!vali.valiNombreApe(nombreCorte)) {
                 Vgro.getLblAlertaGnf().setVisible(true);
-                bandera = bandera+1;
+                bandera = bandera + 1;
             }
-        }else{
+        } else {
             Vgro.getLblAlertaGcv().setVisible(true);
-            bandera = bandera+1;
+            bandera = bandera + 1;
         }
-        
-        if (bandera==0) {
-            
+        if ((double) Vgro.getJspGprecio().getValue() == 0) {
+            bandera = bandera + 1;
+            Vgro.getLblAlertaGpv().setVisible(true);
         }
-        
+
+        //registrar si todo es perfecto
+        if (bandera == 0) {
+            //capilatizo la letra
+            Mgro.setGro_tipo_corte(capitalize(nombreCorte));
+            //recupero alergia
+            if (Vgro.getRdb_GalerS().isSelected()) {
+                //1 si es alergico 
+                alergia = "1";
+                //0 si no es alergico
+            } else {
+                alergia = "0";
+            }
+
+            Mgro.setGro_alergia(alergia);
+            Mgro.setGro_precio(precio);
+            Mgro.setMas_id_mascotafk(mascota_id);
+            Mgro.setGro_fecha(Vgro.getJdt_Gfecha().getDate());
+
+            if (Mgro.InsertarGrooming()) {
+                JOptionPane.showMessageDialog(null, "Registro creado");
+                limpiarRegistroGroo();
+                desabilitarBtn();
+            }
+
+        }
+
     }
 
-    
-    
-    
-    
-    
+    private String capitalize(final String line) {
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1).toLowerCase();
+    }
+
     //----------------Activar o desactivar botones o labes ----------------------
-    private void desabiliarAlertaG(){
+    private void desabiliarAlertaG() {
         Vgro.getLblAlertaGcv().setVisible(false);
         Vgro.getLblAlertaGnf().setVisible(false);
+        Vgro.getLblAlertaGpv().setVisible(false);
     }
+
+    private void limpiarRegistroGroo() {
+        //reiniciar id
+        dni_persona = "";
+        id_mascota = "";
+        //reinicar panel
+        Vgro.getLblGcedula().setText("");
+        Vgro.getLblGnombreP().setText("");
+        Vgro.getLblGnombreM().setText("");
+        Vgro.getLblGraza().setText("");
+        Vgro.getLblGsexo().setText("");
+        Vgro.getLblGedad().setText("");
+        //poner la fecha actual
+        Vgro.getJdt_Gfecha().setDate(Date.from(Instant.now()));
+        Vgro.getTxt_GtipoCorte().setText("");
+        Vgro.getLblGfoto().setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/vtMain.png")));
+        Vgro.getJspGprecio().setValue(0);
+    }
+
+    private void desabilitarBtn() {
+        Vgro.getBtn_Gcancelar().setEnabled(false);
+        Vgro.getBtn_GguardarR().setEnabled(false);
+        Vgro.getBtn_Gimprimir().setEnabled(false);
+    }
+
+    private void habilitarBtn() {
+        Vgro.getBtn_Gcancelar().setEnabled(true);
+        Vgro.getBtn_GguardarR().setEnabled(true);
+        Vgro.getBtn_Gimprimir().setEnabled(true);
+    }
+    
+    private void limpiarIdBuscq() {
+        dni_persona="";
+        id_mascota="";
+        Vgro.getLblBselecMas().setVisible(false);
+        Vgro.getScrBmascota().setVisible(false);
+        Vgro.getLblBFoto().setIcon(null);
+        Vgro.getLblBFoto().updateUI();
+        Vgro.getTblBpersona().clearSelection();
+        
+    }
+    private void limiarIdBtable(){
+        dni_persona="";
+        id_mascota="";
+        Vgro.getLblBFoto().setIcon(null);
+        Vgro.getLblBFoto().updateUI();
+    }
+    
 }

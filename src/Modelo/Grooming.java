@@ -7,7 +7,7 @@ import java.util.Date;
 public class Grooming {
      private int gro_id_grooming;
     private String gro_tipo_corte;
-    private int gro_precio;
+    private double gro_precio;
     private Date gro_fecha;
     private String gro_alergia;
     private int mas_id_mascotafk;
@@ -15,7 +15,7 @@ public class Grooming {
     public Grooming() {
     }
 
-    public Grooming(int gro_id_grooming, String gro_tipo_corte, int gro_precio, Date gro_fecha, String gro_alergia, int mas_id_mascotafk) {
+    public Grooming(int gro_id_grooming, String gro_tipo_corte, double gro_precio, Date gro_fecha, String gro_alergia, int mas_id_mascotafk) {
         this.gro_id_grooming = gro_id_grooming;
         this.gro_tipo_corte = gro_tipo_corte;
         this.gro_precio = gro_precio;
@@ -40,13 +40,15 @@ public class Grooming {
         this.gro_tipo_corte = gro_tipo_corte;
     }
 
-    public int getGro_precio() {
+    public double getGro_precio() {
         return gro_precio;
     }
 
-    public void setGro_precio(int gro_precio) {
+    public void setGro_precio(double gro_precio) {
         this.gro_precio = gro_precio;
     }
+
+
 
     public Date getGro_fecha() {
         return gro_fecha;
@@ -64,8 +66,6 @@ public class Grooming {
         this.gro_alergia = gro_alergia;
     }
 
-   
-
     public int getMas_id_mascotafk() {
         return mas_id_mascotafk;
     }
@@ -73,6 +73,7 @@ public class Grooming {
     public void setMas_id_mascotafk(int mas_id_mascotafk) {
         this.mas_id_mascotafk = mas_id_mascotafk;
     }
-    
+
+  
     
 }
