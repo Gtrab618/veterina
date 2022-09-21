@@ -240,7 +240,6 @@ public class ControlMenuPrincipal {
         VistaAcerca acer = new VistaAcerca();
         ControlAcercaDe hilo1 = new ControlAcercaDe(acer);
         hilo1.start();
-
         acer.setSize(960, 730);
         acer.setLocation(0, 0);
         vistaMP.getPnlContent().removeAll();
@@ -251,9 +250,7 @@ public class ControlMenuPrincipal {
 
     private void mostrarcrecitos() {
 
-        Vistaiconos ico = new Vistaiconos();
-   
-
+        Vistaiconos ico = new Vistaiconos();   
         ico.setSize(960, 730);
         ico.setLocation(0, 0);
         vistaMP.getPnlContent().removeAll();
