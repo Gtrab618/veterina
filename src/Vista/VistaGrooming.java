@@ -367,7 +367,7 @@ public class VistaGrooming extends javax.swing.JPanel {
         btn_Pregistrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btn_Pregistrar);
 
-        add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 42));
+        add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 42));
 
         pnl_Busqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -384,7 +384,7 @@ public class VistaGrooming extends javax.swing.JPanel {
         ));
         srlBpersona.setViewportView(tblBpersona);
 
-        pnl_Busqueda.add(srlBpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 220));
+        pnl_Busqueda.add(srlBpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 640, 220));
 
         tblBmascota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -404,8 +404,8 @@ public class VistaGrooming extends javax.swing.JPanel {
         lblBselecMas.setText("Seleccione la mascota");
         pnl_Busqueda.add(lblBselecMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
-        btn_NueRepor.setText("Nuevo Reporte");
-        pnl_Busqueda.add(btn_NueRepor, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, 190, -1));
+        btn_NueRepor.setText("Generar Registro");
+        pnl_Busqueda.add(btn_NueRepor, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, 190, -1));
 
         lblAlertBne.setForeground(new java.awt.Color(255, 0, 0));
         lblAlertBne.setText("No hay coincidencias");
@@ -419,7 +419,7 @@ public class VistaGrooming extends javax.swing.JPanel {
         pnl_Busqueda.add(lbltext, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         lblBFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pnl_Busqueda.add(lblBFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 200, 180));
+        pnl_Busqueda.add(lblBFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 220, 220));
 
         lbltitle.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbltitle.setText("Grooming Mascota");
@@ -429,7 +429,7 @@ public class VistaGrooming extends javax.swing.JPanel {
         lblBAlertMne.setText("Mascotas no encontradas");
         pnl_Busqueda.add(lblBAlertMne, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
-        add(pnl_Busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 860, 640));
+        add(pnl_Busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, 690));
         pnl_Busqueda.getAccessibleContext().setAccessibleName("");
 
         pnl_Registro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -531,11 +531,11 @@ public class VistaGrooming extends javax.swing.JPanel {
         lblAlertaGcv.setText("Campo vacio");
         pnl_Registro.add(lblAlertaGcv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 435, -1, -1));
 
-        lblAlertaGpv.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaGpv.setForeground(new java.awt.Color(255, 102, 0));
         lblAlertaGpv.setText("Ingrese un precio");
         pnl_Registro.add(lblAlertaGpv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, -1, -1));
 
-        lblAlertaGnf.setForeground(new java.awt.Color(212, 172, 13));
+        lblAlertaGnf.setForeground(new java.awt.Color(255, 102, 0));
         lblAlertaGnf.setText("Ingrese solo texto");
         pnl_Registro.add(lblAlertaGnf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 435, -1, -1));
 
@@ -549,7 +549,7 @@ public class VistaGrooming extends javax.swing.JPanel {
         lbltipoCorte1.setText("Tipo de corte");
         pnl_Registro.add(lbltipoCorte1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
-        add(pnl_Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 860, 640));
+        add(pnl_Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, 690));
     }// </editor-fold>//GEN-END:initComponents
 
 

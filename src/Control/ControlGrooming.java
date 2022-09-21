@@ -67,6 +67,7 @@ public class ControlGrooming {
         evtVerFotoMas(Vgro.getTblBmascota());
         evtBusquedaIncre(Vgro.getTxtBpersona());
         //guardar datos de grooming
+        Vgro.getJdt_Gfecha().setEnabled(false);
         Vgro.getBtn_GguardarR().addActionListener(l -> guardarReporte());
         //reiniciar id al ingresar buscqueda incremental
         evtTxtReiniId(Vgro.getTxtBpersona());
@@ -258,7 +259,7 @@ public class ControlGrooming {
     }
 
     //---------------------------------------zona para las tablas----------------------------
-    //llenar tabla de busquedas
+    
     private void llenarTabla() {
 
         i = 0;
@@ -445,7 +446,7 @@ public class ControlGrooming {
             Vgro.getLblAlertaGcv().setVisible(true);
             bandera = bandera + 1;
         }
-        if ((double) Vgro.getJspGprecio().getValue() == 0) {
+        if (precio == 0) {
             bandera = bandera + 1;
             Vgro.getLblAlertaGpv().setVisible(true);
         }

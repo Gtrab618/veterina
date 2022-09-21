@@ -18,15 +18,17 @@ public class ModeloMascota extends Mascota {
     public ModeloMascota() {
     }
 
-    public ModeloMascota(int mas_id, String mas_nombreMas, String mas_sexo, String mas_raza, String mas_especie, Date mas_fechaNac, byte[] foto, String mas_estado, int cli_idFK) {
-        super(mas_id, mas_nombreMas, mas_sexo, mas_raza, mas_especie, mas_fechaNac, foto, mas_estado, cli_idFK);
+    public ModeloMascota(int mas_id, String mas_nombreMas, String mas_sexo, String mas_raza, boolean mas_esterilizado, String mas_especie, Date mas_fechaNac, byte[] foto, String mas_estado, int cli_idFK) {
+        super(mas_id, mas_nombreMas, mas_sexo, mas_raza, mas_esterilizado, mas_especie, mas_fechaNac, foto, mas_estado, cli_idFK);
     }
+
+    
 
     public boolean guardarMascota() {
 
         String sql = "INSERT INTO public.mascota(\n"
-                + "	 mas_nombremascota, mas_sexo, mas_raza, mas_especie, mas_foto, mas_estado, cli_id,mas_fechaNac)\n"
-                + "	VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
+                + "	 mas_nombremascota, mas_sexo, mas_raza, mas_especie, mas_foto, mas_estado,mas_esterilizado, cli_id,mas_fechaNac)\n"
+                + "	VALUES ( ?, ?, ?, ?, ?, ?, ?,?, ?);";
 
         try {
             PreparedStatement ps = pgcon.getCon().prepareStatement(sql);
@@ -37,8 +39,9 @@ public class ModeloMascota extends Mascota {
             ps.setString(4, getMas_especie());
             ps.setBytes(5, getFoto());
             ps.setInt(6, 1);
-            ps.setInt(7, getCli_idFK());
-            ps.setDate(8, new java.sql.Date(((Date) getMas_fechaNac()).getTime()));
+            ps.setBoolean(7, true);
+            ps.setInt(8, getCli_idFK());
+            ps.setDate(9, new java.sql.Date(((Date) getMas_fechaNac()).getTime()));
             ps.execute();
             ps.close();
             return true;
@@ -68,6 +71,7 @@ public class ModeloMascota extends Mascota {
                 mascota.setMas_raza(rs.getString("mas_raza"));
                 listMasc.add(mascota);
             }
+             rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -99,6 +103,8 @@ public class ModeloMascota extends Mascota {
                 mas.setMas_raza(rs.getString("mas_raza"));
 
             }
+            
+             rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -124,6 +130,7 @@ public class ModeloMascota extends Mascota {
                 }
 
             }
+             rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(ModeloMascota.class.getName()).log(Level.SEVERE, null, ex);
 

@@ -1,9 +1,11 @@
 package Control;
 
+import Modelo.ClasesModelo.ModeloCita;
 import Modelo.ClasesModelo.ModeloCliente;
 import Modelo.ClasesModelo.ModeloGrooming;
 import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
+import Vista.VistaCita;
 import Vista.VistaGrooming;
 import Vista.VistaMas;
 import Vista.VistaMascota;
@@ -137,7 +139,7 @@ public class ControlMenuPrincipal {
                         ControlRegistro ctn = new ControlRegistro(vRegis,Mper,Mmas,Ccli);
                         ctn.iniciarControl();
                         vRegis.resetKeyboardActions();
-                        vRegis.setSize(1155, 863);
+                        vRegis.setSize(960, 730);
                         vRegis.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
                         vistaMP.getPnlContent().add(vRegis, BorderLayout.CENTER);
@@ -152,7 +154,7 @@ public class ControlMenuPrincipal {
                         ModeloGrooming Mgro= new ModeloGrooming();
                         ControlGrooming cntG= new ControlGrooming(Vgro,cliG,masG,Mgro);
                         cntG.iniciarControl();
-                        Vgro.setSize(835, 863);
+                        Vgro.setSize(960, 730);
                         Vgro.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
                         vistaMP.getPnlContent().add(Vgro, BorderLayout.CENTER);
@@ -167,7 +169,7 @@ public class ControlMenuPrincipal {
                         ModeloMascota masM = new ModeloMascota();
                         ControlMascota cntM= new ControlMascota(vMas,cliM,masM);
                         cntM.iniciarControl();
-                        vMas.setSize(835, 863);
+                        vMas.setSize(960, 730);
                         vMas.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
                         vistaMP.getPnlContent().add(vMas, BorderLayout.CENTER);                       
@@ -175,11 +177,16 @@ public class ControlMenuPrincipal {
                         vistaMP.getPnlContent().repaint();
                         break;
                     case "historial":
-                        VistaMas vMasco = new VistaMas();
-                        vMasco.setSize(835, 670);
-                        vMasco.setLocation(0, 0);
+                        VistaCita vCita = new VistaCita();
+                        ModeloCliente cliC = new ModeloCliente(); 
+                        ModeloMascota masC = new ModeloMascota();
+                        ModeloCita citC= new ModeloCita();
+                        ControlCita cntC = new  ControlCita(vCita,cliC,masC,citC);
+                        cntC.iniciarControl();
+                        vCita.setSize(960, 730);
+                        vCita.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
-                        vistaMP.getPnlContent().add(vMasco, BorderLayout.CENTER);
+                        vistaMP.getPnlContent().add(vCita, BorderLayout.CENTER);
                         vistaMP.revalidate();
                         vistaMP.getPnlContent().repaint();
                     

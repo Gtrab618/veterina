@@ -686,7 +686,7 @@ public class VistaRegistro extends javax.swing.JPanel {
         btn_Vmodificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btn_Vmodificar);
 
-        add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 42));
+        add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 42));
 
         pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -741,7 +741,7 @@ public class VistaRegistro extends javax.swing.JPanel {
 
         lblSexo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblSexo.setText("Fecha de nacimiento");
-        pnlRegistro.add(lblSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
+        pnlRegistro.add(lblSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, -1, -1));
         pnlRegistro.add(txt_nombreMR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 200, -1));
         pnlRegistro.add(txt_razaR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 200, -1));
 
@@ -752,10 +752,10 @@ public class VistaRegistro extends javax.swing.JPanel {
         pnlRegistro.add(cmb_sexoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, -1, -1));
 
         btn_examinarR.setText("Examinar");
-        pnlRegistro.add(btn_examinarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, -1, -1));
+        pnlRegistro.add(btn_examinarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, -1, -1));
 
         lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        pnlRegistro.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 210, 210));
+        pnlRegistro.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 210, 210));
 
         lblIcoP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/RePer.png"))); // NOI18N
         pnlRegistro.add(lblIcoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 40));
@@ -764,10 +764,10 @@ public class VistaRegistro extends javax.swing.JPanel {
         pnlRegistro.add(lblIcoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 50, 50));
 
         btn_registrarR.setText("Registrar");
-        pnlRegistro.add(btn_registrarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, -1, -1));
+        pnlRegistro.add(btn_registrarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 590, -1, -1));
 
         btn_cancelarR.setText("Cancelar");
-        pnlRegistro.add(btn_cancelarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 530, -1, -1));
+        pnlRegistro.add(btn_cancelarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 590, -1, -1));
 
         tat_direccionR.setColumns(20);
         tat_direccionR.setRows(5);
@@ -845,13 +845,13 @@ public class VistaRegistro extends javax.swing.JPanel {
         lblSexo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblSexo1.setText("Sexo");
         pnlRegistro.add(lblSexo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, -1, -1));
-        pnlRegistro.add(dtc_fechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 170, -1));
+        pnlRegistro.add(dtc_fechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 170, -1));
 
         lbledad.setText("Edad Actual");
-        pnlRegistro.add(lbledad, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
-        pnlRegistro.add(lblEdadMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 240, 30));
+        pnlRegistro.add(lbledad, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
+        pnlRegistro.add(lblEdadMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 240, 30));
 
-        add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
+        add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, 690));
 
         pnlModificar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -964,7 +964,7 @@ public class VistaRegistro extends javax.swing.JPanel {
         lblAlertaMsaf.setText("Ingrese solo texto");
         pnlModificar.add(lblAlertaMsaf, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
 
-        add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
+        add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, 690));
 
         pnl_busqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1004,7 +1004,7 @@ public class VistaRegistro extends javax.swing.JPanel {
         jLabel4.setText("Ingrese");
         pnl_busqueda.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        add(pnl_busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 840, 630));
+        add(pnl_busqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, 690));
     }// </editor-fold>//GEN-END:initComponents
 
 

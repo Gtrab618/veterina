@@ -75,12 +75,13 @@ public class ModeloCliente extends Cliente {
                 cliente.setPer_apellido1(rs.getString("per_apellido1"));
                 cliente.setPer_apellido2(rs.getString("per_apellido2"));
                 listaClientes.add(cliente);
+               
             }
-
+             rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return listaClientes;
     }
 
@@ -104,7 +105,7 @@ public class ModeloCliente extends Cliente {
                 cliente.setCli_telefono(rs.getString("cli_telefono"));
 
             }
-
+            rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -130,7 +131,7 @@ public class ModeloCliente extends Cliente {
                 cliente.setPer_apellido2(rs.getString("per_apellido2"));
                 listaClientes.add(cliente);
             }
-
+             rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
         }

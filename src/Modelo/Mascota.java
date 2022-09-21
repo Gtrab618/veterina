@@ -10,6 +10,7 @@ public class Mascota {
     private String mas_nombreMas;
     private String mas_sexo;
     private String mas_raza;
+    private boolean mas_esterilizado;
     private String mas_especie;
     private Date mas_fechaNac;
     private byte[] foto;
@@ -19,17 +20,20 @@ public class Mascota {
     public Mascota() {
     }
 
-    public Mascota(int mas_id, String mas_nombreMas, String mas_sexo, String mas_raza, String mas_especie,Date mas_fechaNac, byte[] foto, String mas_estado, int cli_idFK) {
+    public Mascota(int mas_id, String mas_nombreMas, String mas_sexo, String mas_raza, boolean mas_esterilizado, String mas_especie, Date mas_fechaNac, byte[] foto, String mas_estado, int cli_idFK) {
         this.mas_id = mas_id;
         this.mas_nombreMas = mas_nombreMas;
         this.mas_sexo = mas_sexo;
         this.mas_raza = mas_raza;
+        this.mas_esterilizado = mas_esterilizado;
         this.mas_especie = mas_especie;
         this.mas_fechaNac = mas_fechaNac;
         this.foto = foto;
         this.mas_estado = mas_estado;
         this.cli_idFK = cli_idFK;
     }
+    
+    
 
     public Date getMas_fechaNac() {
         return mas_fechaNac;
@@ -37,6 +41,14 @@ public class Mascota {
 
     public void setMas_fechaNac(Date mas_fechaNac) {
         this.mas_fechaNac = mas_fechaNac;
+    }
+
+    public boolean isMas_esterilizado() {
+        return mas_esterilizado;
+    }
+
+    public void setMas_esterilizado(boolean mas_esterilizado) {
+        this.mas_esterilizado = mas_esterilizado;
     }
 
     

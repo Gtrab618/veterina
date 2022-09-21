@@ -298,7 +298,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Historial");
+        jLabel8.setText("Historia Clinica");
 
         javax.swing.GroupLayout pnlBtnHistLayout = new javax.swing.GroupLayout(pnlBtnHist);
         pnlBtnHist.setLayout(pnlBtnHistLayout);
@@ -309,7 +309,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         pnlBtnHistLayout.setVerticalGroup(
             pnlBtnHistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +326,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         pnlMenu.add(pnlBtnHist, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 308, 300, 60));
 
-        fondo.add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 750));
+        fondo.add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 810));
 
         pnlHead.setBackground(new java.awt.Color(23, 32, 52));
         pnlHead.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -335,7 +335,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         lblFecha.setForeground(new java.awt.Color(255, 255, 255));
         pnlHead.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 15, 533, 48));
 
-        fondo.add(pnlHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 840, 80));
+        fondo.add(pnlHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 960, 80));
 
         pnlContent.setPreferredSize(new java.awt.Dimension(840, 590));
         pnlContent.setLayout(null);
@@ -348,11 +348,12 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/fodonPrin.png"))); // NOI18N
         pnlContent.add(lblfondo);
-        lblfondo.setBounds(0, 0, 844, 670);
+        lblfondo.setBounds(0, 0, 960, 730);
 
-        fondo.add(pnlContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 840, 670));
+        fondo.add(pnlContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 960, 730));
+        pnlContent.getAccessibleContext().setAccessibleName("");
 
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 750));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 810));
 
         jMenu1.setText("Ajustes");
 

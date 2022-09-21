@@ -346,13 +346,13 @@ public class VistaMascota extends javax.swing.JPanel {
         btn_Vmodificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btn_Vmodificar);
 
-        add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 42));
+        add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 42));
 
         pnlBmascota.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lblTitle.setText("Gestión Mascota");
-        pnlBmascota.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 0, -1, -1));
+        pnlBmascota.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
         pnlBmascota.add(txtBpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 244, -1));
 
         lbltext.setText("Ingrese");
@@ -369,13 +369,13 @@ public class VistaMascota extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Cedula", "Nombre", "Papellido", "Sapellido"
+                "Cedula", "Nombre", "Primer apellido", "Segundo apellido"
             }
         ));
         srlBpersona.setViewportView(tblBpersona);
 
-        pnlBmascota.add(srlBpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 220));
-        pnlBmascota.add(lblBFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 180, 180));
+        pnlBmascota.add(srlBpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 670, 220));
+        pnlBmascota.add(lblBFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 210, 220));
 
         lblBselecMas.setText("Seleccione la mascota");
         pnlBmascota.add(lblBselecMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
@@ -393,10 +393,10 @@ public class VistaMascota extends javax.swing.JPanel {
         ));
         scrBmascota.setViewportView(tblBmascota);
 
-        pnlBmascota.add(scrBmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 490, 210));
+        pnlBmascota.add(scrBmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 510, 210));
 
         btnBgestionMascota.setText("Gestionar Mascota");
-        pnlBmascota.add(btnBgestionMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, -1, -1));
+        pnlBmascota.add(btnBgestionMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 570, -1, -1));
 
         lblAlertBne.setForeground(new java.awt.Color(255, 0, 0));
         lblAlertBne.setText("No hay coincidencias");
@@ -406,7 +406,7 @@ public class VistaMascota extends javax.swing.JPanel {
         lblBAlertMne.setText("Mascotas no encontradas");
         pnlBmascota.add(lblBAlertMne, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
-        add(pnlBmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 862, 630));
+        add(pnlBmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 960, 680));
 
         pnlGestionarM.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -504,7 +504,7 @@ public class VistaMascota extends javax.swing.JPanel {
         lblAlertaMnf.setText("Ingrese solo texto");
         pnlGestionarM.add(lblAlertaMnf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
-        add(pnlGestionarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 860, 630));
+        add(pnlGestionarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 960, 680));
     }// </editor-fold>//GEN-END:initComponents
 
 
