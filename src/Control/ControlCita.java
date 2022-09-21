@@ -4,6 +4,7 @@ import Modelo.ClasesModelo.ModeloCita;
 import Modelo.ClasesModelo.ModeloCliente;
 import Modelo.ClasesModelo.ModeloMascota;
 import Modelo.Cliente;
+import Modelo.Conexion;
 import Modelo.Mascota;
 import Vista.VistaCita;
 import com.toedter.calendar.JDateChooser;
@@ -11,11 +12,21 @@ import java.awt.event.MouseEvent;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class ControlCita {
 
@@ -26,6 +37,7 @@ public class ControlCita {
     private ModeloMascota masM;
     private String dni_persona = "";
     private String id_mas = "";
+    private JDateChooser fecha = new JDateChooser();
     private Validaciones vali = new Validaciones();
     private int i = 0;
 
@@ -42,6 +54,7 @@ public class ControlCita {
         //eventos para cambiar de panel
         Vcita.getBtn_Vbuscar().addActionListener(l -> cambiarPanel("buscar"));
         Vcita.getBtn_Vregistrar().addActionListener(l -> cambiarPanel("agregar"));
+        Vcita.getBtnCimprimirHis().addActionListener(l -> imprimirRepoCita());
         //eventos para las tablas 
         evtVerMascota(Vcita.getTblBpersona());
         evtVerFotoMas(Vcita.getTblBmascota());
@@ -53,7 +66,7 @@ public class ControlCita {
         Vcita.getBtnCgenerarConsu().addActionListener(l -> generarConsulta());
         //reiniciar id al ingresar buscqueda incremental
         evtTxtReiniId(Vcita.getTxtBpersona());
-    
+
     }
 
     ///------------------------cambio de panes ------------------------------------
@@ -65,12 +78,12 @@ public class ControlCita {
                 Vcita.getPnlBmascota().setVisible(true);
                 limpiarVconsulta();
                 Vcita.getTblBpersona().clearSelection();
-                
+
                 break;
 
             case "agregar":
                 limpiarVconsulta();
-                
+
                 Vcita.getPnlCmascota().setVisible(true);
                 Vcita.getPnlBmascota().setVisible(false);
                 break;
@@ -105,7 +118,7 @@ public class ControlCita {
 //    
     //----------------------------todo lo relacionado con tablas-----------------------
     private void llenarTabla() {
-        
+
         i = 0;
         //desactivar lbl de alerta
 //        Vcita.getLblAlertBne().setVisible(false);
@@ -203,7 +216,7 @@ public class ControlCita {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
 //                limiarIdBtable();
                 verMascotaDni(evt);
-                
+
             }
         });
     }
@@ -230,8 +243,8 @@ public class ControlCita {
         });
 
     }
-    
-        private void evtTxtReiniId(JTextField txt) {
+
+    private void evtTxtReiniId(JTextField txt) {
 
         txt.addMouseListener(new java.awt.event.MouseAdapter() {
 
@@ -257,7 +270,7 @@ public class ControlCita {
         //almaceno en dni la cedula para despues comprobar si esta seleccionado mascota y persona y pasar a la siguiente ventana
         dni_persona = cedulaB;
         llenarTablaMascotas(cedulaB);
-        
+
     }
 
     //busco las mascotas
@@ -316,7 +329,6 @@ public class ControlCita {
         Vcita.getLblCsexo().setText(mas.getMas_sexo());
         Vcita.getLblCespecie().setText(mas.getMas_especie());
 
-        JDateChooser fecha = new JDateChooser();
         fecha.setDate(mas.getMas_fechaNac());
         Date fechaNac = fecha.getDate();
         Vcita.getLblCedad().setText(vali.calcularEdad(fechaNac));
@@ -386,6 +398,33 @@ public class ControlCita {
         }
     }
 
+    private void imprimirRepoCita() {
+        String edad = Vcita.getLblCedad().getText();
+        String rutaLogo = System.getProperty("user.dir");
+        rutaLogo = rutaLogo + "/src/Iconos/vtMain.png";
+        try {
+            Conexion con = new Conexion();
+
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/reportes/ReportCita.jasper"));
+            //cargar ruta de imagen
+            Map<String, Object> parametro = new HashMap<String, Object>();
+            //ver edad
+            Mascota mas = masM.consultarMascotaId(id_mas);
+            fecha.setDate(mas.getMas_fechaNac());
+            Date fechaNac = fecha.getDate();
+
+            parametro.put("rutaLogo", rutaLogo);
+            parametro.put("edad", vali.calcularEdad(fechaNac));
+
+            parametro.put("idMascota", Integer.parseInt(id_mas));
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametro, con.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(ControlGrooming.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     //------------------descativar alertas bntones etc---------------------
     private void desactivarBtnC() {
 
@@ -409,9 +448,9 @@ public class ControlCita {
         Vcita.getLblAlertaCov().setVisible(false);
         Vcita.getLblAlertaCmv().setVisible(false);
     }
-    
+
     //alertas 1 jpanel
-    private void descativarAlert2(){
+    private void descativarAlert2() {
         Vcita.getLblBAlertMne().setVisible(false);
         Vcita.getLblBselecmas().setVisible(false);
         Vcita.getLblAlertBne().setVisible(false);
@@ -438,13 +477,13 @@ public class ControlCita {
         Vcita.getBtnCgenerarConsu().setEnabled(false);
         limpiarId();
     }
-    
-    private void limpiarId(){
+
+    private void limpiarId() {
         dni_persona = "";
         id_mas = "";
     }
-    
-    private void limpiarPersonaAnimatabla(){
+
+    private void limpiarPersonaAnimatabla() {
         Vcita.getTblBmascota().clearSelection();
         Vcita.getTblBpersona().clearSelection();
         Vcita.getScrBmascota().setVisible(false);
