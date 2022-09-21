@@ -22,6 +22,7 @@ public class ControlLogin extends Thread {
     private VistaLogin vistaLogin;
     private ModeloPersonal modelo;
     private int banderaAni = 1;
+   
 
     private ImageIcon imgAni1 = new ImageIcon("src/Iconos/login/ani1.png"),
             imgAni2 = new ImageIcon("src/Iconos/login/ani2.png"),
@@ -92,10 +93,12 @@ public class ControlLogin extends Thread {
         char clave[] = vistaLogin.getTxtContraseña().getPassword();
         String clavedef = new String(clave);
 
-        if (!vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario") && !clavedef.equalsIgnoreCase("********") && !vistaLogin.getTxtNombreUsuario().getText().equals("") && !clavedef.equalsIgnoreCase("")  ) {
+        if (!vistaLogin.getTxtNombreUsuario().getText().equals("Ingrese su nombre de usuario") && !clavedef.equalsIgnoreCase("********") && !vistaLogin.getTxtNombreUsuario().getText().equals("") && !clavedef.equalsIgnoreCase("")) {
             //quitar de la vista las alertas 
 
             if (modelo.iniciarSecion(vistaLogin.getTxtNombreUsuario().getText().trim(), clavedef)) {
+               //terminar hilo de animaciones 
+                banderaAni=5;
                 vistaLogin.dispose();
                 VistaMenuPrincipal menuv = new VistaMenuPrincipal();
                 Control.ControlMenuPrincipal controlador = new ControlMenuPrincipal(menuv);
@@ -143,53 +146,53 @@ public class ControlLogin extends Thread {
     //contraola el movimiento de las imagenes
     private void moverImagenes() {
 
-        while (banderaAni == 1) {
-            vistaLogin.getLbl_ani1().setLocation(vistaLogin.getLbl_ani1().getLocation().x - 1, vistaLogin.getLbl_ani1().getLocation().y);
-            hiloTrans();
-            if (vistaLogin.getLbl_ani1().getLocation().x == -350) {
-                //siguiente animacion
-                banderaAni = 2;
-                //resetear posicion
-                vistaLogin.getLbl_ani1().setLocation(470, vistaLogin.getLbl_ani1().getLocation().y);
-                //recursividad
-                moverImagenes();
+      
+            while (banderaAni == 1) {
+                vistaLogin.getLbl_ani1().setLocation(vistaLogin.getLbl_ani1().getLocation().x - 1, vistaLogin.getLbl_ani1().getLocation().y);
+                hiloTrans();
+                if (vistaLogin.getLbl_ani1().getLocation().x == -350) {
+                    //siguiente animacion
+                    banderaAni = 2;
+                    //resetear posicion
+                    vistaLogin.getLbl_ani1().setLocation(470, vistaLogin.getLbl_ani1().getLocation().y);
+                    //recursividad
+                    moverImagenes();
+                }
+                //dormir hilo cuando se centra la imagen
+                if (vistaLogin.getLbl_ani1().getLocation().x == 50) {
+                    esperaTrans();
+                }
             }
-            //dormir hilo cuando se centra la imagen
-            if (vistaLogin.getLbl_ani1().getLocation().x == 50) {
-                esperaTrans();
-            }
-        }
 
-        while (banderaAni == 2) {
-            vistaLogin.getLbl_ani2().setLocation(vistaLogin.getLbl_ani2().getLocation().x - 1, vistaLogin.getLbl_ani2().getLocation().y);
-            hiloTrans();
-            if (vistaLogin.getLbl_ani2().getLocation().x == -350) {
-                banderaAni = 3;
-                vistaLogin.getLbl_ani2().setLocation(470, vistaLogin.getLbl_ani2().getLocation().y);
-                moverImagenes();
+            while (banderaAni == 2) {
+                vistaLogin.getLbl_ani2().setLocation(vistaLogin.getLbl_ani2().getLocation().x - 1, vistaLogin.getLbl_ani2().getLocation().y);
+                hiloTrans();
+                if (vistaLogin.getLbl_ani2().getLocation().x == -350) {
+                    banderaAni = 3;
+                    vistaLogin.getLbl_ani2().setLocation(470, vistaLogin.getLbl_ani2().getLocation().y);
+                    moverImagenes();
+                }
+                if (vistaLogin.getLbl_ani2().getLocation().x == 50) {
+                    esperaTrans();
+                }
             }
-            if (vistaLogin.getLbl_ani2().getLocation().x == 50) {
-                esperaTrans();
-            }
-        }
 
-        while (banderaAni == 3) {
-            vistaLogin.getLbl_ani3().setLocation(vistaLogin.getLbl_ani3().getLocation().x - 1, vistaLogin.getLbl_ani3().getLocation().y);
-            hiloTrans();
-            if (vistaLogin.getLbl_ani3().getLocation().x == -350) {
+            while (banderaAni == 3) {
+                vistaLogin.getLbl_ani3().setLocation(vistaLogin.getLbl_ani3().getLocation().x - 1, vistaLogin.getLbl_ani3().getLocation().y);
+                hiloTrans();
+                if (vistaLogin.getLbl_ani3().getLocation().x == -350) {
 
-                banderaAni = 1;
-                vistaLogin.getLbl_ani3().setLocation(470, vistaLogin.getLbl_ani3().getLocation().y);
-                moverImagenes();
+                    banderaAni = 1;
+                    vistaLogin.getLbl_ani3().setLocation(470, vistaLogin.getLbl_ani3().getLocation().y);
+                    moverImagenes();
+                }
+                if (vistaLogin.getLbl_ani3().getLocation().x == 50) {
+                    esperaTrans();
+                }
             }
-            if (vistaLogin.getLbl_ani3().getLocation().x == 50) {
-                esperaTrans();
-            }
-        }
+        
 
     }
-
-
 
     //tiempo de espera para mover imagen
     private void hiloTrans() {

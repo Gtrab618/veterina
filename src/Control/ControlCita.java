@@ -215,6 +215,7 @@ public class ControlCita {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
 //                limiarIdBtable();
+                Vcita.getBtnCimprimirHis().setEnabled(false);
                 verMascotaDni(evt);
 
             }
@@ -251,6 +252,7 @@ public class ControlCita {
             @Override
             public void mousePressed(MouseEvent e) {
                 limpiarId();
+
                 Vcita.getScrBmascota().setVisible(false);
             }
 

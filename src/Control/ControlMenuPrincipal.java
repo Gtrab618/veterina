@@ -5,6 +5,7 @@ import Modelo.ClasesModelo.ModeloCliente;
 import Modelo.ClasesModelo.ModeloGrooming;
 import Modelo.ClasesModelo.ModeloPersona;
 import Modelo.ClasesModelo.ModeloMascota;
+import Vista.VistaAcerca;
 import Vista.VistaCita;
 import Vista.VistaGrooming;
 import Vista.VistaMas;
@@ -12,6 +13,7 @@ import Vista.VistaMascota;
 
 import Vista.VistaMenuPrincipal;
 import Vista.VistaRegistro;
+import Vista.Vistaiconos;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
@@ -26,13 +28,11 @@ import javax.swing.JPanel;
 public class ControlMenuPrincipal {
 
     private VistaMenuPrincipal vistaMP;
-   
+
     private JPanel[] panelsBtn = new JPanel[5];
     //Controla el cambio de temas de modo dark
     private int bandera = 0;
     private int r = 23, g = 32, b = 48;
- 
-    
 
     public ControlMenuPrincipal(VistaMenuPrincipal vista) {
         this.vistaMP = vista;
@@ -42,13 +42,16 @@ public class ControlMenuPrincipal {
         referenciarObjetos();
         cambiarFondo(r, g, b);
         vista.setVisible(true);
-        
+
     }
 
     public void iniciarControlMenu() {
         //labels
         vistaMP.getMenuDarkMode().addActionListener(l -> VisualizarDarkMode());
-        
+        //credios 
+        vistaMP.getMnuAcercaDe().addActionListener(l -> mostrarIntegrantes());
+        vistaMP.getMnuIconos().addActionListener(l -> mostrarcrecitos());
+        //finaliza los creditos
 
         evtMouseBtn(vistaMP.getPnlBtnClien(), "cliente");
         evtMouseBtn(vistaMP.getPnlBtnGroo(), "grooming");
@@ -64,9 +67,7 @@ public class ControlMenuPrincipal {
         vistaMP.getPnlBtnHist().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         //vista Registro personaMascota
-        
         //desactivar alertas
-
         //Poner fecha
         LocalDate now = LocalDate.now();
         int year = now.getYear();
@@ -75,9 +76,7 @@ public class ControlMenuPrincipal {
         String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", " Septiembre",
             "Octubre", "Noviembre", "Diciemrbre"};
         vistaMP.getLblFecha().setText("Es " + dia + " de " + meses[month - 1] + " de " + year);
-        
-        
-        
+
     }
 
     private void evtMouseBtn(JPanel panel, String name) {
@@ -133,10 +132,10 @@ public class ControlMenuPrincipal {
                 switch (name) {
                     case "cliente":
                         VistaRegistro vRegis = new VistaRegistro();
-                        ModeloPersona Mper= new ModeloPersona();
+                        ModeloPersona Mper = new ModeloPersona();
                         ModeloMascota Mmas = new ModeloMascota();
                         ModeloCliente Ccli = new ModeloCliente();
-                        ControlRegistro ctn = new ControlRegistro(vRegis,Mper,Mmas,Ccli);
+                        ControlRegistro ctn = new ControlRegistro(vRegis, Mper, Mmas, Ccli);
                         ctn.iniciarControl();
                         vRegis.resetKeyboardActions();
                         vRegis.setSize(960, 730);
@@ -145,43 +144,43 @@ public class ControlMenuPrincipal {
                         vistaMP.getPnlContent().add(vRegis, BorderLayout.CENTER);
                         vistaMP.revalidate();
                         vistaMP.getPnlContent().repaint();
-                        
+
                         break;
                     case "grooming":
-                        ModeloCliente cliG= new ModeloCliente();
+                        ModeloCliente cliG = new ModeloCliente();
                         VistaGrooming Vgro = new VistaGrooming();
                         ModeloMascota masG = new ModeloMascota();
-                        ModeloGrooming Mgro= new ModeloGrooming();
-                        ControlGrooming cntG= new ControlGrooming(Vgro,cliG,masG,Mgro);
+                        ModeloGrooming Mgro = new ModeloGrooming();
+                        ControlGrooming cntG = new ControlGrooming(Vgro, cliG, masG, Mgro);
                         cntG.iniciarControl();
                         Vgro.setSize(960, 730);
                         Vgro.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
                         vistaMP.getPnlContent().add(Vgro, BorderLayout.CENTER);
-                        vistaMP.revalidate();       
+                        vistaMP.revalidate();
                         vistaMP.getPnlContent().repaint();
-     
+
                         break;
                     case "mascota":
-                       
+
                         VistaMascota vMas = new VistaMascota();
-                        ModeloCliente cliM = new ModeloCliente(); 
+                        ModeloCliente cliM = new ModeloCliente();
                         ModeloMascota masM = new ModeloMascota();
-                        ControlMascota cntM= new ControlMascota(vMas,cliM,masM);
+                        ControlMascota cntM = new ControlMascota(vMas, cliM, masM);
                         cntM.iniciarControl();
                         vMas.setSize(960, 730);
                         vMas.setLocation(0, 0);
                         vistaMP.getPnlContent().removeAll();
-                        vistaMP.getPnlContent().add(vMas, BorderLayout.CENTER);                       
+                        vistaMP.getPnlContent().add(vMas, BorderLayout.CENTER);
                         vistaMP.revalidate();
                         vistaMP.getPnlContent().repaint();
                         break;
                     case "historial":
                         VistaCita vCita = new VistaCita();
-                        ModeloCliente cliC = new ModeloCliente(); 
+                        ModeloCliente cliC = new ModeloCliente();
                         ModeloMascota masC = new ModeloMascota();
-                        ModeloCita citC= new ModeloCita();
-                        ControlCita cntC = new  ControlCita(vCita,cliC,masC,citC);
+                        ModeloCita citC = new ModeloCita();
+                        ControlCita cntC = new ControlCita(vCita, cliC, masC, citC);
                         cntC.iniciarControl();
                         vCita.setSize(960, 730);
                         vCita.setLocation(0, 0);
@@ -189,7 +188,7 @@ public class ControlMenuPrincipal {
                         vistaMP.getPnlContent().add(vCita, BorderLayout.CENTER);
                         vistaMP.revalidate();
                         vistaMP.getPnlContent().repaint();
-                    
+
                         break;
 
                 }
@@ -197,8 +196,6 @@ public class ControlMenuPrincipal {
             }
         });
     }
-
-
 
     private void VisualizarDarkMode() {
         if (vistaMP.getMenuDarkMode().isSelected()) {
@@ -239,24 +236,47 @@ public class ControlMenuPrincipal {
         vistaMP.getPnlHead().setBackground(new Color(r, g, b + 30));
     }
 
+    private void mostrarIntegrantes() {
+        VistaAcerca acer = new VistaAcerca();
+        ControlAcercaDe hilo1 = new ControlAcercaDe(acer);
+        hilo1.start();
 
-
-    //iniciar sin darck mode
-    private void SinDarck(){
-        vistaMP.getMenuDarkMode().isSelected();
-        EventQueue.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    FlatIntelliJLaf.setup();
-                    FlatLaf.updateUI();
-                    cambiarFondo(13, 71, 161);
-                    r = 13;
-                    g = 71;
-                    b = 161;
-                }
-            });
+        acer.setSize(960, 730);
+        acer.setLocation(0, 0);
+        vistaMP.getPnlContent().removeAll();
+        vistaMP.getPnlContent().add(acer, BorderLayout.CENTER);
+        vistaMP.revalidate();
+        vistaMP.getPnlContent().repaint();
     }
 
-    
+    private void mostrarcrecitos() {
+
+        Vistaiconos ico = new Vistaiconos();
    
+
+        ico.setSize(960, 730);
+        ico.setLocation(0, 0);
+        vistaMP.getPnlContent().removeAll();
+        vistaMP.getPnlContent().add(ico, BorderLayout.CENTER);
+        vistaMP.revalidate();
+        vistaMP.getPnlContent().repaint();
+
+    }
+
+    //iniciar sin darck mode
+    private void SinDarck() {
+        vistaMP.getMenuDarkMode().isSelected();
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                FlatIntelliJLaf.setup();
+                FlatLaf.updateUI();
+                cambiarFondo(13, 71, 161);
+                r = 13;
+                g = 71;
+                b = 161;
+            }
+        });
+    }
+
 }

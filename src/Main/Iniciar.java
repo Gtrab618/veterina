@@ -16,6 +16,7 @@ public class Iniciar {
         ControlLogin hilo2 = new ControlLogin("animacion", vLogin);
         hilo1.start();
         hilo2.start();
+        
         FlatCarbonIJTheme.setup();
 
         

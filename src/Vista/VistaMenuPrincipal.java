@@ -1,14 +1,11 @@
 
 package Vista;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class VistaMenuPrincipal extends javax.swing.JFrame {
@@ -33,13 +30,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         this.LblFotoUsuario = LblFotoUsuario;
     }
 
-    public JLabel getLblNombreUsuario() {
-        return LblNombreUsuario;
-    }
-
-    public void setLblNombreUsuario(JLabel LblNombreUsuario) {
-        this.LblNombreUsuario = LblNombreUsuario;
-    }
 
     public JLabel getLblTipoAcceso() {
         return LblTipoAcceso;
@@ -137,6 +127,22 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     public void setPnlContent(JPanel pnlContent) {
         this.pnlContent = pnlContent;
     }
+
+    public JMenuItem getMnuAcercaDe() {
+        return mnuAcercaDe;
+    }
+
+    public void setMnuAcercaDe(JMenuItem mnuAcercaDe) {
+        this.mnuAcercaDe = mnuAcercaDe;
+    }
+
+    public JMenuItem getMnuIconos() {
+        return mnuIconos;
+    }
+
+    public void setMnuIconos(JMenuItem mnuIconos) {
+        this.mnuIconos = mnuIconos;
+    }
     
     
     
@@ -148,7 +154,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         fondo = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         LblFotoUsuario = new javax.swing.JLabel();
-        LblNombreUsuario = new javax.swing.JLabel();
         LblTipoAcceso = new javax.swing.JLabel();
         pnlBtnClien = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -166,10 +171,12 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         lblFecha = new javax.swing.JLabel();
         pnlContent = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        lblfondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuDarkMode = new javax.swing.JCheckBoxMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mnuAcercaDe = new javax.swing.JMenuItem();
+        mnuIconos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -179,19 +186,14 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         pnlMenu.setBackground(new java.awt.Color(23, 32, 52));
         pnlMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LblFotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Avatar_60px.png"))); // NOI18N
+        LblFotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/admin.png"))); // NOI18N
         LblFotoUsuario.setToolTipText("Foto Usuario");
-        pnlMenu.add(LblFotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 6, -1, -1));
-
-        LblNombreUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LblNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        LblNombreUsuario.setText("N O M B R E     ");
-        pnlMenu.add(LblNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 18, 159, -1));
+        pnlMenu.add(LblFotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 70));
 
         LblTipoAcceso.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LblTipoAcceso.setForeground(new java.awt.Color(255, 255, 255));
         LblTipoAcceso.setText("ADMIN");
-        pnlMenu.add(LblTipoAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 49, 159, -1));
+        pnlMenu.add(LblTipoAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 70, -1));
 
         pnlBtnClien.setBackground(new java.awt.Color(23, 32, 70));
         pnlBtnClien.setPreferredSize(new java.awt.Dimension(148, 60));
@@ -344,11 +346,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 102, 153));
         jLabel10.setText("Veterinaria Medican");
         pnlContent.add(jLabel10);
-        jLabel10.setBounds(50, 50, 318, 48);
-
-        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/fodonPrin.png"))); // NOI18N
-        pnlContent.add(lblfondo);
-        lblfondo.setBounds(0, 0, 960, 730);
+        jLabel10.setBounds(100, 100, 318, 48);
 
         fondo.add(pnlContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 960, 730));
         pnlContent.getAccessibleContext().setAccessibleName("");
@@ -362,6 +360,16 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Creditos");
+
+        mnuAcercaDe.setText("Acerca de");
+        jMenu2.add(mnuAcercaDe);
+
+        mnuIconos.setText("Iconos");
+        jMenu2.add(mnuIconos);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -370,7 +378,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblFotoUsuario;
-    private javax.swing.JLabel LblNombreUsuario;
     private javax.swing.JLabel LblTipoAcceso;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
@@ -383,10 +390,12 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblFecha;
-    private javax.swing.JLabel lblfondo;
     private javax.swing.JCheckBoxMenuItem menuDarkMode;
+    private javax.swing.JMenuItem mnuAcercaDe;
+    private javax.swing.JMenuItem mnuIconos;
     private javax.swing.JPanel pnlBtnClien;
     private javax.swing.JPanel pnlBtnGroo;
     private javax.swing.JPanel pnlBtnHist;
