@@ -382,7 +382,7 @@ public class ControlMascota {
     //registradas
     private void buscar() {
         String criterio = Vmas.getTxtBpersona().getText();
-
+        criterio=criterio.toLowerCase();
         if (!criterio.equals("")) {
             //buscar los clientes 
             llenarTablaBusqueda(criterio);

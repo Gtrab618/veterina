@@ -799,7 +799,7 @@ public class ControlRegistro {
 
     private void buscar() {
         String criterio = vRegis.getTxt_buscar().getText();
-
+        criterio=criterio.toLowerCase();
         if (!criterio.equals("")) {
 
             llenarTablaBusqueda(criterio);

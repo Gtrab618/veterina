@@ -157,8 +157,13 @@ public class VistaLogin extends javax.swing.JFrame {
         pnl_animacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_ani1.setBackground(new java.awt.Color(204, 204, 204));
+        lbl_ani1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/ani1.png"))); // NOI18N
         pnl_animacion.add(lbl_ani1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 360, 230));
+
+        lbl_ani2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/ani2.png"))); // NOI18N
         pnl_animacion.add(lbl_ani2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 360, 230));
+
+        lbl_ani3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/login/ani3.png"))); // NOI18N
         pnl_animacion.add(lbl_ani3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 360, 230));
 
         pnl_1.add(pnl_animacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 840, 230));

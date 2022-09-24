@@ -24,9 +24,7 @@ public class ControlLogin extends Thread {
     private int banderaAni = 1;
    
 
-    private ImageIcon imgAni1 = new ImageIcon("src/Iconos/login/ani1.png"),
-            imgAni2 = new ImageIcon("src/Iconos/login/ani2.png"),
-            imgAni3 = new ImageIcon("src/Iconos/login/ani3.png");
+   
 
     public ControlLogin(String name, VistaLogin vistalogin, ModeloPersonal modelo) {
         super(name);
@@ -41,7 +39,7 @@ public class ControlLogin extends Thread {
     public ControlLogin(String name, VistaLogin vistalogin) {
         super(name);
         this.vistaLogin = vistalogin;
-        referenciarObjetos();
+    
     }
 
     @Override
@@ -131,17 +129,8 @@ public class ControlLogin extends Thread {
 
     }
 
-    private void referenciarObjetos() {
-        vistaLogin.getLbl_ani1().setIcon(escalarImagen(imgAni1, vistaLogin.getLbl_ani1()));
-        vistaLogin.getLbl_ani2().setIcon(escalarImagen(imgAni2, vistaLogin.getLbl_ani2()));
-        vistaLogin.getLbl_ani3().setIcon(escalarImagen(imgAni3, vistaLogin.getLbl_ani3()));
-
-    }
-
-    private ImageIcon escalarImagen(ImageIcon imgTransformar, JLabel tamanolbl) {
-        ImageIcon imagenEscalada = new ImageIcon(imgTransformar.getImage().getScaledInstance(tamanolbl.getWidth(), tamanolbl.getHeight(), Image.SCALE_AREA_AVERAGING));
-        return imagenEscalada;
-    }
+ 
+ 
 
     //contraola el movimiento de las imagenes
     private void moverImagenes() {

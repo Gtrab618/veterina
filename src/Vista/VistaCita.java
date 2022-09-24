@@ -611,8 +611,8 @@ public class VistaCita extends javax.swing.JPanel {
         pnlBmascota.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitle.setText("Citas");
-        pnlBmascota.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+        lblTitle.setText("Historial clinico");
+        pnlBmascota.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
         pnlBmascota.add(txtBpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 244, -1));
 
         lbltext.setText("Ingrese");
@@ -655,8 +655,8 @@ public class VistaCita extends javax.swing.JPanel {
         pnlBmascota.add(scrBmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 740, 210));
 
         btnCrearCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/agregar_32px.png"))); // NOI18N
-        btnCrearCita.setText("Crear cita");
-        pnlBmascota.add(btnCrearCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 190, -1));
+        btnCrearCita.setText("Crear reporte");
+        pnlBmascota.add(btnCrearCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 220, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar_32px.png"))); // NOI18N
         pnlBmascota.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));

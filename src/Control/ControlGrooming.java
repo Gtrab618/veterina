@@ -246,7 +246,7 @@ public class ControlGrooming {
     //busco las mascotas
     private void buscar() {
         String criterio = Vgro.getTxtBpersona().getText();
-
+        criterio=criterio.toLowerCase();
         if (!criterio.equals("")) {
             //buscar los clientes 
             llenarTablaBusqueda(criterio);

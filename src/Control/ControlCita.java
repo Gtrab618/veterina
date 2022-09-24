@@ -278,7 +278,8 @@ public class ControlCita {
     //busco las mascotas
     private void buscar() {
         String criterio = Vcita.getTxtBpersona().getText();
-
+        criterio=criterio.toLowerCase();
+            
         if (!criterio.equals("")) {
             //buscar los clientes 
             llenarTablaBusqueda(criterio);
@@ -286,7 +287,7 @@ public class ControlCita {
         } else {
 
             llenarTabla();
-//            Vcita.getLblAlertBne().setVisible(false);
+            Vcita.getLblAlertBne().setVisible(false);
         }
     }
 
