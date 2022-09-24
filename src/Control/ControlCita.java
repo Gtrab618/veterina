@@ -403,8 +403,9 @@ public class ControlCita {
 
     private void imprimirRepoCita() {
         String edad = Vcita.getLblCedad().getText();
-        String rutaLogo = System.getProperty("user.dir");
-        rutaLogo = rutaLogo + "/src/Iconos/vtMain.png";
+        //solo sirve para neat no jar
+//        String rutaLogo = System.getProperty("user.dir");
+//        rutaLogo = "/Iconos/vtMain.png";
         try {
             Conexion con = new Conexion();
 
@@ -416,7 +417,7 @@ public class ControlCita {
             fecha.setDate(mas.getMas_fechaNac());
             Date fechaNac = fecha.getDate();
 
-            parametro.put("rutaLogo", rutaLogo);
+          
             parametro.put("edad", vali.calcularEdad(fechaNac));
 
             parametro.put("idMascota", Integer.parseInt(id_mas));

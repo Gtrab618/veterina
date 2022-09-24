@@ -164,8 +164,13 @@ public class ControlGrooming {
     //-----------------------imprimir reportes------------------------------
     private void imprimirReporte() {
         String nombreP = Vgro.getLblGnombreP().getText();
-        String rutaLogo = System.getProperty("user.dir");
-        rutaLogo = rutaLogo + "/src/Iconos/vtMain.png";
+        //solo funciona para neat no jar
+//        String rutaLogo = System.getProperty("user.dir");
+//        rutaLogo = rutaLogo + "/Iconos/vtMain.png";
+        //conseguir la ruta relativa para cuando se  comprime en un jar
+//        URL resource = getClass().getResource("/Iconos/vtMain.png");
+//        String ruta= resource+"";
+
         try {
             Conexion con = new Conexion();
 
@@ -173,7 +178,7 @@ public class ControlGrooming {
             //cargar ruta de imagen
             Map<String, Object> parametro = new HashMap<String, Object>();
             
-            parametro.put("rutaLogo", rutaLogo);
+
             parametro.put("nombreP",nombreP);
             parametro.put("cedula",dni_persona);
             parametro.put("idMascota",Integer.parseInt(id_mascota));
