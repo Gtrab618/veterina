@@ -799,11 +799,11 @@ public class VistaRegistro extends javax.swing.JPanel {
         pnlRegistro.add(lblAlertaSAv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
 
         lblAlertaRv.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaRv.setText("Campo vacio");
+        lblAlertaRv.setText("Campo vacío");
         pnlRegistro.add(lblAlertaRv, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
 
         lblAlertaNMv.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaNMv.setText("Campo vacio");
+        lblAlertaNMv.setText("Campo vacío");
         pnlRegistro.add(lblAlertaNMv, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
 
         lblAlertaTf.setForeground(new java.awt.Color(212, 172, 13));
@@ -976,7 +976,7 @@ public class VistaRegistro extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id Cliente", "Cedula", "Nombre", "PApellido", "SApellido"
+                "Id Cliente", "Cédula", "Nombre", "PApellido", "SApellido"
             }
         ));
         scrBusqueda.setViewportView(TblBusqueda);
@@ -998,7 +998,7 @@ public class VistaRegistro extends javax.swing.JPanel {
         lblAlertBne.setText("No hay coincidencias");
         pnl_busqueda.add(lblAlertBne, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        jLabel1.setText("Nombre, Cedula, Apellido");
+        jLabel1.setText("Nombre, Cédula, Apellido");
         pnl_busqueda.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel4.setText("Ingrese");

@@ -103,7 +103,7 @@ public class VistaAcerca extends javax.swing.JPanel {
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 570, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
-        jLabel9.setText("Raul Luna");
+        jLabel9.setText("Raúl Luna");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/integrantes/condor.png"))); // NOI18N

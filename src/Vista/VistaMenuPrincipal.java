@@ -179,6 +179,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         mnuIconos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -300,7 +301,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Historia Clinica");
+        jLabel8.setText("Historia Clínica");
 
         javax.swing.GroupLayout pnlBtnHistLayout = new javax.swing.GroupLayout(pnlBtnHist);
         pnlBtnHist.setLayout(pnlBtnHistLayout);

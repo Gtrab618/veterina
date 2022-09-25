@@ -379,7 +379,7 @@ public class VistaGrooming extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Cedula", "Nombre", "Papellido", "Sapellido"
+                "Cédula", "Nombre", "Papellido", "Sapellido"
             }
         ));
         srlBpersona.setViewportView(tblBpersona);
@@ -412,7 +412,7 @@ public class VistaGrooming extends javax.swing.JPanel {
         pnl_Busqueda.add(lblAlertBne, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
         pnl_Busqueda.add(txtBpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 244, -1));
 
-        lbltext2.setText("Cedula, nombre, apellido");
+        lbltext2.setText("Cédula, nombre, apellido");
         pnl_Busqueda.add(lbltext2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 20));
 
         lbltext.setText("Ingrese");

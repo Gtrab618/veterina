@@ -358,7 +358,7 @@ public class VistaMascota extends javax.swing.JPanel {
         lbltext.setText("Ingrese");
         pnlBmascota.add(lbltext, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        lbltext2.setText("Cedula, nombre, apellido");
+        lbltext2.setText("Cédula, nombre, apellido");
         pnlBmascota.add(lbltext2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 20));
 
         tblBpersona.setModel(new javax.swing.table.DefaultTableModel(
@@ -369,7 +369,7 @@ public class VistaMascota extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Cedula", "Nombre", "Primer apellido", "Segundo apellido"
+                "Cédula", "Nombre", "Primer apellido", "Segundo apellido"
             }
         ));
         srlBpersona.setViewportView(tblBpersona);
@@ -489,11 +489,11 @@ public class VistaMascota extends javax.swing.JPanel {
         pnlGestionarM.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 170, 20));
 
         lblAlertaMrv.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaMrv.setText("Campo vacio");
+        lblAlertaMrv.setText("Campo vacío");
         pnlGestionarM.add(lblAlertaMrv, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
 
         lblAlertaMnv.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaMnv.setText("Campo vacio");
+        lblAlertaMnv.setText("Campo vacío");
         pnlGestionarM.add(lblAlertaMnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
         lblAlertaMrf.setForeground(new java.awt.Color(212, 172, 13));

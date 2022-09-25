@@ -438,11 +438,11 @@ public class VistaCita extends javax.swing.JPanel {
         pnlCmascota.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbltitle2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbltitle2.setText("CONSULTA MEDICA");
+        lbltitle2.setText("CONSULTA MÉDICA");
         pnlCmascota.add(lbltitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, -1, -1));
 
         lblcedula.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblcedula.setText("Cedula");
+        lblcedula.setText("Cédula");
         pnlCmascota.add(lblcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         lblnombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -543,13 +543,13 @@ public class VistaCita extends javax.swing.JPanel {
         pnlCmascota.add(lblkg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 510, -1, -1));
 
         lblconstantesF.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblconstantesF.setText("Constates fisiologicas");
+        lblconstantesF.setText("Constates fisiológicas");
         pnlCmascota.add(lblconstantesF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         jspChidra.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
         pnlCmascota.add(jspChidra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 120, -1));
 
-        lblhidrata.setText("Hidratacion");
+        lblhidrata.setText("Hidratación");
         pnlCmascota.add(lblhidrata, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         lblprocentaje.setText("%");
@@ -595,15 +595,15 @@ public class VistaCita extends javax.swing.JPanel {
         pnlCmascota.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 360, 400));
 
         lblAlertaCtv.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaCtv.setText("Campo vacio");
+        lblAlertaCtv.setText("Campo vacío");
         pnlCmascota.add(lblAlertaCtv, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, -1, -1));
 
         lblAlertaCmv.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaCmv.setText("Campo vacio");
+        lblAlertaCmv.setText("Campo vacío");
         pnlCmascota.add(lblAlertaCmv, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
 
         lblAlertaCov.setForeground(new java.awt.Color(204, 0, 204));
-        lblAlertaCov.setText("Campo vacio");
+        lblAlertaCov.setText("Campo vacío");
         pnlCmascota.add(lblAlertaCov, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, -1));
 
         add(pnlCmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, 690));
@@ -611,14 +611,14 @@ public class VistaCita extends javax.swing.JPanel {
         pnlBmascota.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitle.setText("Historial clinico");
+        lblTitle.setText("Historial clínico");
         pnlBmascota.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
         pnlBmascota.add(txtBpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 244, -1));
 
         lbltext.setText("Ingrese");
         pnlBmascota.add(lbltext, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        lbltext2.setText("Cedula, nombre, apellido");
+        lbltext2.setText("Cédula, nombre, apellido");
         pnlBmascota.add(lbltext2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, 20));
 
         tblBpersona.setModel(new javax.swing.table.DefaultTableModel(
@@ -629,7 +629,7 @@ public class VistaCita extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Cedula", "Nombre", "Papellido", "Sapellido"
+                "Cédula", "Nombre", "Papellido", "Sapellido"
             }
         ));
         srlBpersona.setViewportView(tblBpersona);
