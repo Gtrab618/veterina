@@ -26,6 +26,23 @@ public class VistaMascota extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JLabel getLblAlertaMrL() {
+        return lblAlertaMrL;
+    }
+
+    public void setLblAlertaMrL(JLabel lblAlertaMrL) {
+        this.lblAlertaMrL = lblAlertaMrL;
+    }
+
+    
+    public JLabel getLblAlertaMnL() {
+        return lblAlertaMnL;
+    }
+
+    public void setLblAlertaMnL(JLabel lblAlertaMnL) {
+        this.lblAlertaMnL = lblAlertaMnL;
+    }
+
     public JButton getBtn_Vbuscar() {
         return btn_Vbuscar;
     }
@@ -327,6 +344,8 @@ public class VistaMascota extends javax.swing.JPanel {
         lblAlertaMnv = new javax.swing.JLabel();
         lblAlertaMrf = new javax.swing.JLabel();
         lblAlertaMnf = new javax.swing.JLabel();
+        lblAlertaMrL = new javax.swing.JLabel();
+        lblAlertaMnL = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -504,6 +523,14 @@ public class VistaMascota extends javax.swing.JPanel {
         lblAlertaMnf.setText("Ingrese solo texto");
         pnlGestionarM.add(lblAlertaMnf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
+        lblAlertaMrL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaMrL.setText("Revise longitud");
+        pnlGestionarM.add(lblAlertaMrL, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
+
+        lblAlertaMnL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaMnL.setText("Revise longitud");
+        pnlGestionarM.add(lblAlertaMnL, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
+
         add(pnlGestionarM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 960, 680));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -522,8 +549,10 @@ public class VistaMascota extends javax.swing.JPanel {
     private javax.swing.JToolBar jToolBar1;
     private com.toedter.calendar.JDateChooser jdcFechaNacM;
     private javax.swing.JLabel lblAlertBne;
+    private javax.swing.JLabel lblAlertaMnL;
     private javax.swing.JLabel lblAlertaMnf;
     private javax.swing.JLabel lblAlertaMnv;
+    private javax.swing.JLabel lblAlertaMrL;
     private javax.swing.JLabel lblAlertaMrf;
     private javax.swing.JLabel lblAlertaMrv;
     private javax.swing.JLabel lblBAlertMne;

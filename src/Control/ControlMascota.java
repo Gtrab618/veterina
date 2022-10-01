@@ -120,6 +120,8 @@ public class ControlMascota {
     private void CargarDatosModificarMascota() {
         //si las dos son diferentes de vacias se pasa a la siguiente interfaz para ser modificado
         if (!dni_persona.equalsIgnoreCase("") && !id_mascota.equalsIgnoreCase("")) {
+   
+            desabilitarAlertarModificar();
             //recupero los datos de la tabla para ser pasador a modificar
             Vmas.getPnlBmascota().setVisible(false);
             //activar panel de modificacion
@@ -172,7 +174,7 @@ public class ControlMascota {
 
     //buscar la mascota con el dni del propietario
     private void evtVerMascota(JTable busqueda) {
-        
+
         busqueda.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -208,7 +210,7 @@ public class ControlMascota {
 
     //reiniciar datos id y datos al precionar sobre busqueda incremental
     private void evtTxtReiniId(JTextField txt) {
-        
+
         txt.addMouseListener(new java.awt.event.MouseAdapter() {
 
             @Override
@@ -220,9 +222,10 @@ public class ControlMascota {
     }
 
     private void modificarMascota() {
+
         desabilitarAlertarModificar();
         String nombreM = "", raza = "", especie = "", sexo = "";
-        int bandera = 0;
+        int bandera = 0, tipoError = 0;
         Date fechaNac;
 
         nombreM = Vmas.getTxtNombreM().getText().trim();
@@ -233,10 +236,23 @@ public class ControlMascota {
         sexo = Vmas.getCmb_sexoM().getSelectedItem().toString();
 
         if (!nombreM.equals("")) {
-            if (!vali.valiNombreApe(nombreM)) {
-                //nombre de la mascota contiene numeros
-                Vmas.getLblAlertaMnf().setVisible(true);
-                bandera = bandera + 1;
+
+            tipoError = vali.valiNombreV2(nombreM);
+            switch (tipoError) {
+
+                case 1:
+                    //error longitud
+
+                    Vmas.getLblAlertaMnL().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+                case 2:
+                    // error de formato
+
+                    Vmas.getLblAlertaMnf().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+
             }
         } else {
             //nombre de la mascota vacio
@@ -246,10 +262,23 @@ public class ControlMascota {
         }
 
         if (!raza.equals("")) {
-            if (!vali.valiString(raza)) {
-                //error raza contiene numeros
-                Vmas.getLblAlertaMrf().setVisible(true);
-                bandera = bandera + 1;
+
+            tipoError = vali.valiNombreSepV2(raza);
+            switch (tipoError) {
+
+                case 1:
+                    //error longitud
+
+                    Vmas.getLblAlertaMrL().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+                case 2:
+                    // error de formato
+
+                    Vmas.getLblAlertaMrf().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+
             }
         } else {
             //error raza esta vacio
@@ -382,7 +411,7 @@ public class ControlMascota {
     //registradas
     private void buscar() {
         String criterio = Vmas.getTxtBpersona().getText();
-        criterio=criterio.toLowerCase();
+        criterio = criterio.toLowerCase();
         if (!criterio.equals("")) {
             //buscar los clientes 
             llenarTablaBusqueda(criterio);
@@ -574,6 +603,9 @@ public class ControlMascota {
         Vmas.getLblAlertaMnv().setVisible(false);
         Vmas.getLblAlertaMrf().setVisible(false);
         Vmas.getLblAlertaMrv().setVisible(false);
+        Vmas.getLblAlertaMnL().setVisible(false);
+        Vmas.getLblAlertaMrL().setVisible(false);
+
     }
 
     private void habilitarBtns() {
@@ -605,7 +637,7 @@ public class ControlMascota {
         Vmas.getTblBpersona().clearSelection();
     }
 
-    private void lipiarIdTable(){
+    private void lipiarIdTable() {
         dni_persona = "";
         id_mascota = "";
         Vmas.getLblBFoto().setIcon(null);

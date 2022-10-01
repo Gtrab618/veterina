@@ -23,6 +23,79 @@ public class VistaRegistro extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JLabel getLblAlertaMsaL() {
+        return lblAlertaMsaL;
+    }
+
+    public void setLblAlertaMsaL(JLabel lblAlertaMsaL) {
+        this.lblAlertaMsaL = lblAlertaMsaL;
+    }
+    
+    
+    
+    public JLabel getLblAlertaMnL() {
+        return lblAlertaMnL;
+    }
+
+    public void setLblAlertaMnL(JLabel lblAlertaMnL) {
+        this.lblAlertaMnL = lblAlertaMnL;
+    }
+
+    public JLabel getLblAlertaMpaL() {
+        return lblAlertaMpaL;
+    }
+
+    public void setLblAlertaMpaL(JLabel lblAlertaMpaL) {
+        this.lblAlertaMpaL = lblAlertaMpaL;
+    }
+
+    
+    public JLabel getLblAlertaNL() {
+        return lblAlertaNL;
+    }
+
+    public void setLblAlertaNL(JLabel lblAlertaNL) {
+        this.lblAlertaNL = lblAlertaNL;
+    }
+    
+    
+    public JLabel getLblAlertaRL() {
+        return lblAlertaRL;
+    }
+
+    public void setLblAlertaRL(JLabel lblAlertaRL) {
+        this.lblAlertaRL = lblAlertaRL;
+    }
+    
+    
+    public JLabel getLblAlertaNML() {
+        return lblAlertaNML;
+    }
+
+    public void setLblAlertaNML(JLabel lblAlertaNML) {
+        this.lblAlertaNML = lblAlertaNML;
+    }
+
+    public JLabel getLblAlertaSAL() {
+        return lblAlertaSAL;
+    }
+
+    public void setLblAlertaSAL(JLabel lblAlertaSAL) {
+        this.lblAlertaSAL = lblAlertaSAL;
+    }
+
+    public JLabel getLblAlertaPAL() {
+        return lblAlertaPAL;
+    }
+
+    public void setLblAlertaPAL(JLabel lblAlertaPAL) {
+        this.lblAlertaPAL = lblAlertaPAL;
+    }
+
+    
+
+    
+    
     public JButton getBtn_cancelarR() {
         return btn_cancelarR;
     }
@@ -618,6 +691,11 @@ public class VistaRegistro extends javax.swing.JPanel {
         dtc_fechaNac = new com.toedter.calendar.JDateChooser();
         lbledad = new javax.swing.JLabel();
         lblEdadMas = new javax.swing.JLabel();
+        lblAlertaPAL = new javax.swing.JLabel();
+        lblAlertaNL = new javax.swing.JLabel();
+        lblAlertaNML = new javax.swing.JLabel();
+        lblAlertaRL = new javax.swing.JLabel();
+        lblAlertaSAL = new javax.swing.JLabel();
         pnlModificar = new javax.swing.JPanel();
         lblIcoP1 = new javax.swing.JLabel();
         lblMcedula = new javax.swing.JLabel();
@@ -649,6 +727,9 @@ public class VistaRegistro extends javax.swing.JPanel {
         lblAlertaMpaf = new javax.swing.JLabel();
         lblAlertaMnf = new javax.swing.JLabel();
         lblAlertaMsaf = new javax.swing.JLabel();
+        lblAlertaMpaL = new javax.swing.JLabel();
+        lblAlertaMnL = new javax.swing.JLabel();
+        lblAlertaMsaL = new javax.swing.JLabel();
         pnl_busqueda = new javax.swing.JPanel();
         scrBusqueda = new javax.swing.JScrollPane();
         TblBusqueda = new javax.swing.JTable();
@@ -851,6 +932,26 @@ public class VistaRegistro extends javax.swing.JPanel {
         pnlRegistro.add(lbledad, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
         pnlRegistro.add(lblEdadMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 240, 30));
 
+        lblAlertaPAL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaPAL.setText("Revise longitud");
+        pnlRegistro.add(lblAlertaPAL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+
+        lblAlertaNL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaNL.setText("Revise longitud");
+        pnlRegistro.add(lblAlertaNL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+
+        lblAlertaNML.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaNML.setText("Revise longitud");
+        pnlRegistro.add(lblAlertaNML, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
+
+        lblAlertaRL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaRL.setText("Revise longitud");
+        pnlRegistro.add(lblAlertaRL, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+
+        lblAlertaSAL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaSAL.setText("Revise longitud");
+        pnlRegistro.add(lblAlertaSAL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
+
         add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, 690));
 
         pnlModificar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -964,6 +1065,18 @@ public class VistaRegistro extends javax.swing.JPanel {
         lblAlertaMsaf.setText("Ingrese solo texto");
         pnlModificar.add(lblAlertaMsaf, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
 
+        lblAlertaMpaL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaMpaL.setText("Revise longitud");
+        pnlModificar.add(lblAlertaMpaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        lblAlertaMnL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaMnL.setText("Revise longitud");
+        pnlModificar.add(lblAlertaMnL, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, -1, -1));
+
+        lblAlertaMsaL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaMsaL.setText("Revise longitud");
+        pnlModificar.add(lblAlertaMsaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
+
         add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, 690));
 
         pnl_busqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1037,22 +1150,30 @@ public class VistaRegistro extends javax.swing.JPanel {
     private javax.swing.JLabel lblAlertaMcne;
     private javax.swing.JLabel lblAlertaMcnv;
     private javax.swing.JLabel lblAlertaMdf;
+    private javax.swing.JLabel lblAlertaMnL;
     private javax.swing.JLabel lblAlertaMnf;
     private javax.swing.JLabel lblAlertaMnv;
+    private javax.swing.JLabel lblAlertaMpaL;
     private javax.swing.JLabel lblAlertaMpaf;
     private javax.swing.JLabel lblAlertaMpav;
+    private javax.swing.JLabel lblAlertaMsaL;
     private javax.swing.JLabel lblAlertaMsaf;
     private javax.swing.JLabel lblAlertaMsav;
     private javax.swing.JLabel lblAlertaMtf;
     private javax.swing.JLabel lblAlertaMtnv;
+    private javax.swing.JLabel lblAlertaNL;
+    private javax.swing.JLabel lblAlertaNML;
     private javax.swing.JLabel lblAlertaNMf;
     private javax.swing.JLabel lblAlertaNMv;
     private javax.swing.JLabel lblAlertaNf;
     private javax.swing.JLabel lblAlertaNv;
+    private javax.swing.JLabel lblAlertaPAL;
     private javax.swing.JLabel lblAlertaPAf;
     private javax.swing.JLabel lblAlertaPAv;
+    private javax.swing.JLabel lblAlertaRL;
     private javax.swing.JLabel lblAlertaRf;
     private javax.swing.JLabel lblAlertaRv;
+    private javax.swing.JLabel lblAlertaSAL;
     private javax.swing.JLabel lblAlertaSAf;
     private javax.swing.JLabel lblAlertaSAv;
     private javax.swing.JLabel lblAlertaTf;

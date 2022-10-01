@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class Validaciones {
 
@@ -53,10 +54,52 @@ public class Validaciones {
 
     }
 
-    public boolean valiNombreApe(String nomAp) {
-        return nomAp.matches("[a-zA-z]{3,15}");
-    }
 
+    public int valiNombreV2(String cadena2){
+        
+        
+        if (cadena2.matches("[A-Za-zÑñáéíúóÁÉÍÓÚ]{1,50}")) {
+            if (cadena2.length()<= 2  || cadena2.length()>15) {
+                //logitud corta
+                return 1;
+            }else{
+                
+                //correcto
+                return 0;
+                
+            }
+        }else{
+            
+            //error formato
+            return 2;
+            
+        }
+        
+    }
+    
+    //validar nombre separado
+    public int valiNombreSepV2(String cadena2){
+        
+        
+        if (cadena2.matches("[A-Za-zÑñáéíúóÁÉÍÓÚ]{1,25}[\\s]{0,1}[A-Za-zÑñáéíúóÁÉÍÓÚ]{0,25}")) {
+            if (cadena2.length()<= 2  || cadena2.length()>20) {
+                //logitud corta
+                return 1;
+            }else{
+                
+                //correcto
+                return 0;
+                
+            }
+        }else{
+            
+            //error formato
+            return 2;
+            
+        }
+        
+    }
+    
     public int valiNumTelefono(String tel) {
 
         if (tel.matches("[+-]?\\d*(\\.\\d+)?")) {

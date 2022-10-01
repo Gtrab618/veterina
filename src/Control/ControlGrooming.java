@@ -163,6 +163,7 @@ public class ControlGrooming {
 
     //-----------------------imprimir reportes------------------------------
     private void imprimirReporte() {
+
         String nombreP = Vgro.getLblGnombreP().getText();
         //solo funciona para neat no jar
 //        String rutaLogo = System.getProperty("user.dir");
@@ -177,11 +178,10 @@ public class ControlGrooming {
             JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/reportes/ReportGroo2.jasper"));
             //cargar ruta de imagen
             Map<String, Object> parametro = new HashMap<String, Object>();
-            
 
-            parametro.put("nombreP",nombreP);
-            parametro.put("cedula",dni_persona);
-            parametro.put("idMascota",Integer.parseInt(id_mascota));
+            parametro.put("nombreP", nombreP);
+            parametro.put("cedula", dni_persona);
+            parametro.put("idMascota", Integer.parseInt(id_mascota));
             JasperPrint jp = JasperFillManager.fillReport(jr, parametro, con.getCon());
             JasperViewer jv = new JasperViewer(jp, false);
             jv.setVisible(true);
@@ -251,7 +251,7 @@ public class ControlGrooming {
     //busco las mascotas
     private void buscar() {
         String criterio = Vgro.getTxtBpersona().getText();
-        criterio=criterio.toLowerCase();
+        criterio = criterio.toLowerCase();
         if (!criterio.equals("")) {
             //buscar los clientes 
             llenarTablaBusqueda(criterio);
@@ -264,7 +264,6 @@ public class ControlGrooming {
     }
 
     //---------------------------------------zona para las tablas----------------------------
-    
     private void llenarTabla() {
 
         i = 0;
@@ -433,6 +432,7 @@ public class ControlGrooming {
         desabiliarAlertaG();
         String nombreCorte = "", alergia = "";
         double precio = 0;
+        int tipoError=0;
 
         //parsear id mascota
         int bandera = 0, mascota_id = 0;
@@ -443,9 +443,22 @@ public class ControlGrooming {
 
         //Validaciones 
         if (!nombreCorte.equalsIgnoreCase("")) {
-            if (!vali.valiNombreApe(nombreCorte)) {
-                Vgro.getLblAlertaGnf().setVisible(true);
-                bandera = bandera + 1;
+
+            tipoError = vali.valiNombreV2(nombreCorte);
+            switch (tipoError) {
+
+                case 1:
+                    //error longitud
+                    Vgro.getLblAlertaGnL().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+                case 2:
+
+                    //nombre de la mascota contiene numeros
+                    Vgro.getLblAlertaGnf().setVisible(true);
+                    bandera = bandera + 1;
+                    break;
+
             }
         } else {
             Vgro.getLblAlertaGcv().setVisible(true);
@@ -484,6 +497,7 @@ public class ControlGrooming {
         Vgro.getLblAlertaGcv().setVisible(false);
         Vgro.getLblAlertaGnf().setVisible(false);
         Vgro.getLblAlertaGpv().setVisible(false);
+        Vgro.getLblAlertaGnL().setVisible(false);
     }
 
     private void limpiarRegistroGroo() {
@@ -506,13 +520,13 @@ public class ControlGrooming {
     }
 
     private void desabilitarBtn() {
-        Vgro.getBtn_Gcancelar().setEnabled(false);
+
         Vgro.getBtn_GguardarR().setEnabled(false);
         Vgro.getBtn_Gimprimir().setEnabled(false);
     }
 
     private void habilitarBtn() {
-        Vgro.getBtn_Gcancelar().setEnabled(true);
+
         Vgro.getBtn_GguardarR().setEnabled(true);
         Vgro.getBtn_Gimprimir().setEnabled(true);
     }

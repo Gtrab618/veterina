@@ -26,6 +26,15 @@ public class VistaGrooming extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JLabel getLblAlertaGnL() {
+        return lblAlertaGnL;
+    }
+
+    public void setLblAlertaGnL(JLabel lblAlertaGnL) {
+        this.lblAlertaGnL = lblAlertaGnL;
+    }
+
+    
     public JButton getBtn_Pbuscar() {
         return btn_Pbuscar;
     }
@@ -135,13 +144,6 @@ public class VistaGrooming extends javax.swing.JPanel {
 
 
 
-    public JButton getBtn_Gcancelar() {
-        return btn_Gcancelar;
-    }
-
-    public void setBtn_Gcancelar(JButton btn_Gcancelar) {
-        this.btn_Gcancelar = btn_Gcancelar;
-    }
 
     public JButton getBtn_GguardarR() {
         return btn_GguardarR;
@@ -326,7 +328,6 @@ public class VistaGrooming extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JSeparator();
         lblsexo = new javax.swing.JLabel();
         btn_GguardarR = new javax.swing.JButton();
-        btn_Gcancelar = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         lblGnombreM = new javax.swing.JLabel();
@@ -348,6 +349,7 @@ public class VistaGrooming extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tat_Gdescripcion = new javax.swing.JTextArea();
         lbltipoCorte1 = new javax.swing.JLabel();
+        lblAlertaGnL = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -490,9 +492,6 @@ public class VistaGrooming extends javax.swing.JPanel {
 
         btn_GguardarR.setText("Guardar Reporte");
         pnl_Registro.add(btn_GguardarR, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 190, -1));
-
-        btn_Gcancelar.setText("Cancelar");
-        pnl_Registro.add(btn_Gcancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 550, 160, -1));
         pnl_Registro.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 140, 20));
         pnl_Registro.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 140, 20));
         pnl_Registro.add(lblGnombreM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 140, 20));
@@ -549,13 +548,16 @@ public class VistaGrooming extends javax.swing.JPanel {
         lbltipoCorte1.setText("Tipo de corte");
         pnl_Registro.add(lbltipoCorte1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
+        lblAlertaGnL.setForeground(new java.awt.Color(255, 102, 0));
+        lblAlertaGnL.setText("Revise longitud");
+        pnl_Registro.add(lblAlertaGnL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, 20));
+
         add(pnl_Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 960, 690));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGGalergia;
-    private javax.swing.JButton btn_Gcancelar;
     private javax.swing.JButton btn_GguardarR;
     private javax.swing.JButton btn_Gimprimir;
     private javax.swing.JButton btn_NueRepor;
@@ -574,6 +576,7 @@ public class VistaGrooming extends javax.swing.JPanel {
     private javax.swing.JSpinner jspGprecio;
     private javax.swing.JLabel lblAlertBne;
     private javax.swing.JLabel lblAlertaGcv;
+    private javax.swing.JLabel lblAlertaGnL;
     private javax.swing.JLabel lblAlertaGnf;
     private javax.swing.JLabel lblAlertaGpv;
     private javax.swing.JLabel lblBAlertMne;
